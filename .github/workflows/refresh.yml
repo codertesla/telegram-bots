@@ -29,6 +29,9 @@ jobs:
       - name: Render README
         run: python scripts/render_readme.py
 
+      - name: Render site
+        run: python scripts/build_site.py
+
       - name: Validate
         run: python scripts/validate.py
 
