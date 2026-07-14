@@ -9,7 +9,7 @@
 ## 快速贡献
 
 ### 方式一：提 Issue 推荐（最简单）
-点击 [New Issue](https://github.com/codertesla/telegram-bots-cn/issues/new/choose)，选择「推荐机器人」模板，填入：
+点击 [New Issue](https://github.com/codertesla/telegram-bots/issues/new/choose)，选择「推荐机器人」模板，填入：
 
 - 机器人名称
 - 链接（**必须用 `https://telegram.me/xxx` 格式**，因 `t.me` 已被注册局 serverHold）
