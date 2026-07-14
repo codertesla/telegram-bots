@@ -1,0 +1,56 @@
+name: Bot Data Auto-Refresh
+
+on:
+  schedule:
+    # Every Monday at 03:00 UTC
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Fetch bot data
+        run: python scripts/fetch_bots.py --sleep 2
+
+      - name: Render README
+        run: python scripts/render_readme.py
+
+      - name: Validate
+        run: python scripts/validate.py
+
+      - name: Commit and push changes
+        if: success()
+        run: |
+          if ! git diff --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add -u
+            git commit -m "bots-data: auto-refresh $(date +'%F')"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+
+      - name: Report failure via issue
+        if: failure()
+        run: |
+          gh issue create \
+            --title "Auto-refresh failed $(date +'%F')" \
+            --label auto-refresh-failed \
+            --body "Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            The auto-refresh (fetch + render + validate) failed. Check the logs for details."

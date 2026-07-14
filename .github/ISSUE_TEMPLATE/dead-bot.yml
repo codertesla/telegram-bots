@@ -1,0 +1,32 @@
+name: 机器人失效报告
+description: 报告列表中某个机器人已失效/无响应，便于我们核验清理
+title: "[dead-bot] 报告失效机器人"
+labels: ["dead-bot"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: 机器人名称
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: 列表中的链接
+    validations:
+      required: true
+  - type: textarea
+    id: symptom
+    attributes:
+      label: 失效表现
+      placeholder: |
+        如：对话无响应 / 显示 "bot stopped" / 链接打不开 / 已转为付费且无法使用
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: 发现日期
+      placeholder: YYYY-MM-DD
+    validations:
+      required: false

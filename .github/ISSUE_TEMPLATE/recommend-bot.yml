@@ -1,0 +1,58 @@
+name: 推荐机器人
+description: 推荐一个优质、活跃的 Telegram 机器人加入本列表
+labels: ["recommendation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢推荐！请尽量填写完整字段，便于我们核验与收录。
+        链接请统一使用 `https://telegram.me/xxx` 格式（t.me 当前被注册局暂停解析）。
+  - type: input
+    id: name
+    attributes:
+      label: 机器人名称
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: 链接（telegram.me/xxx）
+      placeholder: https://telegram.me/xxx
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: 分类
+      options:
+        - 搜索与发现类
+        - 群组管理与安全类
+        - 资源解析与下载类
+        - AI 智能类
+        - 通知订阅类
+        - 实用工具类
+    validations:
+      required: true
+  - type: input
+    id: desc
+    attributes:
+      label: 一句话描述（核心功能 + 适用场景）
+    validations:
+      required: true
+  - type: dropdown
+    id: official
+    attributes:
+      label: 是否官方
+      options:
+        - 是
+        - 否
+        - 不确定
+    validations:
+      required: false
+  - type: input
+    id: repo
+    attributes:
+      label: 开源仓库（如有）
+      placeholder: https://github.com/xxx/xxx
+    validations:
+      required: false

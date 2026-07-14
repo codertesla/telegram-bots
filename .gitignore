@@ -1,0 +1,10 @@
+.DS_Store
+*.log
+Thumbs.db
+
+# Backup materials (research, raw lists, etc.)
+bak/
+
+# Python cache
+__pycache__/
+*.pyc
