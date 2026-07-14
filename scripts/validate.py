@@ -6,7 +6,7 @@ Per SPEC §4 Task D (M5):
 - --check seed   : bots.json schema, required fields, id unique, category valid, featured <=5
 - --check readme : markers paired, every non-dead json bot rendered in some marker block,
                    no stray/old bot links left inside marker blocks
-- --check links  : every https://telegram.me/xxx inside marker blocks matches a bot's url in json
+- --check links  : every https://t.me/xxx inside marker blocks matches a bot's url in json
 - --check dead   : every dead bot entry is rendered with "已失效" / ❗ marker
 - (no arg)       : run ALL checks; exit 0 only if every check passes
 """
@@ -149,9 +149,9 @@ def find_marker_pairs(readme: str):
 def collect_rendered_urls(inners: dict) -> set:
     urls = set()
     for inner in inners.values():
-        found = re.findall(r'https://telegram\.me/([A-Za-z0-9_]+)', inner)
+        found = re.findall(r'https://t\.me/([A-Za-z0-9_]+)', inner)
         for u in found:
-            urls.add(f"https://telegram.me/{u}")
+            urls.add(f"https://t.me/{u}")
     return urls
 
 
@@ -222,7 +222,7 @@ def check_links(data, readme):
         for e in errors:
             print(f"  - {e}")
         return False
-    print(f"LINKS CHECK PASSED: {len(rendered_urls)} telegram.me links in markers all match json bots")
+    print(f"LINKS CHECK PASSED: {len(rendered_urls)} t.me links in markers all match json bots")
     return True
 
 

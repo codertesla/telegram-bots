@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-fetch_bots.py - Fetch live metadata from telegram.me preview pages.
+fetch_bots.py - Fetch live metadata from t.me preview pages.
 
 Strictly per SPEC:
-- Only use https://telegram.me/<username> (never t.me)
+- Use https://t.me/<username> preview pages
 - Polite: default sleep 2s, --sleep >=1 enforced
 - 429 -> backoff 30s + retry
 - Network errors retry 3x with 2/4/8s
@@ -28,7 +28,7 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_FILE = ROOT / "data" / "bots.json"
-PREVIEW_BASE = "https://telegram.me"
+PREVIEW_BASE = "https://t.me"
 DEFAULT_SLEEP = 2.0
 MIN_SLEEP = 1.0
 RETRY_BACKOFF = [2, 4, 8]
@@ -43,9 +43,9 @@ HEADERS = {
 
 
 def normalize_id(raw: str) -> str:
-    """Turn @foo, Foo, https://telegram.me/foo into clean id."""
+    """Turn @foo, Foo, https://t.me/foo into clean id."""
     s = raw.strip().lower()
-    s = re.sub(r"^https?://(telegram\.me|t\.me)/", "", s)
+    s = re.sub(r"^https?://(t\.me|telegram\.me)/", "", s)
     s = s.lstrip("@")
     return s
 
@@ -134,7 +134,7 @@ def parse_preview(html: str) -> Dict[str, Any]:
     else:
         description = ""
 
-    # telegram.me preview pages contain TWO tgme_page_extra divs:
+    # t.me preview pages contain TWO tgme_page_extra divs:
     # [0] is the deep link banner e.g. "@username"
     # [1] (or the matching one) contains the real "299 956 monthly users" / subscribers / members
     extras = soup.find_all("div", class_="tgme_page_extra")
@@ -265,7 +265,7 @@ def fetch_fields_equal(a: Dict[str, Any], b: Dict[str, Any]) -> bool:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Fetch telegram.me metadata into data/bots.json")
+    parser = argparse.ArgumentParser(description="Fetch t.me metadata into data/bots.json")
     parser.add_argument("--id", help="Only fetch this single id/username (for M2 sample)")
     parser.add_argument("--dry-run", action="store_true", help="Print results, do not write file")
     parser.add_argument("--force", action="store_true", help="Ignore existing ok/pending, re-fetch everything selected")

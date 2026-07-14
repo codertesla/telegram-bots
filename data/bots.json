@@ -6,7 +6,7 @@
     {
       "id": "botfather",
       "username": "@BotFather",
-      "url": "https://telegram.me/BotFather",
+      "url": "https://t.me/BotFather",
       "category": "tools",
       "subsection": null,
       "featured": true,
@@ -29,7 +29,7 @@
     {
       "id": "jiso",
       "username": "@jiso",
-      "url": "https://telegram.me/jiso",
+      "url": "https://t.me/jiso",
       "category": "search",
       "subsection": null,
       "featured": true,
@@ -52,7 +52,7 @@
     {
       "id": "combot",
       "username": "@combot",
-      "url": "https://telegram.me/combot",
+      "url": "https://t.me/combot",
       "category": "group",
       "subsection": "stats",
       "featured": true,
@@ -75,7 +75,7 @@
     {
       "id": "rsswbot",
       "username": "@RSSWBot",
-      "url": "https://telegram.me/RSSWBot",
+      "url": "https://t.me/RSSWBot",
       "category": "rss",
       "subsection": null,
       "featured": true,
@@ -98,7 +98,7 @@
     {
       "id": "freedlvideo_bot",
       "username": "@freedlvideo_bot",
-      "url": "https://telegram.me/freedlvideo_bot",
+      "url": "https://t.me/freedlvideo_bot",
       "category": "download",
       "subsection": null,
       "featured": true,
@@ -121,7 +121,7 @@
     {
       "id": "soso",
       "username": "@soso",
-      "url": "https://telegram.me/soso",
+      "url": "https://t.me/soso",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -144,7 +144,7 @@
     {
       "id": "kuaisou1_bot",
       "username": "@kuaisou1_bot",
-      "url": "https://telegram.me/kuaisou1_bot",
+      "url": "https://t.me/kuaisou1_bot",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -167,7 +167,7 @@
     {
       "id": "sotv",
       "username": "@sotv",
-      "url": "https://telegram.me/sotv",
+      "url": "https://t.me/sotv",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -190,7 +190,7 @@
     {
       "id": "aliyunshare_bot",
       "username": "@aliyunshare_bot",
-      "url": "https://telegram.me/aliyunshare_bot",
+      "url": "https://t.me/aliyunshare_bot",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -213,7 +213,7 @@
     {
       "id": "aliyunpanbot",
       "username": "@AliYunPanBot",
-      "url": "https://telegram.me/AliYunPanBot",
+      "url": "https://t.me/AliYunPanBot",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -236,7 +236,7 @@
     {
       "id": "youtube",
       "username": "@youtube",
-      "url": "https://telegram.me/youtube",
+      "url": "https://t.me/youtube",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -259,7 +259,7 @@
     {
       "id": "p4captchabot",
       "username": "@P4CaptchaBot",
-      "url": "https://telegram.me/P4CaptchaBot",
+      "url": "https://t.me/P4CaptchaBot",
       "category": "group",
       "subsection": "verify",
       "featured": false,
@@ -282,7 +282,7 @@
     {
       "id": "group_confirmation_bot",
       "username": "@group_confirmation_bot",
-      "url": "https://telegram.me/group_confirmation_bot",
+      "url": "https://t.me/group_confirmation_bot",
       "category": "group",
       "subsection": "verify",
       "featured": false,
@@ -305,7 +305,7 @@
     {
       "id": "policr_bot",
       "username": "@policr_bot",
-      "url": "https://telegram.me/policr_bot",
+      "url": "https://t.me/policr_bot",
       "category": "group",
       "subsection": "verify",
       "featured": false,
@@ -328,7 +328,7 @@
     {
       "id": "tgrecaptchabot",
       "username": "@TGreCAPTCHABot",
-      "url": "https://telegram.me/TGreCAPTCHABot",
+      "url": "https://t.me/TGreCAPTCHABot",
       "category": "group",
       "subsection": "verify",
       "featured": false,
@@ -351,7 +351,7 @@
     {
       "id": "shieldy_bot",
       "username": "@shieldy_bot",
-      "url": "https://telegram.me/shieldy_bot",
+      "url": "https://t.me/shieldy_bot",
       "category": "group",
       "subsection": "verify",
       "featured": false,
@@ -374,7 +374,7 @@
     {
       "id": "fengdoorbot",
       "username": "@FengDoorBot",
-      "url": "https://telegram.me/FengDoorBot",
+      "url": "https://t.me/FengDoorBot",
       "category": "group",
       "subsection": "verify",
       "featured": false,
@@ -397,7 +397,7 @@
     {
       "id": "adnamekillerbot",
       "username": "@adnamekillerbot",
-      "url": "https://telegram.me/adnamekillerbot",
+      "url": "https://t.me/adnamekillerbot",
       "category": "group",
       "subsection": "ads",
       "featured": false,
@@ -420,7 +420,7 @@
     {
       "id": "adzhongjiezhe_bot",
       "username": "@adzhongjiezhe_bot",
-      "url": "https://telegram.me/adzhongjiezhe_bot",
+      "url": "https://t.me/adzhongjiezhe_bot",
       "category": "group",
       "subsection": "ads",
       "featured": false,
@@ -443,7 +443,7 @@
     {
       "id": "antihyperlinkbot",
       "username": "@AntiHyperlinkBot",
-      "url": "https://telegram.me/AntiHyperlinkBot",
+      "url": "https://t.me/AntiHyperlinkBot",
       "category": "group",
       "subsection": "ads",
       "featured": false,
@@ -466,7 +466,7 @@
     {
       "id": "protectronbot",
       "username": "@ProtectronBot",
-      "url": "https://telegram.me/ProtectronBot",
+      "url": "https://t.me/ProtectronBot",
       "category": "group",
       "subsection": "ads",
       "featured": false,
@@ -489,7 +489,7 @@
     {
       "id": "autorestrictbot",
       "username": "@AutoRestrictBot",
-      "url": "https://telegram.me/AutoRestrictBot",
+      "url": "https://t.me/AutoRestrictBot",
       "category": "group",
       "subsection": "ads",
       "featured": false,
@@ -512,7 +512,7 @@
     {
       "id": "freqrobot",
       "username": "@freqrobot",
-      "url": "https://telegram.me/freqrobot",
+      "url": "https://t.me/freqrobot",
       "category": "group",
       "subsection": "ads",
       "featured": false,
@@ -535,7 +535,7 @@
     {
       "id": "fengstatsbot",
       "username": "@FengStatsBot",
-      "url": "https://telegram.me/FengStatsBot",
+      "url": "https://t.me/FengStatsBot",
       "category": "group",
       "subsection": "stats",
       "featured": false,
@@ -558,7 +558,7 @@
     {
       "id": "sangmata_bot",
       "username": "@SangMata_BOT",
-      "url": "https://telegram.me/SangMata_BOT",
+      "url": "https://t.me/SangMata_BOT",
       "category": "group",
       "subsection": "stats",
       "featured": false,
@@ -581,7 +581,7 @@
     {
       "id": "joinhider_bot",
       "username": "@joinhider_bot",
-      "url": "https://telegram.me/joinhider_bot",
+      "url": "https://t.me/joinhider_bot",
       "category": "group",
       "subsection": "stats",
       "featured": false,
@@ -604,7 +604,7 @@
     {
       "id": "watchdoorbot",
       "username": "@WatchDoorBot",
-      "url": "https://telegram.me/WatchDoorBot",
+      "url": "https://t.me/WatchDoorBot",
       "category": "group",
       "subsection": "misc",
       "featured": false,
@@ -627,7 +627,7 @@
     {
       "id": "bilibiliparse_bot",
       "username": "@bilibiliparse_bot",
-      "url": "https://telegram.me/bilibiliparse_bot",
+      "url": "https://t.me/bilibiliparse_bot",
       "category": "download",
       "subsection": null,
       "featured": false,
@@ -650,7 +650,7 @@
     {
       "id": "ytbdownbot",
       "username": "@YtbDownBot",
-      "url": "https://telegram.me/YtbDownBot",
+      "url": "https://t.me/YtbDownBot",
       "category": "download",
       "subsection": null,
       "featured": false,
@@ -673,7 +673,7 @@
     {
       "id": "utubest_bot",
       "username": "@utubest_Bot",
-      "url": "https://telegram.me/utubest_Bot",
+      "url": "https://t.me/utubest_Bot",
       "category": "download",
       "subsection": null,
       "featured": false,
@@ -696,7 +696,7 @@
     {
       "id": "getmediabot",
       "username": "@getmediabot",
-      "url": "https://telegram.me/getmediabot",
+      "url": "https://t.me/getmediabot",
       "category": "download",
       "subsection": null,
       "featured": false,
@@ -719,7 +719,7 @@
     {
       "id": "gifdownloader_bot",
       "username": "@GIFDownloader_bot",
-      "url": "https://telegram.me/GIFDownloader_bot",
+      "url": "https://t.me/GIFDownloader_bot",
       "category": "download",
       "subsection": null,
       "featured": false,
@@ -742,7 +742,7 @@
     {
       "id": "noderss_bot",
       "username": "@NodeRSS_bot",
-      "url": "https://telegram.me/NodeRSS_bot",
+      "url": "https://t.me/NodeRSS_bot",
       "category": "rss",
       "subsection": null,
       "featured": false,
@@ -765,7 +765,7 @@
     {
       "id": "rssflowbot",
       "username": "@rssflowbot",
-      "url": "https://telegram.me/rssflowbot",
+      "url": "https://t.me/rssflowbot",
       "category": "rss",
       "subsection": null,
       "featured": false,
@@ -788,7 +788,7 @@
     {
       "id": "dropmailbot",
       "username": "@DropmailBot",
-      "url": "https://telegram.me/DropmailBot",
+      "url": "https://t.me/DropmailBot",
       "category": "tools",
       "subsection": null,
       "featured": false,
@@ -811,7 +811,7 @@
     {
       "id": "dicbot",
       "username": "@dicbot",
-      "url": "https://telegram.me/dicbot",
+      "url": "https://t.me/dicbot",
       "category": "tools",
       "subsection": null,
       "featured": false,
@@ -834,7 +834,7 @@
     {
       "id": "weatherbot",
       "username": "@WeatherBot",
-      "url": "https://telegram.me/WeatherBot",
+      "url": "https://t.me/WeatherBot",
       "category": "tools",
       "subsection": null,
       "featured": false,
@@ -857,7 +857,7 @@
     {
       "id": "apkdl_bot",
       "username": "@apkdl_bot",
-      "url": "https://telegram.me/apkdl_bot",
+      "url": "https://t.me/apkdl_bot",
       "category": "tools",
       "subsection": null,
       "featured": false,
@@ -880,7 +880,7 @@
     {
       "id": "tglotterybot",
       "username": "@tgLotteryBot",
-      "url": "https://telegram.me/tgLotteryBot",
+      "url": "https://t.me/tgLotteryBot",
       "category": "tools",
       "subsection": null,
       "featured": false,
@@ -903,7 +903,7 @@
     {
       "id": "lotteryhelperbot",
       "username": "@LotteryHelperBot",
-      "url": "https://telegram.me/LotteryHelperBot",
+      "url": "https://t.me/LotteryHelperBot",
       "category": "tools",
       "subsection": null,
       "featured": false,
@@ -926,7 +926,7 @@
     {
       "id": "smss",
       "username": "@smss",
-      "url": "https://telegram.me/smss",
+      "url": "https://t.me/smss",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -949,7 +949,7 @@
     {
       "id": "cjsy",
       "username": "@CJSY",
-      "url": "https://telegram.me/CJSY",
+      "url": "https://t.me/CJSY",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -972,7 +972,7 @@
     {
       "id": "soula",
       "username": "@soula",
-      "url": "https://telegram.me/soula",
+      "url": "https://t.me/soula",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -995,7 +995,7 @@
     {
       "id": "jisou2bot",
       "username": "@jisou2bot",
-      "url": "https://telegram.me/jisou2bot",
+      "url": "https://t.me/jisou2bot",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -1018,7 +1018,7 @@
     {
       "id": "ikuaisobot",
       "username": "@ikuaisobot",
-      "url": "https://telegram.me/ikuaisobot",
+      "url": "https://t.me/ikuaisobot",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -1041,7 +1041,7 @@
     {
       "id": "aiso",
       "username": "@aiso",
-      "url": "https://telegram.me/aiso",
+      "url": "https://t.me/aiso",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -1064,7 +1064,7 @@
     {
       "id": "sousuo",
       "username": "@sousuo",
-      "url": "https://telegram.me/sousuo",
+      "url": "https://t.me/sousuo",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -1087,7 +1087,7 @@
     {
       "id": "zh_secretary_bot",
       "username": "@zh_secretary_bot",
-      "url": "https://telegram.me/zh_secretary_bot",
+      "url": "https://t.me/zh_secretary_bot",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -1110,7 +1110,7 @@
     {
       "id": "qunzudaquan_bot",
       "username": "@qunzudaquan_bot",
-      "url": "https://telegram.me/qunzudaquan_bot",
+      "url": "https://t.me/qunzudaquan_bot",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -1133,7 +1133,7 @@
     {
       "id": "zh_groups_bot",
       "username": "@zh_groups_bot",
-      "url": "https://telegram.me/zh_groups_bot",
+      "url": "https://t.me/zh_groups_bot",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -1156,7 +1156,7 @@
     {
       "id": "feemasterbot",
       "username": "@feeMasterBot",
-      "url": "https://telegram.me/feeMasterBot",
+      "url": "https://t.me/feeMasterBot",
       "category": "group",
       "subsection": "verify",
       "featured": false,
@@ -1179,7 +1179,7 @@
     {
       "id": "tgcnjoincaptchabot",
       "username": "@tgcnjoincaptchabot",
-      "url": "https://telegram.me/tgcnjoincaptchabot",
+      "url": "https://t.me/tgcnjoincaptchabot",
       "category": "group",
       "subsection": "verify",
       "featured": false,
@@ -1202,7 +1202,7 @@
     {
       "id": "jqs7zweibot",
       "username": "@jqs7zweibot",
-      "url": "https://telegram.me/jqs7zweibot",
+      "url": "https://t.me/jqs7zweibot",
       "category": "group",
       "subsection": "verify",
       "featured": false,
@@ -1225,7 +1225,7 @@
     {
       "id": "orgrobot",
       "username": "@orgrobot",
-      "url": "https://telegram.me/orgrobot",
+      "url": "https://t.me/orgrobot",
       "category": "group",
       "subsection": "verify",
       "featured": false,
@@ -1248,7 +1248,7 @@
     {
       "id": "fuckuspambot",
       "username": "@fuckuspambot",
-      "url": "https://telegram.me/fuckuspambot",
+      "url": "https://t.me/fuckuspambot",
       "category": "group",
       "subsection": "verify",
       "featured": false,
@@ -1271,7 +1271,7 @@
     {
       "id": "toorucaptchabot",
       "username": "@toorucaptchabot",
-      "url": "https://telegram.me/toorucaptchabot",
+      "url": "https://t.me/toorucaptchabot",
       "category": "group",
       "subsection": "verify",
       "featured": false,
@@ -1294,7 +1294,7 @@
     {
       "id": "littleguardianbot",
       "username": "@littleGuardianBot",
-      "url": "https://telegram.me/littleGuardianBot",
+      "url": "https://t.me/littleGuardianBot",
       "category": "group",
       "subsection": "verify",
       "featured": false,
@@ -1317,7 +1317,7 @@
     {
       "id": "antiservicemessagebot",
       "username": "@AntiServiceMessageBot",
-      "url": "https://telegram.me/AntiServiceMessageBot",
+      "url": "https://t.me/AntiServiceMessageBot",
       "category": "group",
       "subsection": "misc",
       "featured": false,
@@ -1340,7 +1340,7 @@
     {
       "id": "grinx_bot",
       "username": "@Grinx_bot",
-      "url": "https://telegram.me/Grinx_bot",
+      "url": "https://t.me/Grinx_bot",
       "category": "tools",
       "subsection": null,
       "featured": false,
@@ -1363,7 +1363,7 @@
     {
       "id": "fengdrawbot",
       "username": "@fengdrawbot",
-      "url": "https://telegram.me/fengdrawbot",
+      "url": "https://t.me/fengdrawbot",
       "category": "tools",
       "subsection": null,
       "featured": false,
@@ -1386,7 +1386,7 @@
     {
       "id": "cnlottery_bot",
       "username": "@cnLottery_bot",
-      "url": "https://telegram.me/cnLottery_bot",
+      "url": "https://t.me/cnLottery_bot",
       "category": "tools",
       "subsection": null,
       "featured": false,
@@ -1409,7 +1409,7 @@
     {
       "id": "fanhaosearchbot",
       "username": "@fanhaosearchbot",
-      "url": "https://telegram.me/fanhaosearchbot",
+      "url": "https://t.me/fanhaosearchbot",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -1432,7 +1432,7 @@
     {
       "id": "translatebot",
       "username": "@TranslateBot",
-      "url": "https://telegram.me/TranslateBot",
+      "url": "https://t.me/TranslateBot",
       "category": "translate",
       "subsection": "bilingual",
       "featured": false,
@@ -1455,7 +1455,7 @@
     {
       "id": "ytranslatebot",
       "username": "@YTranslateBot",
-      "url": "https://telegram.me/YTranslateBot",
+      "url": "https://t.me/YTranslateBot",
       "category": "translate",
       "subsection": "bilingual",
       "featured": false,
@@ -1478,7 +1478,7 @@
     {
       "id": "tgtranslatorbot",
       "username": "@TgTranslatorBot",
-      "url": "https://telegram.me/TgTranslatorBot",
+      "url": "https://t.me/TgTranslatorBot",
       "category": "translate",
       "subsection": "auto",
       "featured": false,
@@ -1501,7 +1501,7 @@
     {
       "id": "transchat_bot",
       "username": "@TransChat_bot",
-      "url": "https://telegram.me/TransChat_bot",
+      "url": "https://t.me/TransChat_bot",
       "category": "translate",
       "subsection": "auto",
       "featured": false,
@@ -1524,7 +1524,7 @@
     {
       "id": "ttjfree_bot",
       "username": "@ttjfree_bot",
-      "url": "https://telegram.me/ttjfree_bot",
+      "url": "https://t.me/ttjfree_bot",
       "category": "checkin",
       "subsection": null,
       "featured": false,
@@ -1547,7 +1547,7 @@
     {
       "id": "qiandaobot",
       "username": "@qiandaobot",
-      "url": "https://telegram.me/qiandaobot",
+      "url": "https://t.me/qiandaobot",
       "category": "checkin",
       "subsection": null,
       "featured": false,
@@ -1570,7 +1570,7 @@
     {
       "id": "groupattendancebot",
       "username": "@groupattendancebot",
-      "url": "https://telegram.me/groupattendancebot",
+      "url": "https://t.me/groupattendancebot",
       "category": "checkin",
       "subsection": null,
       "featured": false,
@@ -1593,7 +1593,7 @@
     {
       "id": "kingdk_bot",
       "username": "@kingdk_bot",
-      "url": "https://telegram.me/kingdk_bot",
+      "url": "https://t.me/kingdk_bot",
       "category": "checkin",
       "subsection": null,
       "featured": false,
@@ -1616,7 +1616,7 @@
     {
       "id": "postbot",
       "username": "@postbot",
-      "url": "https://telegram.me/postbot",
+      "url": "https://t.me/postbot",
       "category": "channel",
       "subsection": "publish",
       "featured": false,
@@ -1639,7 +1639,7 @@
     {
       "id": "telepostbot",
       "username": "@telepostbot",
-      "url": "https://telegram.me/telepostbot",
+      "url": "https://t.me/telepostbot",
       "category": "channel",
       "subsection": "publish",
       "featured": false,
@@ -1662,7 +1662,7 @@
     {
       "id": "chelpbot",
       "username": "@chelpbot",
-      "url": "https://telegram.me/chelpbot",
+      "url": "https://t.me/chelpbot",
       "category": "channel",
       "subsection": "manage",
       "featured": false,
@@ -1685,7 +1685,7 @@
     {
       "id": "autoforwardroxybot",
       "username": "@autoforwardroxybot",
-      "url": "https://telegram.me/autoforwardroxybot",
+      "url": "https://t.me/autoforwardroxybot",
       "category": "channel",
       "subsection": "forward",
       "featured": false,
@@ -1708,7 +1708,7 @@
     {
       "id": "quizbot",
       "username": "@quizbot",
-      "url": "https://telegram.me/quizbot",
+      "url": "https://t.me/quizbot",
       "category": "game",
       "subsection": null,
       "featured": false,
@@ -1731,7 +1731,7 @@
     {
       "id": "gamee",
       "username": "@gamee",
-      "url": "https://telegram.me/gamee",
+      "url": "https://t.me/gamee",
       "category": "game",
       "subsection": null,
       "featured": false,
@@ -1754,7 +1754,7 @@
     {
       "id": "gamebot",
       "username": "@gamebot",
-      "url": "https://telegram.me/gamebot",
+      "url": "https://t.me/gamebot",
       "category": "game",
       "subsection": null,
       "featured": false,
@@ -1777,7 +1777,7 @@
     {
       "id": "inlinegamesbot",
       "username": "@inlinegamesbot",
-      "url": "https://telegram.me/inlinegamesbot",
+      "url": "https://t.me/inlinegamesbot",
       "category": "game",
       "subsection": null,
       "featured": false,
@@ -1800,7 +1800,7 @@
     {
       "id": "teletarotbot",
       "username": "@teletarotbot",
-      "url": "https://telegram.me/teletarotbot",
+      "url": "https://t.me/teletarotbot",
       "category": "game",
       "subsection": null,
       "featured": false,
@@ -1823,7 +1823,7 @@
     {
       "id": "brightwoodbot",
       "username": "@BrightwoodBot",
-      "url": "https://telegram.me/BrightwoodBot",
+      "url": "https://t.me/BrightwoodBot",
       "category": "game",
       "subsection": null,
       "featured": false,

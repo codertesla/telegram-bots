@@ -6,7 +6,7 @@ body:
     attributes:
       value: |
         感谢推荐！请尽量填写完整字段，便于我们核验与收录。
-        链接请统一使用 `https://telegram.me/xxx` 格式（t.me 当前被注册局暂停解析）。
+        链接请统一使用 `https://t.me/xxx` 格式。
   - type: input
     id: name
     attributes:
@@ -16,8 +16,8 @@ body:
   - type: input
     id: link
     attributes:
-      label: 链接（telegram.me/xxx）
-      placeholder: https://telegram.me/xxx
+      label: 链接（t.me/xxx）
+      placeholder: https://t.me/xxx
     validations:
       required: true
   - type: dropdown

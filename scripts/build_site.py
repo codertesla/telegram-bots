@@ -328,11 +328,6 @@ nav a:hover {{ color: var(--accent); text-decoration: none; }}
   letter-spacing: -0.02em;
 }}
 .hero p {{ font-size: 1.1rem; color: var(--text-secondary); max-width: 640px; margin: 0 auto 2rem; }}
-.hero-emergency {{
-  display: inline-block; padding: 0.6rem 1.2rem; margin-bottom: 2rem; font-size: 0.85rem;
-  background: rgba(232, 176, 77, 0.08); border: 1px solid rgba(232, 176, 77, 0.25); border-radius: 12px;
-  color: var(--accent);
-}}
 .stats-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; max-width: 700px; margin: 0 auto 2rem; }}
 .stat-card {{
   background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 1rem;
@@ -506,7 +501,6 @@ footer p {{ color: var(--text-secondary); font-size: 0.85rem; }}
 
   <main class="container">
     <section class="hero">
-      <div class="hero-emergency">⚠️ t.me 域名已被注册局 serverHold，本页所有链接已替换为 telegram.me</div>
       <h1>中文 Telegram 机器人导航</h1>
       <p>精选 {total} 条活跃电报机器人，按 10 大场景分类组织，每条带真实月活数据，每周由 GitHub Actions 自动核验失效。</p>
       <div class="stats-grid">

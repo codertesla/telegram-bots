@@ -12,7 +12,7 @@
 点击 [New Issue](https://github.com/codertesla/telegram-bots/issues/new/choose)，选择「推荐机器人」模板，填入：
 
 - 机器人名称
-- 链接（**必须用 `https://telegram.me/xxx` 格式**，因 `t.me` 已被注册局 serverHold）
+- 链接（**必须用 `https://t.me/xxx` 格式**）
 - 分类：搜索 / 群管 / 下载 / AI / RSS / 工具
 - 一句话描述（核心功能 + 适用场景）
 - 是否官方
@@ -35,7 +35,7 @@
 |---|---|---|
 | `id` | 是 | username 去掉 `@`、全小写，作为主键，全局唯一 |
 | `username` | 是 | 含 `@`，如 `@jiso` |
-| `url` | 是 | `https://telegram.me/<username>`（不要用 t.me） |
+| `url` | 是 | `https://t.me/<username>` |
 | `category` | 是 | `search` / `group` / `download` / `ai` / `rss` / `tools` |
 | `subsection` | 否 | 仅 `group` 类用：`verify` / `ads` / `stats` / `misc` |
 | `featured` | 否 | `true` 进"精选必装"区，全区 ≤ 5 条 |
@@ -54,7 +54,7 @@
 
 ## 数据来源
 
-`scripts/fetch_bots.py` 直接抓取 `https://telegram.me/<username>` 预览页（HTTP 200，服务端渲染，约 11 KB）。不使用 Telegram Bot API，无需任何 token。关键字段位置：
+`scripts/fetch_bots.py` 直接抓取 `https://t.me/<username>` 预览页（HTTP 200，服务端渲染，约 11 KB）。不使用 Telegram Bot API，无需任何 token。关键字段位置：
 
 | 字段 | DOM | 示例 |
 |---|---|---|
@@ -116,7 +116,7 @@ python scripts/validate.py
 `validate.py` 含 4 个子项：
 - `--check seed`：bots.json 人工字段完整、id 唯一、category 合法、featured ≤ 5
 - `--check readme`：marker 成对、每条 bot 都被渲染、无残留手写链接
-- `--check links`：所有 `telegram.me/xxx` 链接与 json.url 一致
+- `--check links`：所有 `t.me/xxx` 链接与 json.url 一致
 - `--check dead`：dead 条目均已附失效标记
 
 无参数 = 跑全部。
