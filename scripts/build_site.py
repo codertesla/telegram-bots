@@ -460,6 +460,8 @@ footer p {{ color: var(--text-secondary); font-size: 0.85rem; }}
 /* Search filter: hide non-matching rows */
 .bot-table tr.is-hidden {{ display: none; }}
 .category-section.is-hidden {{ display: none; }}
+.featured-card.is-hidden {{ display: none; }}
+.top-item.is-hidden {{ display: none; }}
 
 /* Responsive */
 @media (max-width: 768px) {{
