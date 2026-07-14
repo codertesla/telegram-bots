@@ -237,6 +237,7 @@ def build_html(data):
   <meta property="og:url" content="https://codertesla.github.io/telegram-bots/">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://codertesla.github.io/telegram-bots/">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
