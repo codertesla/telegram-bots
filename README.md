@@ -218,6 +218,7 @@ AI 机器人增长最快、迭代极快，稳定性参差。本列表不固定�
 | 签到机器人 | [@qiandaobot](https://t.me/qiandaobot) | 签到机器人，支持群内签到打卡与基本统计，适合中文社群活跃度管理。 | — |
 | Group Attendance Bot | [@groupattendancebot](https://t.me/groupattendancebot) | Group Attendance Bot，群组考勤签到工具，记录成员出勤情况与统计。 | — |
 | King打卡 | [@kingdk_bot](https://t.me/kingdk_bot) | King打卡，支持上班下班等多种行为打卡与工时统计，适合工作群考勤。 | — |
+| HabitStreakProBot | [@HabitStreakProBot](https://t.me/HabitStreakProBot) | 每日打卡记录习惯并统计连续天数，用于养成和追踪日常习惯。免费使用，150 Stars 升级 Pro，含小程序。 | — |
 <!-- AUTO:bots-category:checkin:end -->
 
 ### 频道推送类 Telegram 机器人
@@ -262,6 +263,10 @@ AI 机器人增长最快、迭代极快，稳定性参差。本列表不固定�
 | TG中文群组频道导航 | [@Grinx_bot](https://t.me/Grinx_bot) | 群内抽奖机器人，支持随机公平抽取，适用于各类社群活动和用户互动奖励。 | — |
 | 抽奖秘书 | [@fengdrawbot](https://t.me/fengdrawbot) | 峰哥抽奖机器人，便于在 Telegram 群组中举办抽奖活动和增加用户参与度。 | — |
 | Telegram 抽奖助手 | [@cnLottery_bot](https://t.me/cnLottery_bot) | 中文抽奖机器人，适合群组和频道组织公开透明的抽奖和促销活动。 | — |
+| WhisperLockBot | [@WhisperLockBot](https://t.me/WhisperLockBot) | 生成一次性加密锁定消息，只有指定收件人能打开阅读，支持内联发送。免费使用，150 Stars 升级 Pro，含小程序。 | — |
+| NudgeRemindBot | [@NudgeRemindBot](https://t.me/NudgeRemindBot) | 设置提醒机器人，支持六种时间表达（具体、相对、每日、每周等）。免费，150 Stars 升级 Pro，含小程序。 | — |
+| AnonInboxProBot | [@AnonInboxProBot](https://t.me/AnonInboxProBot) | 通过个人链接接收匿名消息的私密收件箱机器人。免费使用，150 Stars 升级 Pro，含小程序。 | — |
+| SplitTabsBot | [@SplitTabsBot](https://t.me/SplitTabsBot) | 群组记账并按人均分摊账单，方便聚会、旅行等场景结算。免费使用，150 Stars 升级 Pro，含小程序。 | — |
 <!-- AUTO:bots-category:tools:end -->
 
 ## 安全与隐私建议
