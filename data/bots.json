@@ -1842,6 +1842,71 @@
         "error_msg": null,
         "fetched_at": "2026-07-14T07:46:45.427063+00:00"
       }
+    },
+    {
+      "id": "whisperlockbot",
+      "username": "@WhisperLockBot",
+      "url": "https://t.me/WhisperLockBot",
+      "category": "tools",
+      "subsection": null,
+      "featured": false,
+      "official": false,
+      "notes": "生成一次性加密锁定消息，只有指定收件人能打开阅读，支持内联发送。免费使用，150 Stars 升级 Pro，含小程序。",
+      "fetch": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "nudgeremindbot",
+      "username": "@NudgeRemindBot",
+      "url": "https://t.me/NudgeRemindBot",
+      "category": "tools",
+      "subsection": null,
+      "featured": false,
+      "official": false,
+      "notes": "设置提醒机器人，支持六种时间表达（具体、相对、每日、每周等）。免费，150 Stars 升级 Pro，含小程序。",
+      "fetch": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "anoninboxprobot",
+      "username": "@AnonInboxProBot",
+      "url": "https://t.me/AnonInboxProBot",
+      "category": "tools",
+      "subsection": null,
+      "featured": false,
+      "official": false,
+      "notes": "通过个人链接接收匿名消息的私密收件箱机器人。免费使用，150 Stars 升级 Pro，含小程序。",
+      "fetch": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "splittabsbot",
+      "username": "@SplitTabsBot",
+      "url": "https://t.me/SplitTabsBot",
+      "category": "tools",
+      "subsection": null,
+      "featured": false,
+      "official": false,
+      "notes": "群组记账并按人均分摊账单，方便聚会、旅行等场景结算。免费使用，150 Stars 升级 Pro，含小程序。",
+      "fetch": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "habitstreakprobot",
+      "username": "@HabitStreakProBot",
+      "url": "https://t.me/HabitStreakProBot",
+      "category": "checkin",
+      "subsection": null,
+      "featured": false,
+      "official": false,
+      "notes": "每日打卡记录习惯并统计连续天数，用于养成和追踪日常习惯。免费使用，150 Stars 升级 Pro，含小程序。",
+      "fetch": {
+        "status": "pending"
+      }
     }
   ]
 }
