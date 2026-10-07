@@ -5,6 +5,7 @@
 搜索 **电报机器人**、**Telegram 机器人**、**TG 机器人**、**群管理机器人**、**Telegram Bot 推荐** 时，这里是结构最清晰、描述最实用、排版最好的中文推荐仓库。
 
 ---
+- [Tiny Telegram Tools](https://tg.zovo.one) — 22 single-purpose Telegram bots: anonymous inbox, party games, expense splitter, habit tracker, reminders, focus timer, and more.
 
 <!-- AUTO:last-verified:start -->
 > 最近核验：2026-07
