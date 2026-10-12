@@ -8,9 +8,12 @@ build_site.py - 把 data/bots.json 烘焙为 docs/index.html 静态站点。
 - 玻璃卡片 + 渐变标题 + 背景光斑
 - 客户端搜索 / 分类筛选 (vanilla JS)
 - 数据全部预渲染进 HTML，无需运行时 fetch
+- 输出只依赖 bots.json（页脚时间取 last_fetched_at，而非构建时间），
+  数据不变则 docs/index.html 不变，不会产生无意义 diff
+- fetch.dead_streak >= HIDE_AFTER 的条目隐藏；not_bot 条目加 ⚠️ 标记
 """
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,6 +34,36 @@ CATEGORY_TITLES = {
 }
 
 CATEGORY_ORDER = ["search", "group", "download", "ai", "rss", "translate", "checkin", "channel", "game", "tools"]
+
+HIDE_AFTER = 3  # keep in sync with scripts/fetch_bots.py
+
+NOT_BOT_LABELS = {
+    "channel": "⚠️已变为频道（非 Bot）",
+    "group": "⚠️已变为群组（非 Bot）",
+    "user": "⚠️个人账号（非 Bot）",
+}
+
+
+def is_hidden(bot):
+    fetch = bot.get("fetch", {}) or {}
+    return fetch.get("status") == "dead" and int(fetch.get("dead_streak") or 0) >= HIDE_AFTER
+
+
+def is_not_bot(bot):
+    fetch = bot.get("fetch", {}) or {}
+    return fetch.get("status") == "ok" and bool(fetch.get("not_bot"))
+
+
+def format_verified_time(iso):
+    """'2026-10-12T04:00:00+00:00' -> '2026-10-12' (UTC date; deterministic, from data)."""
+    if not iso:
+        return "—"
+    try:
+        dt = datetime.fromisoformat(iso)
+        return dt.astimezone(timezone.utc).strftime("%Y-%m-%d")
+    except ValueError:
+        return iso[:10]
+
 
 SUBSECTION_TITLES = {
     "verify": "进群验证类",
@@ -56,6 +89,9 @@ def monthly_label(bot):
         fa = fetch.get("fetched_at", "")
         ym = fa[:7] if fa else "—"
         return f'<span class="badge badge-dead">❗已失效（{ym}）</span>'
+    if is_not_bot(bot):
+        label = NOT_BOT_LABELS.get(fetch.get("page_kind"), "⚠️非 Bot")
+        return f'<span class="badge badge-dead">{label}</span>'
     users = fetch.get("monthly_users")
     if not users:
         return '<span class="muted">—</span>'
@@ -146,7 +182,7 @@ def render_category_section(cat, bots):
 
 def render_top10(bots):
     top = sorted(
-        [b for b in bots if b.get("fetch", {}).get("monthly_users")],
+        [b for b in bots if b.get("fetch", {}).get("monthly_users") and not is_not_bot(b)],
         key=lambda b: -b["fetch"]["monthly_users"],
     )[:10]
     if not top:
@@ -201,7 +237,7 @@ def render_featured(featured_bots):
 
 
 def build_html(data):
-    bots = data.get("bots", [])
+    bots = [b for b in data.get("bots", []) if not is_hidden(b)]
     featured = [b for b in bots if b.get("featured")]
     non_featured = [b for b in bots if not b.get("featured")]
 
@@ -212,7 +248,7 @@ def build_html(data):
             by_cat.setdefault(cat, []).append(b)
 
     total = len(bots)
-    ok_count = sum(1 for b in bots if b.get("fetch", {}).get("status") == "ok")
+    ok_count = sum(1 for b in bots if b.get("fetch", {}).get("status") == "ok" and not is_not_bot(b))
     last_label = data.get("last_verified_label") or (data.get("last_fetched_at", "")[:7] or "—")
 
     featured_html = render_featured(featured)
@@ -221,7 +257,7 @@ def build_html(data):
         render_category_section(cat, by_cat.get(cat, [])) for cat in CATEGORY_ORDER if by_cat.get(cat)
     )
 
-    build_time = datetime.now(tz=__import__("datetime").timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    verified_time = format_verified_time(data.get("last_fetched_at"))
 
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
@@ -525,7 +561,7 @@ footer p {{ color: var(--text-secondary); font-size: 0.85rem; }}
   <footer>
     <div class="container">
       <div class="footer-content">
-        <p>电报机器人大全 · 数据来自 Telegram 公开预览页 · 每周自动核验<br>构建于 {build_time}</p>
+        <p>电报机器人大全 · 数据来自 Telegram 公开预览页 · 每周自动核验<br>数据核验于 {verified_time}</p>
         <div class="footer-links">
           <a href="https://github.com/codertesla/telegram-bots" target="_blank" rel="noopener">GitHub</a>
           <a href="https://github.com/codertesla/telegram-bots/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">贡献指南</a>
@@ -584,9 +620,13 @@ footer p {{ color: var(--text-secondary); font-size: 0.85rem; }}
 def main():
     data = json.loads(DATA_FILE.read_text(encoding="utf-8"))
     OUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    OUT_FILE.write_text(build_html(data), encoding="utf-8")
-    print(f"Site built: {OUT_FILE}")
-    print(f"  - Total bots: {len(data.get('bots', []))}")
+    html = build_html(data)
+    if OUT_FILE.exists() and OUT_FILE.read_text(encoding="utf-8") == html:
+        print(f"Site unchanged: {OUT_FILE}")
+    else:
+        OUT_FILE.write_text(html, encoding="utf-8")
+        print(f"Site built: {OUT_FILE}")
+    print(f"  - Total bots shown: {sum(1 for b in data.get('bots', []) if not is_hidden(b))}")
     print(f"  - Featured: {sum(1 for b in data.get('bots', []) if b.get('featured'))}")
     print(f"  - Output size: {OUT_FILE.stat().st_size:,} bytes")
 

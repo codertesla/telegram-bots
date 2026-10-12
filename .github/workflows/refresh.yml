@@ -6,9 +6,14 @@ on:
     - cron: '0 3 * * 1'
   workflow_dispatch:
 
+concurrency:
+  group: bot-data-refresh
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: write
       issues: write
@@ -26,7 +31,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r scripts/requirements.txt
 
-      - name: Fetch bot data
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Fetch bot data (full re-check of every entry)
         run: python scripts/fetch_bots.py --sleep 2
 
       - name: Render README
@@ -53,7 +61,10 @@ jobs:
 
       - name: Report failure via issue
         if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          gh label create auto-refresh-failed --color B60205 --description "Weekly bot data refresh failed" 2>/dev/null || true
           gh issue create \
             --title "Auto-refresh failed $(date +'%F')" \
             --label auto-refresh-failed \

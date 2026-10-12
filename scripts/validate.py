@@ -7,7 +7,10 @@ Per SPEC §4 Task D (M5):
 - --check readme : markers paired, every non-dead json bot rendered in some marker block,
                    no stray/old bot links left inside marker blocks
 - --check links  : every https://t.me/xxx inside marker blocks matches a bot's url in json
-- --check dead   : every dead bot entry is rendered with "已失效" / ❗ marker
+- --check dead   : every visible dead bot entry is rendered with "已失效" / ❗ marker;
+                   entries dead for HIDE_AFTER consecutive checks must NOT be rendered
+- --check notbot : live pages that are not bots (fetch.not_bot) carry a ⚠️ marker;
+                   prints a warning listing them so maintainers can review/remove
 - (no arg)       : run ALL checks; exit 0 only if every check passes
 """
 
@@ -24,6 +27,12 @@ VALID_SUBSECTIONS = {"verify", "ads", "stats", "misc", None, "bilingual", "auto"
 ROOT = Path(__file__).resolve().parents[1]
 DATA_FILE = ROOT / "data" / "bots.json"
 README_FILE = ROOT / "README.md"
+HIDE_AFTER = 3  # keep in sync with scripts/fetch_bots.py
+
+
+def is_hidden(bot) -> bool:
+    fetch = bot.get("fetch", {}) or {}
+    return fetch.get("status") == "dead" and int(fetch.get("dead_streak") or 0) >= HIDE_AFTER
 
 
 def load_bots():
@@ -76,6 +85,12 @@ def check_seed(data):
         fetch = bot.get("fetch")
         if not isinstance(fetch, dict) or "status" not in fetch:
             errors.append(f"bot[{i}] ({bid}) 'fetch' must be object with at least status")
+        else:
+            ds = fetch.get("dead_streak", 0)
+            if ds is not None and (not isinstance(ds, int) or ds < 0):
+                errors.append(f"bot[{i}] ({bid}) fetch.dead_streak must be a non-negative int, got {ds!r}")
+            if fetch.get("status") not in ("ok", "dead", "error", "pending"):
+                errors.append(f"bot[{i}] ({bid}) invalid fetch.status {fetch.get('status')!r}")
 
     # unique ids
     seen = {}
@@ -166,27 +181,31 @@ def check_readme(data, readme):
     inners = extract_marker_inners(readme)
     rendered_urls = collect_rendered_urls(inners)
 
-    # non-dead bots must be present in rendered
+    # visible (non-hidden) bots must be present in rendered; hidden ones must not
     non_dead_urls = set()
-    all_bot_urls = set()
-    dead_urls = set()
+    visible_urls = set()
+    hidden_urls = set()
     for b in data.get("bots", []):
         u = b.get("url")
-        if u:
-            all_bot_urls.add(u)
-        if b.get("fetch", {}).get("status") == "dead":
-            if u:
-                dead_urls.add(u)
-        else:
-            if u:
-                non_dead_urls.add(u)
+        if not u:
+            continue
+        if is_hidden(b):
+            hidden_urls.add(u)
+            continue
+        visible_urls.add(u)
+        if b.get("fetch", {}).get("status") != "dead":
+            non_dead_urls.add(u)
 
-    missing = non_dead_urls - rendered_urls
+    missing = visible_urls - rendered_urls
     if missing:
-        errors.append(f"non-dead bots missing from rendered marker blocks: {sorted(missing)}")
+        errors.append(f"visible bots missing from rendered marker blocks: {sorted(missing)}")
 
-    # stray / old urls inside markers that are not in current json at all
-    stray = rendered_urls - all_bot_urls
+    leaked = hidden_urls & rendered_urls
+    if leaked:
+        errors.append(f"hidden bots (dead x{HIDE_AFTER}+) still rendered: {sorted(leaked)}")
+
+    # stray / old urls inside markers that are not visible json bots
+    stray = rendered_urls - visible_urls - hidden_urls
     if stray:
         errors.append(f"stray/old bot links inside marker blocks not in json: {sorted(stray)}")
 
@@ -232,7 +251,8 @@ def check_dead(data, readme):
     inners = extract_marker_inners(readme)
     combined = "\n".join(inners.values())
 
-    dead_bots = [b for b in data.get("bots", []) if b.get("fetch", {}).get("status") == "dead"]
+    dead_bots = [b for b in data.get("bots", [])
+                 if b.get("fetch", {}).get("status") == "dead" and not is_hidden(b)]
 
     for b in dead_bots:
         bid = b["id"]
@@ -259,9 +279,36 @@ def check_dead(data, readme):
     return True
 
 
+def check_notbot(data, readme):
+    """--check notbot : not_bot entries must carry the ⚠️ marker; list them as a warning"""
+    errors = []
+    inners = extract_marker_inners(readme)
+    combined = "\n".join(inners.values())
+    flagged = [b for b in data.get("bots", [])
+               if (b.get("fetch") or {}).get("status") == "ok" and (b.get("fetch") or {}).get("not_bot")
+               and not is_hidden(b)]
+    for b in flagged:
+        url = b.get("url", "")
+        line = next((ln for ln in combined.splitlines() if url and f"({url})" in ln), None)
+        if line is None or "⚠️" not in line:
+            errors.append(f"not_bot entry {b['id']} rendered without ⚠️ marker")
+    if errors:
+        print("NOTBOT CHECK FAILED:")
+        for e in errors:
+            print(f"  - {e}")
+        return False
+    if flagged:
+        kinds = ", ".join(f"{b['id']}({b['fetch'].get('page_kind')})" for b in flagged)
+        print(f"WARNING: {len(flagged)} entr(y/ies) no longer look like bots, review/remove: {kinds}")
+        if __import__("os").environ.get("GITHUB_ACTIONS"):
+            print(f"::warning title=not_bot entries::{kinds}")
+    print(f"NOTBOT CHECK PASSED: {len(flagged)} not_bot entr(y/ies) marked")
+    return True
+
+
 def main():
     parser = argparse.ArgumentParser(description="Validate bots data and pipeline state (M4/M5)")
-    parser.add_argument("--check", choices=["seed", "readme", "links", "dead"], help="Run specific check (default = all)")
+    parser.add_argument("--check", choices=["seed", "readme", "links", "dead", "notbot"], help="Run specific check (default = all)")
     args = parser.parse_args()
 
     try:
@@ -280,7 +327,7 @@ def main():
 
     checks_to_run = []
     if args.check is None:
-        checks_to_run = ["seed", "readme", "links", "dead"]
+        checks_to_run = ["seed", "readme", "links", "dead", "notbot"]
     else:
         checks_to_run = [args.check]
 
@@ -293,6 +340,8 @@ def main():
             ok = check_links(data, readme) and ok
         elif chk == "dead":
             ok = check_dead(data, readme) and ok
+        elif chk == "notbot":
+            ok = check_notbot(data, readme) and ok
 
     if args.check is None:
         if ok:

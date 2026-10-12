@@ -8,7 +8,9 @@ Per SPEC §4 Task C (M4):
 - Leaves all prose, headings, and non-marker text byte-for-byte unchanged
 - Supports last-verified, bots-featured, and 6 category markers (search/group/download/ai/rss/tools)
 - Group category renders subsection headers (verify/ads/stats/misc)
-- Dead bots are shown with failure marker (never deleted)
+- Dead bots are shown with failure marker; once fetch.dead_streak >= HIDE_AFTER
+  (3 consecutive dead checks) they are hidden from README (kept in bots.json)
+- Live pages that are not bots (fetch.not_bot) get a ⚠️ marker in the 月活 cell
 - AI bots with url=null render as prose line only (no link)
 """
 
@@ -22,6 +24,28 @@ DATA_FILE = ROOT / "data" / "bots.json"
 README_FILE = ROOT / "README.md"
 
 VALID_CATEGORIES = {"search", "group", "download", "ai", "rss", "tools", "translate", "checkin", "channel", "game"}
+
+HIDE_AFTER = 3  # keep in sync with scripts/fetch_bots.py
+
+NOT_BOT_LABELS = {
+    "channel": "⚠️已变为频道（非 Bot）",
+    "group": "⚠️已变为群组（非 Bot）",
+    "user": "⚠️个人账号（非 Bot）",
+}
+
+
+def is_hidden(bot: dict) -> bool:
+    """Dead for HIDE_AFTER consecutive checks -> hidden from README/site."""
+    fetch = bot.get("fetch", {}) or {}
+    return fetch.get("status") == "dead" and int(fetch.get("dead_streak") or 0) >= HIDE_AFTER
+
+
+def not_bot_label(bot: dict) -> str:
+    fetch = bot.get("fetch", {}) or {}
+    if fetch.get("status") == "ok" and fetch.get("not_bot"):
+        return NOT_BOT_LABELS.get(fetch.get("page_kind"), "⚠️非 Bot")
+    return ""
+
 
 SUBSECTION_TITLES = {
     "verify": "**进群验证类**",
@@ -68,6 +92,9 @@ def get_monthly_cell(bot: dict) -> str:
     status = fetch.get("status")
     if status == "dead":
         return "❌ 已失效"
+    nb = not_bot_label(bot)
+    if nb:
+        return nb
     mu = fetch.get("monthly_users")
     if not mu or mu < 10000:
         return "—"
@@ -91,6 +118,9 @@ def get_active_badge(bot: dict) -> str:
         if mon:
             return f" · ❗已失效（{mon}）"
         return " · ❗已失效"
+    nb = not_bot_label(bot)
+    if nb:
+        return f" · {nb}"
     mu = fetch.get("monthly_users")
     if status != "ok" or not mu or mu < 10000:
         return ""
@@ -120,6 +150,9 @@ def get_category_monthly(bot: dict) -> str:
         if mon:
             return f"❗已失效（{mon}）"
         return "❗已失效"
+    nb = not_bot_label(bot)
+    if nb:
+        return nb
     mu = fetch.get("monthly_users")
     if not mu or int(mu) < 10000:
         return "—"
@@ -315,10 +348,12 @@ def replace_marker_block(text: str, marker: str, replacement: str) -> str:
 
 def main():
     data = load_data()
-    bots = data.get("bots", [])
-    if not bots:
+    all_bots = data.get("bots", [])
+    if not all_bots:
         print("No bots in data/bots.json")
         return
+    hidden = [b for b in all_bots if is_hidden(b)]
+    bots = [b for b in all_bots if not is_hidden(b)]
 
     # Group by category (preserve encounter order)
     # Featured preserving json order (computed first so we can dedup from categories)
@@ -368,6 +403,8 @@ def main():
     print(f"README.md rendered successfully.")
     print(f"  - last-verified: {last_label}")
     print(f"  - featured: {len(featured)} entries")
+    if hidden:
+        print(f"  - hidden (dead x{HIDE_AFTER}+): {', '.join(b['id'] for b in hidden)}")
     for cat in ["search", "group", "download", "ai", "rss", "tools", "translate", "checkin", "channel", "game"]:
         print(f"  - {cat}: {len(by_cat.get(cat, []))} entries")
 

@@ -43,7 +43,7 @@
 | `notes` | 是 | 30-60 字中文，写清"核心功能 + 适用场景"，不带链接（链接由 url 自动渲染） |
 
 ### 抓取字段（由 `scripts/fetch_bots.py` 维护，贡献者勿改）
-`fetch` 对象：`status`（`ok`/`dead`/`error`/`pending`）、`http_code`、`fetched_at`、`title`、`description`、`monthly_users`（int）、`type`（`bot`/`channel`/`group`/`unknown`）、`is_verified`、`photo_url`。
+`fetch` 对象：`status`（`ok`/`dead`/`error`/`pending`）、`http_code`、`fetched_at`、`title`、`description`、`monthly_users`（int）、`type`（`bot`/`channel`/`group`/`user`/`unknown`）、`is_verified`、`photo_url`、`page_kind`（`bot`/`user`/`channel`/`group`/`unknown`）、`not_bot`（bool）、`dead_streak`（连续判定失效次数）、`error_msg`。
 
 新增 bot 时 `fetch` 填 `{"status": "pending"}` 即可，下次抓取脚本会自动填入真实数据。
 
@@ -64,7 +64,9 @@
 | 官方蓝勾 | `tgme_page_title` 内 `<i class="verified-icon">` | BotFather 有，jiso 无 |
 | 头像 | `<img class="tgme_page_photo_image" src="…">` | `https://cdn5.telesco.pe/file/…jpg` |
 | 类型推断 | 按 `extra` 文案：`monthly users`=bot / `subscribers`=channel / `members`=group | |
-| 失效判定 | 无 `tgme_page_title`，或 HTTP 4xx | 标 `dead` |
+| 页面类型 | 操作按钮：`Start Bot`=bot / `Send Message`=个人账号 / `View in Telegram`、`Join …`=频道或群组 | 非 bot 时 `not_bot=true` |
+| 失效判定 | 无 `tgme_page_title` 且为通用页「Telegram: Contact @xxx」（含 "you can contact"），或 HTTP 404 | 记一次失效，`dead_streak+1`；连续 2 次才标 `dead` |
+| 异常页 | 无 `tgme_page_title` 但也不是上面的通用页（拦截/验证/异常页），或 429/5xx/网络错误 | 记 `error`，保留上次数据不覆盖 |
 
 ---
 
@@ -86,7 +88,8 @@ README 用 marker 包裹自动区块，其余散文由人工维护、**逐字符
 `scripts/render_readme.py` 读 `bots.json` 重写 marker 区块。渲染规则：
 - 精选区：表格列 `名称 | 链接 | 一句话用途 | 月活`
 - 月活显示：bot `约 30 万/月`、channel `30 万 订阅`、group `30 万 成员`；≥1万用"万"、≥1亿用"亿"
-- dead 条目仍显示，加 `❗已失效（YYYY-MM）`
+- dead 条目仍显示，加 `❗已失效（YYYY-MM）`；连续 3 次核验失效（`dead_streak ≥ 3`）后自动从 README 和站点隐藏（仍保留在 `bots.json` 留痕）
+- 页面仍存在但已不是 bot（`not_bot=true`，如变为频道/个人账号）：月活列显示 `⚠️已变为频道（非 Bot）` / `⚠️个人账号（非 Bot）`，`validate.py` 会打印警告，需人工复核后移除
 - 官方蓝勾或人工 official 在显示名后加 `✓`
 
 ---
@@ -103,7 +106,7 @@ pip install -r scripts/requirements.txt
 ```bash
 # 1. 改 data/bots.json（新增/编辑 bot 条目）
 
-# 2. 抓取最新元数据（礼貌限流 ≥2s，4xx 自动标 dead）
+# 2. 抓取最新元数据（礼貌限流 ≥2s，默认全量重新核验）
 python scripts/fetch_bots.py
 
 # 3. 重新渲染 README
@@ -117,30 +120,35 @@ python scripts/validate.py
 - `--check seed`：bots.json 人工字段完整、id 唯一、category 合法、featured ≤ 5
 - `--check readme`：marker 成对、每条 bot 都被渲染、无残留手写链接
 - `--check links`：所有 `t.me/xxx` 链接与 json.url 一致
-- `--check dead`：dead 条目均已附失效标记
+- `--check dead`：可见的 dead 条目均已附失效标记，已隐藏条目不再渲染
+- `--check notbot`：`not_bot` 条目均带 ⚠️ 标记，并打印警告清单
+
+离线单元测试：`python -m unittest discover -s tests`
 
 无参数 = 跑全部。
 
 ### 抓取脚本选项
 ```bash
-python scripts/fetch_bots.py                 # 抓 pending 与过期条目
+python scripts/fetch_bots.py                 # 全量重新核验所有条目（含 dead）
 python scripts/fetch_bots.py --id jiso        # 只抓某条
-python scripts/fetch_bots.py --force          # 忽略缓存全部重抓
+python scripts/fetch_bots.py --only-pending   # 只抓 pending / error 条目（新增 bot 时用）
 python scripts/fetch_bots.py --dry-run        # 只打印不写文件
 python scripts/fetch_bots.py --sleep 3        # 调整限流（最小 1s 强制下限）
 ```
 
-幂等保证：新抓结果与旧值完全一致时不刷新 `fetched_at`，避免制造无意义 diff。
+幂等保证：新抓结果与旧值完全一致时不刷新单条的 `fetched_at`；站点页脚时间取自数据（`last_fetched_at` 日期）而非构建时间，数据不变则 `docs/index.html` 不变。每次全量核验成功后更新顶层 `last_fetched_at` 与 `last_verified_label`（YYYY-MM）。若超过 50% 请求失败（如被 Telegram 限流/拦截），本次视为失败、不写入任何数据，CI 会自动开 Issue。
 
 ---
 
 ## CI 自动刷新
 
 `.github/workflows/refresh.yml` 每周一 03:00 UTC 自动跑：
-1. `fetch_bots.py` 抓最新元数据
-2. `render_readme.py` 重写 README
-3. `validate.py` 自检
-4. 通过则 commit+push，失败则自动开 Issue（`auto-refresh-failed` 标签）
+1. 离线单元测试（`tests/`）
+2. `fetch_bots.py` 全量重新核验所有条目（含已标 dead 的）
+3. `render_readme.py` 重写 README
+4. `build_site.py` 重建 `docs/index.html`（GitHub Pages 站点）
+5. `validate.py` 自检
+6. 通过且有变化则 commit+push，失败则自动开 Issue（`auto-refresh-failed` 标签）
 
 手动触发可在仓库 Actions 页选 "Bot Data Auto-Refresh" → "Run workflow"。
 
@@ -152,7 +160,7 @@ python scripts/fetch_bots.py --sleep 3        # 调整限流（最小 1s 强制�
 - **稳定**：优先长期运营、有月活数据佐证的
 - **干净**：不收机场、流量卡、涨粉、博彩拉新、色情导航等灰产类
 - **去重**：精选区 ≤ 5 条，分类区按 username 去重
-- **失效即标**：dead 不删，加 `❗已失效`，连续 3 次 CI 仍 dead 则从 README 隐藏
+- **失效即标**：连续 2 次核验失效标 `❗已失效`，连续 3 次则从 README / 站点自动隐藏（`bots.json` 留痕，维护者可定期清理）
 - **AI 类慎收**：AI 机器人迭代太快，`category=ai` 可用 `url=null` 占位（只渲染散文引导，不固定具体账号）
 
 ---
