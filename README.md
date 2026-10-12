@@ -233,7 +233,7 @@ AI 机器人增长最快、迭代极快，稳定性参差。本列表不固定�
 <!-- AUTO:bots-category:game:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| Quiz Bot ✓ | [@quizbot](https://t.me/quizbot) | 创建和分享多媒体答题游戏，带排行榜与统计，适合群内娱乐或自测知识挑战。 | 约 150.1 万/月 |
+| Quiz Bot ✓ | [@quizbot](https://t.me/quizbot) | 创建和分享多媒体答题游戏，带排行榜与统计，适合群内娱乐或自测知识挑战。 | 约 150.2 万/月 |
 | Gamee ✓ | [@gamee](https://t.me/gamee) | HTML5 小游戏平台，含体育、益智、街机等多款，支持群内对战与高分排行。 | 约 27.5 万/月 |
 | GameBot ✓ | [@gamebot](https://t.me/gamebot) | Telegram 官方游戏平台，提供经典 HTML5 小游戏示例，支持单人或群内体验。 | 约 18.1 万/月 |
 | Inline Games 🎲 | [@inlinegamesbot](https://t.me/inlinegamesbot) | 通过 inline 模式在任意聊天直接玩实时多人小游戏，无需添加即可快速娱乐。 | 约 1.3 万/月 |
