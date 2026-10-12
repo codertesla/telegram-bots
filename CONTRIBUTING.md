@@ -149,6 +149,7 @@ python scripts/fetch_bots.py --sleep 3        # 调整限流（最小 1s 强制�
 4. `build_site.py` 重建 `docs/index.html`（GitHub Pages 站点）
 5. `validate.py` 自检
 6. 通过且有变化则 commit+push，失败则自动开 Issue（`auto-refresh-failed` 标签）
+7. 刷新完成后由 `.github/workflows/pages.yml` 把 `docs/` 部署到 GitHub Pages（推送 `docs/**` 到 main 或手动触发也会部署）
 
 手动触发可在仓库 Actions 页选 "Bot Data Auto-Refresh" → "Run workflow"。
 

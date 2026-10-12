@@ -1,0 +1,50 @@
+name: Deploy Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - '.github/workflows/pages.yml'
+  # Commits pushed by refresh.yml use GITHUB_TOKEN and do not trigger `push`
+  # workflows, so also deploy after every completed refresh run.
+  workflow_run:
+    workflows: ["Bot Data Auto-Refresh"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: docs
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
