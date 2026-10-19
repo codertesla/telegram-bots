@@ -70,9 +70,9 @@
 <!-- AUTO:bots-featured:start -->
 | 名称 | 链接 | 一句话用途 | 月活 |
 |------|------|------------|------|
-| BotFather ✓ | [@BotFather](https://t.me/BotFather) | 官方入口：创建和管理你自己的机器人 | 约 754.5 万/月 |
-| 极搜🔍中文搜索@JISO | [@jiso](https://t.me/jiso) | 搜索群、频道、视频、音乐、电影、新闻，综合能力强 | 约 36.1 万/月 |
-| Combot | [@combot](https://t.me/combot) | 功能全面的群管理机器人 | 约 71.6 万/月 |
+| BotFather ✓ | [@BotFather](https://t.me/BotFather) | 官方入口：创建和管理你自己的机器人 | 约 755.3 万/月 |
+| 极搜🔍中文搜索@JISO | [@jiso](https://t.me/jiso) | 搜索群、频道、视频、音乐、电影、新闻，综合能力强 | 约 37.2 万/月 |
+| Combot | [@combot](https://t.me/combot) | 功能全面的群管理机器人 | 约 80.8 万/月 |
 | RSS屋 | [@RSSWBot](https://t.me/RSSWBot) | 全文 RSS 订阅 + 关键词过滤 | — |
 | 多平台解析下载机器人 | [@freedlvideo_bot](https://t.me/freedlvideo_bot) | 支持 X（Twitter）、YouTube、B站、抖音、小红书、Instagram 等 | — |
 <!-- AUTO:bots-featured:end -->
@@ -88,16 +88,16 @@
 <!-- AUTO:bots-category:search:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| SOSO搜搜 | [@soso](https://t.me/soso) | 关键词搜索群组、频道、视频 | 约 99.4 万/月 |
-| 一起搜电影 | [@sotv](https://t.me/sotv) | 影视搜索神器，支持群内使用 | 约 6.4 万/月 |
+| SOSO搜搜 | [@soso](https://t.me/soso) | 关键词搜索群组、频道、视频 | 约 98.0 万/月 |
+| 一起搜电影 | [@sotv](https://t.me/sotv) | 影视搜索神器，支持群内使用 | 约 6.3 万/月 |
 | 阿里云盘搜索机器人🤖️ | [@aliyunshare_bot](https://t.me/aliyunshare_bot) | 阿里云盘资源搜索与投稿 | — |
 | 阿里云盘资源 Bot | [@AliYunPanBot](https://t.me/AliYunPanBot) | 阿里云盘资源搜索与投稿 | — |
-| Video Search for YouTube | [@youtube](https://t.me/youtube) | YouTube 搜索 | 约 22.3 万/月 |
-| 🐴 神马搜索 🔍 | [@smss](https://t.me/smss) | 发送关键词即可搜索关联群组与频道资源，适合中文用户发现兴趣社区和内容聚合。 | 约 57.4 万/月 |
-| 🔍超级索引 @CJSY | [@CJSY](https://t.me/CJSY) | 超级索引支持多维度搜索群组频道与媒体，适用于中文用户高效发现 Telegram 资源。 | 约 81.4 万/月 |
-| 搜啦🔍资源搜索机器人 @soula | [@soula](https://t.me/soula) | 搜啦机器人通过关键词检索群和频道内容，帮助用户快速找到感兴趣的中文社区。 | 约 2.5 万/月 |
+| Video Search for YouTube | [@youtube](https://t.me/youtube) | YouTube 搜索 | 约 22.5 万/月 |
+| 🐴 神马搜索 🔍 | [@smss](https://t.me/smss) | 发送关键词即可搜索关联群组与频道资源，适合中文用户发现兴趣社区和内容聚合。 | 约 60.9 万/月 |
+| 🔍超级索引 @CJSY | [@CJSY](https://t.me/CJSY) | 超级索引支持多维度搜索群组频道与媒体，适用于中文用户高效发现 Telegram 资源。 | 约 87.8 万/月 |
+| 搜啦🔍资源搜索机器人 @soula | [@soula](https://t.me/soula) | 搜啦机器人通过关键词检索群和频道内容，帮助用户快速找到感兴趣的中文社区。 | 约 2.4 万/月 |
 | i快搜-🔍强大的搜索引擎 | [@ikuaisobot](https://t.me/ikuaisobot) | 快搜索引机器人专注中文群组发现，输入关键词即可定位相关 Telegram 资源入口。 | — |
-| aiso中文搜索🔍 | [@aiso](https://t.me/aiso) | 简易搜索入口，支持发送词语查找群组与公开内容，适合新手用户快速上手。 | 约 1.5 万/月 |
+| aiso中文搜索🔍 | [@aiso](https://t.me/aiso) | 简易搜索入口，支持发送词语查找群组与公开内容，适合新手用户快速上手。 | 约 1.6 万/月 |
 | SE-索引秘书 | [@zh_secretary_bot](https://t.me/zh_secretary_bot) | 中文秘书类搜索工具，协助索引和发现各类 Telegram 群组与频道资源。 | — |
 | 群组大全_Bot | [@qunzudaquan_bot](https://t.me/qunzudaquan_bot) | 群组大全索引机器人，提供大量中文群组目录搜索，方便用户按需加入社群。 | — |
 | TGCN-群组频道狐🦊(不是猫) | [@zh_groups_bot](https://t.me/zh_groups_bot) | 中文群组搜索机器人，专注于推荐和发现各类主题的 Telegram 群聊资源。 | — |
@@ -112,14 +112,14 @@
 
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| 入群验证机器人 | [@P4CaptchaBot](https://t.me/P4CaptchaBot) | 简单中文验证码，适合大多数群 | 约 1.0 万/月 |
+| 入群验证机器人 | [@P4CaptchaBot](https://t.me/P4CaptchaBot) | 简单中文验证码，适合大多数群 | 约 1.1 万/月 |
 | 验证机器人 | [@group_confirmation_bot](https://t.me/group_confirmation_bot) | 简单中文验证码，适合大多数群 | — |
 | Policr | [@policr_bot](https://t.me/policr_bot) | 支持自定义问题，可设置收费模式 | — |
 | Shieldy | [@shieldy_bot](https://t.me/shieldy_bot) | 老牌进群验证工具 | 约 19.9 万/月 |
 | 大掌门 | [@FengDoorBot](https://t.me/FengDoorBot) | 进群验证 + 欢迎消息 + 定时删除 | — |
 | Pay Bot | [@feeMasterBot](https://t.me/feeMasterBot) | 支持收费模式的入群验证机器人，适合管理需要筛选成员的高价值中文社群。 | — |
 | TGCN-CAPTCHA加群验证 | [@tgcnjoincaptchabot](https://t.me/tgcnjoincaptchabot) | 中文社区入群验证码机器人，可有效拦截垃圾账号和广告用户加入群组。 | — |
-| OrgRobot | [@orgrobot](https://t.me/orgrobot) | 组织验证机器人，帮助群主进行新成员身份核验与入群管理。 | 约 3.0 万/月 |
+| OrgRobot | [@orgrobot](https://t.me/orgrobot) | 组织验证机器人，帮助群主进行新成员身份核验与入群管理。 | 约 3.1 万/月 |
 | 天童AL-1S🤖 Powered by @TooruchanNews | [@toorucaptchabot](https://t.me/toorucaptchabot) | 增强验证码机器人，提供更可靠的入群验证流程，减少恶意用户进入。 | — |
 | LittleGuardian | [@littleGuardianBot](https://t.me/littleGuardianBot) | 小守护验证机器人，适合中小群组进行简单有效的成员准入控制。 | — |
 
@@ -130,7 +130,7 @@
 | TGCN-币&黄广告专杀 | [@adnamekillerbot](https://t.me/adnamekillerbot) | 专门对付长用户名广告 | — |
 | 广告终结者_Bot | [@adzhongjiezhe_bot](https://t.me/adzhongjiezhe_bot) | 通过关键字拦截广告 | — |
 | AntiHyperlinkBot | [@AntiHyperlinkBot](https://t.me/AntiHyperlinkBot) | 链接广告拦截 | — |
-| Protectron | [@ProtectronBot](https://t.me/ProtectronBot) | 链接广告拦截 | 约 10.3 万/月 |
+| Protectron | [@ProtectronBot](https://t.me/ProtectronBot) | 链接广告拦截 | 约 10.4 万/月 |
 | Auto Restrict Bot [beta] | [@AutoRestrictBot](https://t.me/AutoRestrictBot) | 限制新群员发言权限 | — |
 | FreqRobot | [@freqrobot](https://t.me/freqrobot) | 防止刷屏 | — |
 
@@ -139,7 +139,7 @@
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
 | 统计秘书 | [@FengStatsBot](https://t.me/FengStatsBot) | 发言统计、活跃度分析 | — |
-| SangMata | [@SangMata_BOT](https://t.me/SangMata_BOT) | 记录群内用户改名历史 | 约 15.1 万/月 |
+| SangMata | [@SangMata_BOT](https://t.me/SangMata_BOT) | 记录群内用户改名历史 | 约 14.8 万/月 |
 | joinhider_bot | [@joinhider_bot](https://t.me/joinhider_bot) | 删除进群退群提示 | 约 1.0 万/月 |
 
 **其他实用**
@@ -194,9 +194,9 @@ AI 机器人增长最快、迭代极快，稳定性参差。本列表不固定�
 <!-- AUTO:bots-category:translate:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| Google Translate | [@TranslateBot](https://t.me/TranslateBot) | Google 翻译引擎，支持多语言双向互译，适合日常文本与群消息翻译。 | 约 1.0 万/月 |
-| Yandex Translate | [@YTranslateBot](https://t.me/YTranslateBot) | Yandex 翻译引擎，多语言支持，部分语种翻译质量表现突出。 | 约 3.9 万/月 |
-| Translator | [@TgTranslatorBot](https://t.me/TgTranslatorBot) | 群组专用实时翻译机器人，支持100+语言自动互译消息，适合国际社群。 | 约 3.1 万/月 |
+| Google Translate | [@TranslateBot](https://t.me/TranslateBot) | Google 翻译引擎，支持多语言双向互译，适合日常文本与群消息翻译。 | — |
+| Yandex Translate | [@YTranslateBot](https://t.me/YTranslateBot) | Yandex 翻译引擎，多语言支持，部分语种翻译质量表现突出。 | 约 4.0 万/月 |
+| Translator | [@TgTranslatorBot](https://t.me/TgTranslatorBot) | 群组专用实时翻译机器人，支持100+语言自动互译消息，适合国际社群。 | 约 3.0 万/月 |
 | TransChat - AI Translate | [@TransChat_bot](https://t.me/TransChat_bot) | AI驱动群聊翻译，支持上下文理解，提供自然流畅的多语种翻译体验。 | — |
 <!-- AUTO:bots-category:translate:end -->
 
@@ -220,9 +220,9 @@ AI 机器人增长最快、迭代极快，稳定性参差。本列表不固定�
 <!-- AUTO:bots-category:channel:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| Post Bot | [@postbot](https://t.me/postbot) | Post Bot，辅助 Telegram 频道内容发布与定时管理，高活跃用户常用工具。 | 约 305.8 万/月 |
-| TelepostBot | [@telepostbot](https://t.me/telepostbot) | TelepostBot，频道定时发布与内容推送工具，适合批量内容分发场景。 | 约 60.7 万/月 |
-| Channel Help | [@chelpbot](https://t.me/chelpbot) | Channel Help，频道管理辅助工具，提供频道运营相关帮助与统计参考。 | 约 267.6 万/月 |
+| Post Bot | [@postbot](https://t.me/postbot) | Post Bot，辅助 Telegram 频道内容发布与定时管理，高活跃用户常用工具。 | 约 295.0 万/月 |
+| TelepostBot | [@telepostbot](https://t.me/telepostbot) | TelepostBot，频道定时发布与内容推送工具，适合批量内容分发场景。 | 约 60.1 万/月 |
+| Channel Help | [@chelpbot](https://t.me/chelpbot) | Channel Help，频道管理辅助工具，提供频道运营相关帮助与统计参考。 | 约 259.6 万/月 |
 | Auto Forward Bot ⚡️ | [@autoforwardroxybot](https://t.me/autoforwardroxybot) | Auto Forward Bot，支持定时转发与规则过滤，适合频道自动内容推送。 | — |
 <!-- AUTO:bots-category:channel:end -->
 
@@ -233,10 +233,10 @@ AI 机器人增长最快、迭代极快，稳定性参差。本列表不固定�
 <!-- AUTO:bots-category:game:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| Quiz Bot ✓ | [@quizbot](https://t.me/quizbot) | 创建和分享多媒体答题游戏，带排行榜与统计，适合群内娱乐或自测知识挑战。 | 约 150.2 万/月 |
-| Gamee ✓ | [@gamee](https://t.me/gamee) | HTML5 小游戏平台，含体育、益智、街机等多款，支持群内对战与高分排行。 | 约 27.5 万/月 |
-| GameBot ✓ | [@gamebot](https://t.me/gamebot) | Telegram 官方游戏平台，提供经典 HTML5 小游戏示例，支持单人或群内体验。 | 约 18.1 万/月 |
-| Inline Games 🎲 | [@inlinegamesbot](https://t.me/inlinegamesbot) | 通过 inline 模式在任意聊天直接玩实时多人小游戏，无需添加即可快速娱乐。 | 约 1.3 万/月 |
+| Quiz Bot ✓ | [@quizbot](https://t.me/quizbot) | 创建和分享多媒体答题游戏，带排行榜与统计，适合群内娱乐或自测知识挑战。 | 约 156.3 万/月 |
+| Gamee ✓ | [@gamee](https://t.me/gamee) | HTML5 小游戏平台，含体育、益智、街机等多款，支持群内对战与高分排行。 | 约 28.8 万/月 |
+| GameBot ✓ | [@gamebot](https://t.me/gamebot) | Telegram 官方游戏平台，提供经典 HTML5 小游戏示例，支持单人或群内体验。 | 约 17.5 万/月 |
+| Inline Games 🎲 | [@inlinegamesbot](https://t.me/inlinegamesbot) | 通过 inline 模式在任意聊天直接玩实时多人小游戏，无需添加即可快速娱乐。 | 约 1.2 万/月 |
 | TeleTarot | [@teletarotbot](https://t.me/teletarotbot) | GPT 驱动的塔罗占卜机器人，支持问题抽牌与个性化解读，适合休闲娱乐与反思。 | — |
 | Brightwood Stories 🐰 | [@BrightwoodBot](https://t.me/BrightwoodBot) | 按钮驱动的互动故事文字冒险游戏，通过选择推进剧情，沉浸式叙事娱乐体验。 | — |
 <!-- AUTO:bots-category:game:end -->
@@ -246,7 +246,7 @@ AI 机器人增长最快、迭代极快，稳定性参差。本列表不固定�
 <!-- AUTO:bots-category:tools:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| DropMail.me | [@DropmailBot](https://t.me/DropmailBot) | 临时邮箱 | 约 3.6 万/月 |
+| DropMail.me | [@DropmailBot](https://t.me/DropmailBot) | 临时邮箱 | 约 3.4 万/月 |
 | dicbot | [@dicbot](https://t.me/dicbot) | 词典查询 | — |
 | Weather bot | [@WeatherBot](https://t.me/WeatherBot) | 天气机器人 | — |
 | APK Downloader | [@apkdl_bot](https://t.me/apkdl_bot) | APK 下载 | — |
