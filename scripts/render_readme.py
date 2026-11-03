@@ -370,18 +370,14 @@ def main():
     bots = [b for b in all_bots if not is_hidden(b)]
 
     # Group by category (preserve encounter order)
-    # Featured preserving json order (computed first so we can dedup from categories)
+    # 分类表保持完整：精选区命中的条目也在所属分类里再出现一次，
+    # 避免用户只看分类表时漏掉该场景的头部入口。
     featured = [b for b in bots if b.get("featured")]
-    featured_ids = {b.get("id") for b in featured}
 
     by_cat: dict[str, list[dict]] = defaultdict(list)
     for b in bots:
         cat = b.get("category")
         if cat in VALID_CATEGORIES:
-            # Skip bots already shown in featured table to avoid duplicate listing
-            # (official stays complete: 官方入口需要集中一处可查)
-            if b.get("id") in featured_ids and cat != "official":
-                continue
             by_cat[cat].append(b)
 
     readme = README_FILE.read_text(encoding="utf-8")

@@ -1,4 +1,4 @@
-# 中文 Telegram 机器人索引
+# 中文 Telegram 电报机器人大全
 
 > 按真实月活与场景筛选，每周自动验活，剔除死链与伪装频道
 
@@ -91,15 +91,16 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 <!-- AUTO:bots-category:search:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| 极搜中文搜索 | [@jiso](https://t.me/jiso?start=a_6480909132) | 跨群组、频道、影视、音乐与新闻的综合中文检索 | 约 40.0 万/月 |
-| 一起搜电影 | [@sotv](https://t.me/sotv) | 检索电影与剧集资源，支持挂载至群聊内直接调用 | 约 6.3 万/月 |
-| 阿里云盘搜索机器人 | [@aliyunshare_bot](https://t.me/aliyunshare_bot) | 按关键词检索阿里云盘共享资源与群内投稿 | — |
-| 阿里云盘资源 Bot | [@AliYunPanBot](https://t.me/AliYunPanBot) | 阿里云盘资源检索、收藏、订阅与导出 | — |
-| Video Search for YouTube | [@youtube](https://t.me/youtube) | 在聊天框内直接检索并分享 YouTube 视频 | 约 22.7 万/月 |
-| 神马搜索 | [@smss](https://t.me/smss?start=spread_6480909132) | 按关键词检索关联群组、频道与细分兴趣社区 | 约 81.2 万/月 |
+| SOSO搜搜 | [@soso](https://t.me/soso?start=a_6480909132) | 按关键词检索中文群组、频道与音视频资源 | 约 116.6 万/月 |
 | 超级索引 | [@CJSY](https://t.me/CJSY?start=6480909132) | 多维度检索中文群组、频道与媒体文件 | 约 89.7 万/月 |
+| 神马搜索 | [@smss](https://t.me/smss?start=spread_6480909132) | 按关键词检索关联群组、频道与细分兴趣社区 | 约 81.2 万/月 |
+| 极搜中文搜索 | [@jiso](https://t.me/jiso?start=a_6480909132) | 跨群组、频道、影视、音乐与新闻的综合中文检索 | 约 40.0 万/月 |
+| Video Search for YouTube | [@youtube](https://t.me/youtube) | 在聊天框内直接检索并分享 YouTube 视频 | 约 22.7 万/月 |
+| 一起搜电影 | [@sotv](https://t.me/sotv) | 检索电影与剧集资源，支持挂载至群聊内直接调用 | 约 6.3 万/月 |
 | 搜啦资源搜索机器人 | [@soula](https://t.me/soula) | 按关键词检索中文群组与频道公开内容 | 约 2.3 万/月 |
 | aiso中文搜索 | [@aiso](https://t.me/aiso?start=telegram_6480909132) | 发送关键词直接匹配公开群组与频道内容 | 约 1.8 万/月 |
+| 阿里云盘搜索机器人 | [@aliyunshare_bot](https://t.me/aliyunshare_bot) | 按关键词检索阿里云盘共享资源与群内投稿 | — |
+| 阿里云盘资源 Bot | [@AliYunPanBot](https://t.me/AliYunPanBot) | 阿里云盘资源检索、收藏、订阅与导出 | — |
 <!-- AUTO:bots-category:search:end -->
 
 ### 群组管理
@@ -136,6 +137,7 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
+| Combot | [@combot](https://t.me/combot) | 集成员审核、活跃度分析、反垃圾与自动回复于一体的群管套件 | 约 84.0 万/月 |
 | 统计秘书 | [@FengStatsBot](https://t.me/FengStatsBot) | 统计群内发言频次与成员活跃度排行 | — |
 | SangMata | [@SangMata_BOT](https://t.me/SangMata_BOT) | 追踪并查询群成员的历史昵称与用户名变更记录 | 约 14.5 万/月 |
 | joinhider_bot | [@joinhider_bot](https://t.me/joinhider_bot) | 自动删除成员进群与退群的系统提示消息 | 约 1.1 万/月 |
@@ -155,6 +157,7 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 <!-- AUTO:bots-category:download:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
+| InstaSave: Instagram & TikTok Downloader | [@instasave_bot](https://t.me/instasave_bot) | 解析下载 Instagram、TikTok、X、Facebook 与 Pinterest 图文视频 | 约 6.4 万/月 |
 | 多平台解析下载机器人 | [@freedlvideo_bot](https://t.me/freedlvideo_bot) | 解析下载 X、YouTube、B站、抖音、小红书与 Instagram 视频 | — |
 | AI在线解析视频 (DC5) | [@bilibiliparse_bot](https://t.me/bilibiliparse_bot) | 解析下载 B站及主流视频平台无水印内容 | — |
 | YoutubeDL - YouTube Download Bot | [@YtbDownBot](https://t.me/YtbDownBot) | 按分辨率提取并下载 YouTube 视频与音频 | 约 4.6 万/月 |
@@ -217,6 +220,7 @@ AI 对话类 Bot 迭代与停运极快，固定收录极易失效。建议直接
 <!-- AUTO:bots-category:game:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
+| Quiz Bot ✓ | [@quizbot](https://t.me/quizbot) | 创建多媒体选择题竞赛，支持群内实时抢答与排行榜统计 | 约 162.0 万/月 |
 | Gamee ✓ | [@gamee](https://t.me/gamee) | 内置数十款 HTML5 街机与益智小游戏，支持群内实时对战比拼 | 约 28.2 万/月 |
 | GameBot ✓ | [@gamebot](https://t.me/gamebot) | Telegram 官方 HTML5 轻游戏合集，支持单人或群聊发起对战 | 约 16.8 万/月 |
 | Inline Games | [@inlinegamesbot](https://t.me/inlinegamesbot) | 通过内联模式在任意聊天框直接发起双人棋牌对战 | — |
@@ -266,7 +270,7 @@ AI 对话类 Bot 迭代与停运极快，固定收录极易失效。建议直接
 
 - **当前规模**：9 大活跃分类 · 66 个在运营条目（含 5 个精选主力入口）
 - **近期迭代**：
-  - **2026-11**：精简低质与重复条目（移除停运的 GIF Downloader、重复验证码与抽奖 Bot 等 7 条，73→66）；精选区按各场景最高月活重排（`@BotFather` / `@soso` / `@combot` / `@instasave_bot` / `@quizbot`）；移除无月活的 RSS 分类，新增「官方账号」分类
+  - **2026-11**：精简低质与重复条目（移除停运的 GIF Downloader、重复验证码与抽奖 Bot 等 7 条，73→66）；精选区按各场景最高月活重排（`@BotFather` / `@soso` / `@combot` / `@instasave_bot` / `@quizbot`）；移除无月活的 RSS 分类，新增「官方账号」分类；站名改为「电报机器人大全」，搜索分类改按月活降序，精选条目改为在所属分类中一并列出
   - **2026-10**：全量重验所有条目，清理 5 条停运死号与 3 条已转为频道/个人号的失效条目；修复每周巡检仅抓取新条目而不复核存量条目的问题；恢复 `https://t.me/xxx` 标准链接并上线 `bots.json` 自动抓取、渲染与校验管线
 
 ## 开发参考

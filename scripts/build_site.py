@@ -259,8 +259,8 @@ def build_html(data):
     by_cat = {}
     for b in bots:
         cat = b.get("category")
-        # official 分类保持完整：精选里的官方入口同样列出
-        if cat in CATEGORY_TITLES and (not b.get("featured") or cat == "official"):
+        # 分类保持完整：精选里的条目（含官方入口）同样在所属分类再列一次
+        if cat in CATEGORY_TITLES:
             by_cat.setdefault(cat, []).append(b)
 
     total = len(bots)
