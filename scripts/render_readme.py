@@ -48,10 +48,10 @@ def not_bot_label(bot: dict) -> str:
 
 
 SUBSECTION_TITLES = {
-    "verify": "**进群验证类**",
-    "ads": "**广告与水军拦截类**",
-    "stats": "**统计与监控类**",
-    "misc": "**其他实用**",
+    "verify": "**进群验证**",
+    "ads": "**广告拦截**",
+    "stats": "**活跃统计**",
+    "misc": "**秩序维护**",
 }
 
 
@@ -67,11 +67,23 @@ def format_num(n: int) -> str:
     return f"{n / 10_000:.1f} 万"
 
 
+def clean_display_title(raw: str) -> str:
+    """Strip decorative emojis and redundant trailing @handles from bot display title."""
+    import re
+    s = re.sub(r"[🔍🤖🐴🇺🇦⚡️🎲🐰\ufe0f]+", "", raw)
+    s = re.sub(r"\s*Powered by @[A-Za-z0-9_]+", "", s, flags=re.I)
+    s = re.sub(r"\s*@[A-Za-z0-9_]+\s*$", "", s)
+    s = re.sub(r"\s{2,}", " ", s).strip()
+    return s
+
+
 def get_display_name(bot: dict) -> str:
     fetch = bot.get("fetch", {}) or {}
     title = fetch.get("title")
     if title:
-        return str(title).strip()
+        cleaned = clean_display_title(str(title))
+        if cleaned:
+            return cleaned
     # fallback
     uname = bot.get("username", "") or bot.get("id", "")
     return uname.lstrip("@").strip() or bot.get("id", "")

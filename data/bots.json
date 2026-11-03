@@ -11,7 +11,7 @@
       "subsection": null,
       "featured": true,
       "official": true,
-      "notes": "Telegram 官方：创建机器人、设置命令与菜单、获取 API Token",
+      "notes": "创建机器人、配置命令菜单与签发 API Token",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -37,7 +37,7 @@
       "subsection": null,
       "featured": true,
       "official": false,
-      "notes": "关键词搜索群组、频道、视频",
+      "notes": "按关键词检索中文群组、频道与音视频资源",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -63,7 +63,7 @@
       "subsection": "stats",
       "featured": true,
       "official": false,
-      "notes": "功能全面的群管理机器人",
+      "notes": "集成员审核、活跃度分析、反垃圾与自动回复于一体的群管套件",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -89,7 +89,7 @@
       "subsection": null,
       "featured": true,
       "official": false,
-      "notes": "Instagram / TikTok / X / Facebook / Pinterest 图片视频下载",
+      "notes": "解析下载 Instagram、TikTok、X、Facebook 与 Pinterest 图文视频",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -115,7 +115,7 @@
       "subsection": null,
       "featured": true,
       "official": true,
-      "notes": "创建和分享多媒体答题游戏，带排行榜与统计，适合群内娱乐或自测知识挑战。",
+      "notes": "创建多媒体选择题竞赛，支持群内实时抢答与排行榜统计",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -141,7 +141,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "支持 X（Twitter）、YouTube、B站、抖音、小红书、Instagram 等",
+      "notes": "解析下载 X、YouTube、B站、抖音、小红书与 Instagram 视频",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -167,7 +167,7 @@
       "subsection": null,
       "featured": false,
       "official": true,
-      "notes": "Telegram 官方：开通 Premium 会员（星标、更大上传、双倍限额等）",
+      "notes": "开通或赠送 Premium 会员（解锁双倍限额、4GB 上传与专属星标）",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -193,7 +193,7 @@
       "subsection": null,
       "featured": false,
       "official": true,
-      "notes": "Telegram 官方 Premium 会员功能介绍与权益说明频道",
+      "notes": "Premium 会员新功能演示与权益说明官方频道",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -219,7 +219,7 @@
       "subsection": null,
       "featured": false,
       "official": true,
-      "notes": "Telegram 官方：创建、导入、管理自定义贴纸与表情包",
+      "notes": "创建、导入自定义贴纸包并查看使用统计",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -245,7 +245,7 @@
       "subsection": null,
       "featured": false,
       "official": true,
-      "notes": "Telegram 官方：公共账号/人物的认证申请入口",
+      "notes": "公共频道、群组与机器人的官方蓝标认证申请入口",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -271,7 +271,7 @@
       "subsection": null,
       "featured": false,
       "official": true,
-      "notes": "Telegram 官方：查询账号是否被限制、提交解封申诉、举报垃圾信息",
+      "notes": "查询账号受限原因、提交解封申诉与举报垃圾信息",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -297,7 +297,7 @@
       "subsection": null,
       "featured": false,
       "official": true,
-      "notes": "Telegram 官方 Android 客户端 APK 发布频道",
+      "notes": "Android 客户端官方 APK 直装包发布频道",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -323,7 +323,7 @@
       "subsection": null,
       "featured": false,
       "official": true,
-      "notes": "Telegram X 官方更新历史与安装包发布频道",
+      "notes": "Telegram X 客户端构建日志与安装包发布频道",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -349,7 +349,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "搜索群、频道、视频、音乐、电影、新闻，综合能力强",
+      "notes": "跨群组、频道、影视、音乐与新闻的综合中文检索",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -375,7 +375,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "影视搜索神器，支持群内使用",
+      "notes": "检索电影与剧集资源，支持挂载至群聊内直接调用",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -401,7 +401,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "阿里云盘资源搜索与投稿",
+      "notes": "按关键词检索阿里云盘共享资源与群内投稿",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -427,7 +427,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "阿里云盘资源搜索与投稿",
+      "notes": "阿里云盘资源检索、收藏、订阅与导出",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -453,7 +453,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "YouTube 搜索",
+      "notes": "在聊天框内直接检索并分享 YouTube 视频",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -479,7 +479,7 @@
       "subsection": "verify",
       "featured": false,
       "official": false,
-      "notes": "简洁中文验证码，开源可自部署，适合大多数群",
+      "notes": "简洁中文图形验证码，开源且支持自建部署",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -505,7 +505,7 @@
       "subsection": "verify",
       "featured": false,
       "official": false,
-      "notes": "支持自定义问题，可设置收费模式",
+      "notes": "支持自定义问答考核与付费入群验证",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -531,7 +531,7 @@
       "subsection": "verify",
       "featured": false,
       "official": false,
-      "notes": "老牌进群验证工具",
+      "notes": "老牌轻量入群验证，超时未验证自动移出",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -557,7 +557,7 @@
       "subsection": "verify",
       "featured": false,
       "official": false,
-      "notes": "进群验证 + 欢迎消息 + 定时删除",
+      "notes": "入群验证、进群欢迎语与消息定时自毁（开源）",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -583,7 +583,7 @@
       "subsection": "ads",
       "featured": false,
       "official": false,
-      "notes": "专门对付长用户名广告",
+      "notes": "识别并踢除挂有长用户名广告的水军账号",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -609,7 +609,7 @@
       "subsection": "ads",
       "featured": false,
       "official": false,
-      "notes": "通过关键字拦截广告",
+      "notes": "按自定义关键词规则自动拦截群内广告",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -635,7 +635,7 @@
       "subsection": "ads",
       "featured": false,
       "official": false,
-      "notes": "链接广告拦截",
+      "notes": "自动删除群聊中包含外部链接与超链接的消息",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -661,7 +661,7 @@
       "subsection": "ads",
       "featured": false,
       "official": false,
-      "notes": "链接广告拦截",
+      "notes": "外链过滤、反刷屏与违规广告自动拦截",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -687,7 +687,7 @@
       "subsection": "ads",
       "featured": false,
       "official": false,
-      "notes": "限制新群员发言权限",
+      "notes": "自动限制新入群成员的初期发言与发图权限",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -713,7 +713,7 @@
       "subsection": "ads",
       "featured": false,
       "official": false,
-      "notes": "防止刷屏",
+      "notes": "限制单用户高频连发消息，防止恶意刷屏",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -739,7 +739,7 @@
       "subsection": "stats",
       "featured": false,
       "official": false,
-      "notes": "发言统计、活跃度分析",
+      "notes": "统计群内发言频次与成员活跃度排行",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -765,7 +765,7 @@
       "subsection": "stats",
       "featured": false,
       "official": false,
-      "notes": "记录群内用户改名历史",
+      "notes": "追踪并查询群成员的历史昵称与用户名变更记录",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -791,7 +791,7 @@
       "subsection": "stats",
       "featured": false,
       "official": false,
-      "notes": "删除进群退群提示",
+      "notes": "自动删除成员进群与退群的系统提示消息",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -817,7 +817,7 @@
       "subsection": "misc",
       "featured": false,
       "official": false,
-      "notes": "自定义禁止内容类型",
+      "notes": "按消息类型（贴纸、转发、外链等）自定义封禁规则",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -843,7 +843,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "B站 + 多平台解析",
+      "notes": "解析下载 B站及主流视频平台无水印内容",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -869,7 +869,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "YouTube 下载",
+      "notes": "按分辨率提取并下载 YouTube 视频与音频",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -895,7 +895,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "临时邮箱：即开即用，用于注册服务时收验证码",
+      "notes": "生成一次性临时邮箱，在对话内直接接收注册验证码",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -921,7 +921,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "词典查询：英文单词释义与例句",
+      "notes": "查询英文单词音标、中英释义与例句",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -947,7 +947,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "天气查询：按城市查当前天气与预报",
+      "notes": "按城市名称查询实时天气与未来数日气象预报",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -973,7 +973,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "APK 下载：从 Google Play 取安装包",
+      "notes": "输入应用包名或链接，直接从 Google Play 提取 APK 安装包",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -999,7 +999,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "发送关键词即可搜索关联群组与频道资源，适合中文用户发现兴趣社区和内容聚合。",
+      "notes": "按关键词检索关联群组、频道与细分兴趣社区",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1025,7 +1025,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "超级索引支持多维度搜索群组频道与媒体，适用于中文用户高效发现 Telegram 资源。",
+      "notes": "多维度检索中文群组、频道与媒体文件",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1051,7 +1051,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "搜啦机器人通过关键词检索群和频道内容，帮助用户快速找到感兴趣的中文社区。",
+      "notes": "按关键词检索中文群组与频道公开内容",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1077,7 +1077,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "简易搜索入口，支持发送词语查找群组与公开内容，适合新手用户快速上手。",
+      "notes": "发送关键词直接匹配公开群组与频道内容",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1103,7 +1103,7 @@
       "subsection": "verify",
       "featured": false,
       "official": false,
-      "notes": "支持收费模式的入群验证机器人，适合管理需要筛选成员的高价值中文社群。",
+      "notes": "付费入群核验，按门槛筛选付费社群成员",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1129,7 +1129,7 @@
       "subsection": "verify",
       "featured": false,
       "official": false,
-      "notes": "中文社区入群验证码机器人，可有效拦截垃圾账号和广告用户加入群组。",
+      "notes": "中文入群验证码核验，自动拦截批量脚本账号",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1155,7 +1155,7 @@
       "subsection": "verify",
       "featured": false,
       "official": false,
-      "notes": "组织验证机器人，帮助群主进行新成员身份核验与入群管理。",
+      "notes": "新成员入群身份核验与准入考核",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1181,7 +1181,7 @@
       "subsection": "verify",
       "featured": false,
       "official": false,
-      "notes": "增强验证码机器人，提供更可靠的入群验证流程，减少恶意用户进入。",
+      "notes": "多题型强化入群验证，拦截机器号批量加群",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1207,7 +1207,7 @@
       "subsection": "verify",
       "featured": false,
       "official": false,
-      "notes": "小守护验证机器人，适合中小群组进行简单有效的成员准入控制。",
+      "notes": "轻量入群验证与新成员准入控制",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1233,7 +1233,7 @@
       "subsection": "misc",
       "featured": false,
       "official": false,
-      "notes": "自动过滤群内服务消息和通知，保持聊天记录界面整洁干净。",
+      "notes": "自动清理置顶、进退群等系统服务通知，保持版面整洁",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1259,7 +1259,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "群组抽奖：公平公正的公开抽奖工具",
+      "notes": "在群内发起按关键词或口令参与的自动开奖活动",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1285,7 +1285,7 @@
       "subsection": "bilingual",
       "featured": false,
       "official": false,
-      "notes": "Google 翻译引擎，支持多语言双向互译，适合日常文本与群消息翻译。",
+      "notes": "调用 Google 翻译引擎，支持私聊与群内多语种双向互译",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1311,7 +1311,7 @@
       "subsection": "bilingual",
       "featured": false,
       "official": false,
-      "notes": "Yandex 翻译引擎，多语言支持，部分语种翻译质量表现突出。",
+      "notes": "调用 Yandex 翻译引擎，俄语及欧洲语种互译准确度高",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1337,7 +1337,7 @@
       "subsection": "auto",
       "featured": false,
       "official": false,
-      "notes": "群组专用实时翻译机器人，支持100+语言自动互译消息，适合国际社群。",
+      "notes": "群聊实时翻译，支持 100+ 语种消息自动转译",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1363,7 +1363,7 @@
       "subsection": "auto",
       "featured": false,
       "official": false,
-      "notes": "AI驱动群聊翻译，支持上下文理解，提供自然流畅的多语种翻译体验。",
+      "notes": "结合群聊上下文自动互译多语种对话",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1389,7 +1389,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "通用打卡签到机器人，支持考勤、报到与统计，适合团队或社群日常签到管理。",
+      "notes": "群内日常考勤、签到报到与出勤次数统计",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1415,7 +1415,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "签到机器人，支持群内签到打卡与基本统计，适合中文社群活跃度管理。",
+      "notes": "群内每日打卡、连续签到天数与积分榜统计",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1441,7 +1441,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "Group Attendance Bot，群组考勤签到工具，记录成员出勤情况与统计。",
+      "notes": "记录群成员每日出勤状态并生成考勤报表",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1467,7 +1467,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "King打卡，支持上班下班等多种行为打卡与工时统计，适合工作群考勤。",
+      "notes": "上下班打卡记录与工时自动汇总，适合团队考勤",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1493,7 +1493,7 @@
       "subsection": "publish",
       "featured": false,
       "official": false,
-      "notes": "Post Bot，辅助 Telegram 频道内容发布与定时管理，高活跃用户常用工具。",
+      "notes": "编辑含内联按钮的富媒体图文并发布至频道",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1519,7 +1519,7 @@
       "subsection": "publish",
       "featured": false,
       "official": false,
-      "notes": "TelepostBot，频道定时发布与内容推送工具，适合批量内容分发场景。",
+      "notes": "频道图文排版、定时发布队列与浏览数据统计",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1545,7 +1545,7 @@
       "subsection": "manage",
       "featured": false,
       "official": false,
-      "notes": "Channel Help，频道管理辅助工具，提供频道运营相关帮助与统计参考。",
+      "notes": "频道定时排版、互动数据统计与抽奖管理",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1571,7 +1571,7 @@
       "subsection": "forward",
       "featured": false,
       "official": false,
-      "notes": "Auto Forward Bot，支持定时转发与规则过滤，适合频道自动内容推送。",
+      "notes": "按过滤规则与时间表自动跨频道转发推送内容",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1597,7 +1597,7 @@
       "subsection": null,
       "featured": false,
       "official": true,
-      "notes": "HTML5 小游戏平台，含体育、益智、街机等多款，支持群内对战与高分排行。",
+      "notes": "内置数十款 HTML5 街机与益智小游戏，支持群内实时对战比拼",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1623,7 +1623,7 @@
       "subsection": null,
       "featured": false,
       "official": true,
-      "notes": "Telegram 官方游戏平台，提供经典 HTML5 小游戏示例，支持单人或群内体验。",
+      "notes": "Telegram 官方 HTML5 轻游戏合集，支持单人或群聊发起对战",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1649,7 +1649,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "通过 inline 模式在任意聊天直接玩实时多人小游戏，无需添加即可快速娱乐。",
+      "notes": "通过内联模式在任意聊天框直接发起双人棋牌对战",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1675,7 +1675,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "GPT 驱动的塔罗占卜机器人，支持问题抽牌与个性化解读，适合休闲娱乐与反思。",
+      "notes": "按问题抽取塔罗牌面并生成牌义解读",
       "fetch": {
         "status": "ok",
         "http_code": 200,
@@ -1701,7 +1701,7 @@
       "subsection": null,
       "featured": false,
       "official": false,
-      "notes": "按钮驱动的互动故事文字冒险游戏，通过选择推进剧情，沉浸式叙事娱乐体验。",
+      "notes": "按钮交互式文字冒险游戏，按分支选择推进剧情",
       "fetch": {
         "status": "ok",
         "http_code": 200,

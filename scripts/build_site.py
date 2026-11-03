@@ -21,16 +21,16 @@ DATA_FILE = ROOT / "data" / "bots.json"
 OUT_FILE = ROOT / "docs" / "index.html"
 
 CATEGORY_TITLES = {
-    "official": ("Telegram 官方账号", "✅ Telegram 官方提供的会员、建号、认证、申诉与客户端入口"),
-    "search": ("Telegram 搜索与发现类机器人", "🔍 用于查找群组、频道、视频、音乐、文件等资源"),
-    "group": ("Telegram 群组管理与安全类机器人", "🛡️ 防止水军、广告、刷屏；建议 1-2 个验证类 + 1 个拦截类组合使用"),
-    "download": ("资源解析与下载类机器人", "🎬 支持多平台内容获取（请遵守相关平台版权规定）"),
-    "ai": ("AI 智能类电报机器人", "🤖 AI 对话机器人，迭代极快，建议在 Telegram 内搜索最新活跃账号"),
-    "tools": ("实用工具类 Telegram 机器人", "🛠️ 临时邮箱、词典、天气、抽奖等杂项工具"),
-    "translate": ("翻译类 Telegram 机器人", "🌍 中英文互译、群消息实时自动翻译、多语言支持"),
-    "checkin": ("签到打卡类电报机器人", "✅ 社群签到、打卡统计、连续天数与积分排行"),
-    "channel": ("频道推送类 Telegram 机器人", "📤 管理 Telegram 频道、定时发布、自动转发与订阅索引"),
-    "game": ("游戏娱乐类电报机器人", "🎮 群内小游戏、单人休闲、互动娱乐"),
+    "official": ("官方账号", "Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉与客户端分发入口"),
+    "search": ("搜索发现", "按关键词检索中文群组、频道、影视、网盘与音视频资源"),
+    "group": ("群组管理", "拦截水军、外链广告与高频刷屏；中大型群组建议搭配「1 个进群验证 + 1 个广告拦截」组合使用"),
+    "download": ("解析下载", "提取主流社媒与视频平台无水印内容，支持私聊发送链接或挂载至群内解析"),
+    "ai": ("AI 助手", "AI 对话机器人迭代极快，建议在 Telegram 内直接检索当月活跃账号"),
+    "tools": ("实用工具", "一次性临时邮箱、词典、天气、安装包提取与群内抽奖工具"),
+    "translate": ("多语翻译", "私聊双向互译与群聊消息实时自动转译，适合多语种社群与跨国协作"),
+    "checkin": ("签到打卡", "群内每日打卡、连续天数统计与考勤汇总，量化社群活跃度与团队出勤"),
+    "channel": ("频道推送", "富媒体排版、定时发布队列与跨频道规则转发，适合频道主日常运营"),
+    "game": ("游戏娱乐", "群内实时抢答、HTML5 对战小游戏与文字冒险，无需跳出聊天窗口即可发起互动"),
 }
 
 CATEGORY_ORDER = ["official", "search", "group", "download", "ai", "translate", "checkin", "channel", "game", "tools"]
@@ -66,10 +66,10 @@ def format_verified_time(iso):
 
 
 SUBSECTION_TITLES = {
-    "verify": "进群验证类",
-    "ads": "广告与水军拦截类",
-    "stats": "统计与监控类",
-    "misc": "其他实用",
+    "verify": "进群验证",
+    "ads": "广告拦截",
+    "stats": "活跃统计",
+    "misc": "秩序维护",
 }
 
 
@@ -104,9 +104,19 @@ def monthly_label(bot):
     return f'约 <strong>{format_num(users)}</strong>{unit}'
 
 
+def clean_display_title(raw: str) -> str:
+    import re
+    s = re.sub(r"[🔍🤖🐴🇺🇦⚡️🎲🐰\ufe0f]+", "", raw)
+    s = re.sub(r"\s*Powered by @[A-Za-z0-9_]+", "", s, flags=re.I)
+    s = re.sub(r"\s*@[A-Za-z0-9_]+\s*$", "", s)
+    s = re.sub(r"\s{2,}", " ", s).strip()
+    return s
+
+
 def display_name(bot):
     fetch = bot.get("fetch", {}) or {}
-    title = fetch.get("title") or bot.get("username", "").lstrip("@")
+    raw_title = fetch.get("title") or bot.get("username", "").lstrip("@")
+    title = clean_display_title(str(raw_title)) or str(raw_title).strip()
     if fetch.get("is_verified") or bot.get("official"):
         title = f'{title} <span class="verified">✓</span>'
     return title
