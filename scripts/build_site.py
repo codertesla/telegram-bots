@@ -26,7 +26,6 @@ CATEGORY_TITLES = {
     "group": ("Telegram 群组管理与安全类机器人", "🛡️ 防止水军、广告、刷屏；建议 1-2 个验证类 + 1 个拦截类组合使用"),
     "download": ("资源解析与下载类机器人", "🎬 支持多平台内容获取（请遵守相关平台版权规定）"),
     "ai": ("AI 智能类电报机器人", "🤖 AI 对话机器人，迭代极快，建议在 Telegram 内搜索最新活跃账号"),
-    "rss": ("通知订阅类 Telegram 机器人", "📡 RSS 全文订阅与关键词过滤"),
     "tools": ("实用工具类 Telegram 机器人", "🛠️ 临时邮箱、词典、天气、抽奖等杂项工具"),
     "translate": ("翻译类 Telegram 机器人", "🌍 中英文互译、群消息实时自动翻译、多语言支持"),
     "checkin": ("签到打卡类电报机器人", "✅ 社群签到、打卡统计、连续天数与积分排行"),
@@ -34,7 +33,7 @@ CATEGORY_TITLES = {
     "game": ("游戏娱乐类电报机器人", "🎮 群内小游戏、单人休闲、互动娱乐"),
 }
 
-CATEGORY_ORDER = ["official", "search", "group", "download", "ai", "rss", "translate", "checkin", "channel", "game", "tools"]
+CATEGORY_ORDER = ["official", "search", "group", "download", "ai", "translate", "checkin", "channel", "game", "tools"]
 
 HIDE_AFTER = 3  # keep in sync with scripts/fetch_bots.py
 
@@ -186,10 +185,13 @@ def render_category_section(cat, bots):
 
 
 def render_top10(bots):
-    top = sorted(
-        [b for b in bots if b.get("fetch", {}).get("monthly_users") and not is_not_bot(b)],
-        key=lambda b: -b["fetch"]["monthly_users"],
-    )[:10]
+    # 官方号月活天然巨大（SpamBot 3400 万+），全量榜会被它们霸占 4 席，
+    # 因此榜单只排第三方 bot，官方入口统一放在官方分类。
+    pool = [b for b in bots
+            if b.get("fetch", {}).get("monthly_users")
+            and not is_not_bot(b)
+            and b.get("category") != "official"]
+    top = sorted(pool, key=lambda b: -b["fetch"]["monthly_users"])[:10]
     if not top:
         return ""
     items = []
@@ -208,7 +210,7 @@ def render_top10(bots):
       </li>""")
     return f"""  <section class="top10-section" id="top10">
     <h2 class="section-heading">月活 Top 10</h2>
-    <p class="category-desc">本列表中按 Telegram 公开月活数据排名的前 10 名（每周自动核验）</p>
+    <p class="category-desc">本列表中第三方 bot 按 Telegram 公开月活数据排名的前 10 名（每周自动核验，官方账号另见官方分类）</p>
     <ol class="top-list">
 {chr(10).join(items)}
     </ol>
@@ -234,7 +236,7 @@ def render_featured(featured_bots):
     cards_html = "\n".join(cards)
     return f"""  <section class="featured-section" id="featured">
     <h2 class="section-heading">精选必装</h2>
-    <p class="category-desc">覆盖 5 个最高频使用场景的入口（官方 / 搜索 / 群管 / RSS / 下载）</p>
+    <p class="category-desc">覆盖 5 个最高频使用场景的入口（官方 / 搜索 / 群管 / 下载 / 娱乐），每个场景只放该分类月活最高、确认在运营的一个</p>
     <div class="featured-grid">
 {cards_html}
     </div>
@@ -255,7 +257,8 @@ def build_html(data):
     ok_count = sum(1 for b in bots if b.get("fetch", {}).get("status") == "ok" and not is_not_bot(b))
     last_label = data.get("last_verified_label") or (data.get("last_fetched_at", "")[:7] or "—")
 
-    cat_count = len(CATEGORY_ORDER)
+    # 只统计真正有内容的分类（空分类不渲染，AI 目前为空）
+    cat_count = sum(1 for cat in CATEGORY_ORDER if by_cat.get(cat))
 
     featured_html = render_featured(featured)
     top10_html = render_top10(bots)
@@ -271,7 +274,7 @@ def build_html(data):
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>电报机器人大全 | 精选实用 Telegram Bot 推荐（{last_label}）</title>
-  <meta name="description" content="中文 Telegram 机器人导航列表：{total} 条精选 bot，带真实月活数据，每周自动核验失效。覆盖官方、搜索、群管、下载、AI、RSS、翻译、签到、频道推送、游戏、工具 11 大分类。">
+  <meta name="description" content="中文 Telegram 机器人导航列表：{total} 条精选 bot，带真实月活数据，每周自动核验失效。覆盖官方、搜索、群管、下载、AI、翻译、签到、频道推送、游戏、工具 11 大分类。">
   <meta name="keywords" content="电报机器人,Telegram 机器人,TG 机器人,Telegram Bot 推荐,群管理机器人,中文 TG Bot">
   <meta property="og:title" content="电报机器人大全 | 精选实用 Telegram Bot 推荐">
   <meta property="og:description" content="{total} 条精选中文 Telegram Bot，带真实月活数据，每周自动核验失效。">

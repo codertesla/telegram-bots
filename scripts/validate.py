@@ -21,7 +21,7 @@ import sys
 from pathlib import Path
 from collections import defaultdict
 
-VALID_CATEGORIES = {"official", "search", "group", "download", "ai", "rss", "tools", "translate", "checkin", "channel", "game"}
+VALID_CATEGORIES = {"official", "search", "group", "download", "ai", "tools", "translate", "checkin", "channel", "game"}
 VALID_SUBSECTIONS = {"verify", "ads", "stats", "misc", None, "bilingual", "auto", "zh-en", "publish", "index", "forward", "manage"}
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -122,7 +122,6 @@ def extract_marker_inners(readme: str) -> dict:
         "bots-category:group",
         "bots-category:download",
         "bots-category:ai",
-        "bots-category:rss",
         "bots-category:tools",
         "bots-category:translate",
         "bots-category:checkin",
@@ -146,7 +145,7 @@ def find_marker_pairs(readme: str):
     marker_names = [
         "last-verified", "bots-featured",
         "bots-category:official", "bots-category:search", "bots-category:group", "bots-category:download",
-        "bots-category:ai", "bots-category:rss", "bots-category:tools",
+        "bots-category:ai", "bots-category:tools",
         "bots-category:translate", "bots-category:checkin", "bots-category:channel",
         "bots-category:game",
     ]
@@ -299,12 +298,15 @@ def check_notbot(data, readme):
         for e in errors:
             print(f"  - {e}")
         return False
-    if flagged:
-        kinds = ", ".join(f"{b['id']}({b['fetch'].get('page_kind')})" for b in flagged)
-        print(f"WARNING: {len(flagged)} entr(y/ies) no longer look like bots, review/remove: {kinds}")
+    # official 分类里的频道（如 @premium / @TAndroidAPK）是刻意收录，不必逐周复核
+    warned = [b for b in flagged if b.get("category") != "official"]
+    if warned:
+        kinds = ", ".join(f"{b['id']}({b['fetch'].get('page_kind')})" for b in warned)
+        print(f"WARNING: {len(warned)} entr(y/ies) no longer look like bots, review/remove: {kinds}")
         if __import__("os").environ.get("GITHUB_ACTIONS"):
             print(f"::warning title=not_bot entries::{kinds}")
-    print(f"NOTBOT CHECK PASSED: {len(flagged)} not_bot entr(y/ies) marked")
+    print(f"NOTBOT CHECK PASSED: {len(flagged)} not_bot entr(y/ies) marked"
+          f" ({len(flagged) - len(warned)} official exempt)")
     return True
 
 

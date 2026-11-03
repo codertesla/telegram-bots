@@ -13,7 +13,7 @@
 
 - 机器人名称
 - 链接（**必须用 `https://t.me/xxx` 格式**）
-- 分类：官方 / 搜索 / 群管 / 下载 / AI / RSS / 工具（官方指 Telegram 自家账号与频道）
+- 分类：官方 / 搜索 / 群管 / 下载 / AI / 工具（官方指 Telegram 自家账号与频道）
 - 一句话描述（核心功能 + 适用场景）
 - 是否官方
 - 开源仓库（如有）
@@ -36,7 +36,7 @@
 | `id` | 是 | username 去掉 `@`、全小写，作为主键，全局唯一 |
 | `username` | 是 | 含 `@`，如 `@jiso` |
 | `url` | 是 | `https://t.me/<username>` |
-| `category` | 是 | `official` / `search` / `group` / `download` / `ai` / `rss` / `tools` / `translate` / `checkin` / `channel` / `game` |
+| `category` | 是 | `official` / `search` / `group` / `download` / `ai` / `tools` / `translate` / `checkin` / `channel` / `game` |
 | `subsection` | 否 | 仅 `group` 类用：`verify` / `ads` / `stats` / `misc` |
 | `featured` | 否 | `true` 进"精选必装"区，全区 ≤ 5 条 |
 | `official` | 否 | 人工判断是否官方；抓取拿到的 Telegram 蓝勾优先级更高 |
@@ -81,7 +81,6 @@ README 用 marker 包裹自动区块，其余散文由人工维护、**逐字符
 <!-- AUTO:bots-category:group:start --> … :end -->
 <!-- AUTO:bots-category:download:start --> … :end -->
 <!-- AUTO:bots-category:ai:start --> … :end -->
-<!-- AUTO:bots-category:rss:start --> … :end -->
 <!-- AUTO:bots-category:official:start --> … :end -->
 <!-- AUTO:bots-category:tools:start --> … :end -->
 ```

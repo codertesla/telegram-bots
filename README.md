@@ -32,7 +32,6 @@
   - [Telegram 群组管理与安全类机器人](#telegram-群组管理与安全类机器人)
   - [资源解析与下载类机器人](#资源解析与下载类机器人)
   - [AI 智能类电报机器人](#ai-智能类电报机器人)
-  - [通知订阅类 Telegram 机器人](#通知订阅类-telegram-机器人)
   - [翻译类 Telegram 机器人](#翻译类-telegram-机器人)
   - [签到打卡类电报机器人](#签到打卡类电报机器人)
   - [频道推送类 Telegram 机器人](#频道推送类-telegram-机器人)
@@ -66,16 +65,16 @@
 
 ## 精选必装的 Telegram 机器人
 
-覆盖 5 个最高频使用场景的入口（官方 / 搜索 / 群管 / RSS / 下载），不按月活硬排，按场景覆盖挑选。更多高月活 bot 见下方分类区。
+覆盖 5 个最高频使用场景的入口（官方 / 搜索 / 群管 / 下载 / 娱乐），每个场景只放该分类里月活最高、且确认在运营的一个，其余见下方分类区。
 
 <!-- AUTO:bots-featured:start -->
 | 名称 | 链接 | 一句话用途 | 月活 |
 |------|------|------------|------|
 | BotFather ✓ | [@BotFather](https://t.me/BotFather) | Telegram 官方：创建机器人、设置命令与菜单、获取 API Token | 约 796.6 万/月 |
-| 极搜🔍中文搜索@JISO | [@jiso](https://t.me/jiso?start=a_6480909132) | 搜索群、频道、视频、音乐、电影、新闻，综合能力强 | 约 40.0 万/月 |
+| SOSO搜搜 | [@soso](https://t.me/soso?start=a_6480909132) | 关键词搜索群组、频道、视频 | 约 116.6 万/月 |
 | Combot | [@combot](https://t.me/combot) | 功能全面的群管理机器人 | 约 84.0 万/月 |
-| RSS屋 | [@RSSWBot](https://t.me/RSSWBot) | 全文 RSS 订阅 + 关键词过滤 | — |
-| 多平台解析下载机器人 | [@freedlvideo_bot](https://t.me/freedlvideo_bot) | 支持 X（Twitter）、YouTube、B站、抖音、小红书、Instagram 等 | — |
+| InstaSave: Instagram & TikTok Downloader | [@instasave_bot](https://t.me/instasave_bot) | Instagram / TikTok / X / Facebook / Pinterest 图片视频下载 | 约 6.4 万/月 |
+| Quiz Bot ✓ | [@quizbot](https://t.me/quizbot) | 创建和分享多媒体答题游戏，带排行榜与统计，适合群内娱乐或自测知识挑战。 | 约 162.0 万/月 |
 <!-- AUTO:bots-featured:end -->
 
 > 更多机器人按用途分类列出在下方。
@@ -89,9 +88,9 @@ Telegram 官方提供的账号与频道，涵盖会员、建号、贴纸、认�
 <!-- AUTO:bots-category:official:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
+| BotFather ✓ | [@BotFather](https://t.me/BotFather) | Telegram 官方：创建机器人、设置命令与菜单、获取 API Token | 约 796.6 万/月 |
 | Premium Bot ✓ | [@PremiumBot](https://t.me/PremiumBot) | Telegram 官方：开通 Premium 会员（星标、更大上传、双倍限额等） | 约 679.3 万/月 |
 | Telegram Premium ✓ | [@premium](https://t.me/premium) | Telegram 官方 Premium 会员功能介绍与权益说明频道 | ⚠️已变为频道（非 Bot） · 637.3 万 订阅 |
-| BotFather ✓ | [@BotFather](https://t.me/BotFather) | Telegram 官方：创建机器人、设置命令与菜单、获取 API Token | 约 796.6 万/月 |
 | Stickers Bot ✓ | [@Stickers](https://t.me/Stickers) | Telegram 官方：创建、导入、管理自定义贴纸与表情包 | 约 65.1 万/月 |
 | Verify Bot ✓ | [@VerifyBot](https://t.me/VerifyBot) | Telegram 官方：公共账号/人物的认证申请入口 | 约 1.9 万/月 |
 | Spam Info Bot ✓ | [@SpamBot](https://t.me/SpamBot) | Telegram 官方：查询账号是否被限制、提交解封申诉、举报垃圾信息 | 约 3428.4 万/月 |
@@ -106,7 +105,7 @@ Telegram 官方提供的账号与频道，涵盖会员、建号、贴纸、认�
 <!-- AUTO:bots-category:search:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| SOSO搜搜 | [@soso](https://t.me/soso?start=a_6480909132) | 关键词搜索群组、频道、视频 | 约 116.6 万/月 |
+| 极搜🔍中文搜索@JISO | [@jiso](https://t.me/jiso?start=a_6480909132) | 搜索群、频道、视频、音乐、电影、新闻，综合能力强 | 约 40.0 万/月 |
 | 一起搜电影 | [@sotv](https://t.me/sotv) | 影视搜索神器，支持群内使用 | 约 6.3 万/月 |
 | 阿里云盘搜索机器人🤖️ | [@aliyunshare_bot](https://t.me/aliyunshare_bot) | 阿里云盘资源搜索与投稿 | — |
 | 阿里云盘资源 Bot | [@AliYunPanBot](https://t.me/AliYunPanBot) | 阿里云盘资源搜索与投稿 | — |
@@ -126,8 +125,7 @@ Telegram 官方提供的账号与频道，涵盖会员、建号、贴纸、认�
 
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| 入群验证机器人 | [@P4CaptchaBot](https://t.me/P4CaptchaBot) | 简单中文验证码，适合大多数群 | 约 1.2 万/月 |
-| 验证机器人 | [@group_confirmation_bot](https://t.me/group_confirmation_bot) | 简单中文验证码，适合大多数群 | — |
+| 入群验证机器人 | [@P4CaptchaBot](https://t.me/P4CaptchaBot) | 简洁中文验证码，开源可自部署，适合大多数群 | 约 1.2 万/月 |
 | Policr | [@policr_bot](https://t.me/policr_bot) | 支持自定义问题，可设置收费模式 | — |
 | Shieldy | [@shieldy_bot](https://t.me/shieldy_bot) | 老牌进群验证工具 | 约 20.1 万/月 |
 | 大掌门 | [@FengDoorBot](https://t.me/FengDoorBot) | 进群验证 + 欢迎消息 + 定时删除 | — |
@@ -171,11 +169,9 @@ Telegram 官方提供的账号与频道，涵盖会员、建号、贴纸、认�
 <!-- AUTO:bots-category:download:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
+| 多平台解析下载机器人 | [@freedlvideo_bot](https://t.me/freedlvideo_bot) | 支持 X（Twitter）、YouTube、B站、抖音、小红书、Instagram 等 | — |
 | AI在线解析视频 (DC5) | [@bilibiliparse_bot](https://t.me/bilibiliparse_bot) | B站 + 多平台解析 | — |
 | 🇺🇦YoutubeDL - YouTube Download Bot | [@YtbDownBot](https://t.me/YtbDownBot) | YouTube 下载 | 约 4.6 万/月 |
-| utubebot | [@utubest_Bot](https://t.me/utubest_Bot) | YouTube 下载 | — |
-| GatMedia > SaveMediaBot | [@getmediabot](https://t.me/getmediabot) | 音乐搜索下载 | — |
-| TG Downloader | [@GIFDownloader_bot](https://t.me/GIFDownloader_bot) | GIF 图片下载 | — |
 <!-- AUTO:bots-category:download:end -->
 
 > 提示：部分解析机器人支持在群内直接使用，方便分享资源。请勿用于下载侵权内容。
@@ -191,15 +187,6 @@ AI 机器人增长最快、迭代极快，稳定性参差。本列表不固定�
 
 <!-- AUTO:bots-category:ai:start -->
 <!-- AUTO:bots-category:ai:end -->
-
-### 通知订阅类 Telegram 机器人
-
-<!-- AUTO:bots-category:rss:start -->
-| 名称 | 链接 | 核心功能 | 月活 |
-|------|------|----------|------|
-| NodeRSSBot | [@NodeRSS_bot](https://t.me/NodeRSS_bot) | 支持自部署 | — |
-| flowerss | [@rssflowbot](https://t.me/rssflowbot) | 支持应用内阅读 | — |
-<!-- AUTO:bots-category:rss:end -->
 
 ### 翻译类 Telegram 机器人
 
@@ -247,7 +234,6 @@ AI 机器人增长最快、迭代极快，稳定性参差。本列表不固定�
 <!-- AUTO:bots-category:game:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| Quiz Bot ✓ | [@quizbot](https://t.me/quizbot) | 创建和分享多媒体答题游戏，带排行榜与统计，适合群内娱乐或自测知识挑战。 | 约 162.0 万/月 |
 | Gamee ✓ | [@gamee](https://t.me/gamee) | HTML5 小游戏平台，含体育、益智、街机等多款，支持群内对战与高分排行。 | 约 28.2 万/月 |
 | GameBot ✓ | [@gamebot](https://t.me/gamebot) | Telegram 官方游戏平台，提供经典 HTML5 小游戏示例，支持单人或群内体验。 | 约 16.8 万/月 |
 | Inline Games 🎲 | [@inlinegamesbot](https://t.me/inlinegamesbot) | 通过 inline 模式在任意聊天直接玩实时多人小游戏，无需添加即可快速娱乐。 | — |
@@ -260,14 +246,11 @@ AI 机器人增长最快、迭代极快，稳定性参差。本列表不固定�
 <!-- AUTO:bots-category:tools:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| DropMail.me | [@DropmailBot](https://t.me/DropmailBot) | 临时邮箱 | 约 3.2 万/月 |
-| dicbot | [@dicbot](https://t.me/dicbot) | 词典查询 | — |
-| Weather bot | [@WeatherBot](https://t.me/WeatherBot) | 天气机器人 | — |
-| APK Downloader | [@apkdl_bot](https://t.me/apkdl_bot) | APK 下载 | — |
-| Lottery Bot V2 | [@tgLotteryBot](https://t.me/tgLotteryBot) | 抽奖助手 | — |
-| 抽奖助手 | [@LotteryHelperBot](https://t.me/LotteryHelperBot) | 抽奖助手 | — |
-| 抽奖秘书 | [@fengdrawbot](https://t.me/fengdrawbot) | 峰哥抽奖机器人，便于在 Telegram 群组中举办抽奖活动和增加用户参与度。 | — |
-| Telegram 抽奖助手 | [@cnLottery_bot](https://t.me/cnLottery_bot) | 中文抽奖机器人，适合群组和频道组织公开透明的抽奖和促销活动。 | — |
+| DropMail.me | [@DropmailBot](https://t.me/DropmailBot) | 临时邮箱：即开即用，用于注册服务时收验证码 | 约 3.2 万/月 |
+| dicbot | [@dicbot](https://t.me/dicbot) | 词典查询：英文单词释义与例句 | — |
+| Weather bot | [@WeatherBot](https://t.me/WeatherBot) | 天气查询：按城市查当前天气与预报 | — |
+| APK Downloader | [@apkdl_bot](https://t.me/apkdl_bot) | APK 下载：从 Google Play 取安装包 | — |
+| Telegram 抽奖助手 | [@cnLottery_bot](https://t.me/cnLottery_bot) | 群组抽奖：公平公正的公开抽奖工具 | — |
 <!-- AUTO:bots-category:tools:end -->
 
 ## 安全与隐私建议
@@ -291,7 +274,7 @@ AI 机器人增长最快、迭代极快，稳定性参差。本列表不固定�
 ```
 名称：
 链接（t.me/xxx）：
-分类：官方 / 搜索 / 群管 / 下载 / AI / RSS / 工具
+分类：官方 / 搜索 / 群管 / 下载 / AI / 工具
 一句话描述：
 是否官方：是 / 否
 开源仓库（如有）：
@@ -306,8 +289,11 @@ AI 机器人增长最快、迭代极快，稳定性参差。本列表不固定�
 本列表基于 `data/bots.json` 结构化维护，每周由 GitHub Actions 自动抓取活跃度并核验失效条目。
 
 - **最近核验**：见顶部"最近核验"行（由脚本每次全量核验后自动写入）
-- **当前规模**：11 大分类 · 75 条 bot（其中 5 条精选必装，详见上方各分类）
+- **当前规模**：9 大分类 · 66 条 bot（其中 5 条精选必装，详见上方各分类）
 - **主要更新轨迹**：
+  - 2026-11：精简低质条目（移除即将停运的 GIF Downloader、重复的验证码 bot 与三个抽奖 bot 等 7 条，73→66）；Top 10 改为只排第三方 bot，官方号不再霸榜；tools 收敛为 5 条并按用途写清说明
+  - 精选区按「每场景取月活最高且在运营的一个」重排：搜索位换为 @soso，下载位换为 @instasave_bot，娱乐位补入 @QuizBot
+  - 2026-11：移除 RSS 分类（4 条全无月活、整体使用率低），新增「Telegram 官方账号」分类（会员 / 建号 / 贴纸 / 认证 / 申诉 / 客户端官方入口）；搜索类改为带 `?start=` 深链；清理已停运的 i快搜 / SE-索引秘书 / 群组大全_Bot / TGCN-群组频道狐，列表只保留在运营的机器人
   - 2026-10：全量重新核验全部条目；移除 5 条已失效（@kuaisou1_bot、@jisou2bot、@fanhaosearchbot、@jqs7zweibot、@fuckuspambot）与 3 条已不再是 Bot 的条目（@TGreCAPTCHABot、@Grinx_bot 已变为频道，@sousuo 为个人账号）；修复每周核验只抓取新条目、从未重新核验的问题
   - `t.me` 域名解析已恢复，所有链接改回 `https://t.me/xxx`（此前因注册局 serverHold 临时改用 telegram.me）
   - 聚焦"高质量中文 TG Bot 导航列表"定位，移除尚未落地的自建示例 / 部署 / 框架对比等板块
@@ -316,7 +302,6 @@ AI 机器人增长最快、迭代极快，稳定性参差。本列表不固定�
   - 补全目录，统一贡献格式与失效反馈机制
   - 群组管理与安全类补充分类与具体机器人
   - 扩展至 9 大分类（新增翻译 / 签到打卡 / 频道推送三类高需求方向）
-  - 2026-11：新增「Telegram 官方账号」分类（会员 / 建号 / 贴纸 / 认证 / 申诉 / 客户端官方入口）；搜索类改为带 `?start=` 深链；清理已停运的 i快搜 / SE-索引秘书 / 群组大全_Bot / TGCN-群组频道狐，列表只保留在运营的机器人
   - 上线 bots.json + 自动抓取 + 渲染 + CI 每周核验管线，每条带真实月活数据
   - featured bot 在分类区去重，避免重复出现
 

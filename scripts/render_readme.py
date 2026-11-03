@@ -6,7 +6,7 @@ Per SPEC §4 Task C (M4):
 - Reads data/bots.json (sole source of truth for bot list content)
 - Replaces ONLY content inside AUTO:* markers
 - Leaves all prose, headings, and non-marker text byte-for-byte unchanged
-- Supports last-verified, bots-featured, and 6 category markers (search/group/download/ai/rss/tools)
+- Supports last-verified, bots-featured, and 6 category markers (search/group/download/ai/tools)
 - Group category renders subsection headers (verify/ads/stats/misc)
 - Dead bots are shown with failure marker; once fetch.dead_streak >= HIDE_AFTER
   (3 consecutive dead checks) they are hidden from README (kept in bots.json)
@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_FILE = ROOT / "data" / "bots.json"
 README_FILE = ROOT / "README.md"
 
-VALID_CATEGORIES = {"official", "search", "group", "download", "ai", "rss", "tools", "translate", "checkin", "channel", "game"}
+VALID_CATEGORIES = {"official", "search", "group", "download", "ai", "tools", "translate", "checkin", "channel", "game"}
 
 HIDE_AFTER = 3  # keep in sync with scripts/fetch_bots.py
 
@@ -288,7 +288,7 @@ def render_category(cat: str, bots_in_cat: list[dict]) -> str:
                     lines.append(item)
         return "\n".join(lines)
 
-    # Normal categories (search, download, rss, tools, translate, checkin, channel, game, ...)
+    # Normal categories (search, download, tools, translate, checkin, channel, game, ...)
     lines: list[str] = []
     if table_bots:
         lines.append("| 名称 | 链接 | 核心功能 | 月活 |")
@@ -390,7 +390,6 @@ def main():
         "group": "bots-category:group",
         "download": "bots-category:download",
         "ai": "bots-category:ai",
-        "rss": "bots-category:rss",
         "tools": "bots-category:tools",
         "translate": "bots-category:translate",
         "checkin": "bots-category:checkin",
@@ -409,7 +408,7 @@ def main():
     print(f"  - featured: {len(featured)} entries")
     if hidden:
         print(f"  - hidden (dead x{HIDE_AFTER}+): {', '.join(b['id'] for b in hidden)}")
-    for cat in ["official", "search", "group", "download", "ai", "rss", "tools", "translate", "checkin", "channel", "game"]:
+    for cat in ["official", "search", "group", "download", "ai", "tools", "translate", "checkin", "channel", "game"]:
         print(f"  - {cat}: {len(by_cat.get(cat, []))} entries")
 
 
