@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_FILE = ROOT / "data" / "bots.json"
 README_FILE = ROOT / "README.md"
 
-VALID_CATEGORIES = {"search", "group", "download", "ai", "rss", "tools", "translate", "checkin", "channel", "game"}
+VALID_CATEGORIES = {"official", "search", "group", "download", "ai", "rss", "tools", "translate", "checkin", "channel", "game"}
 
 HIDE_AFTER = 3  # keep in sync with scripts/fetch_bots.py
 
@@ -93,19 +93,20 @@ def get_monthly_cell(bot: dict) -> str:
     if status == "dead":
         return "❌ 已失效"
     nb = not_bot_label(bot)
-    if nb:
-        return nb
     mu = fetch.get("monthly_users")
+    if nb and (not mu or mu < 10000):
+        return nb
     if not mu or mu < 10000:
         return "—"
     num_str = format_num(int(mu))
     typ = (fetch.get("type") or "bot").lower()
     if typ == "channel":
-        return f"{num_str} 订阅"
+        cell = f"{num_str} 订阅"
     elif typ == "group":
-        return f"{num_str} 成员"
+        cell = f"{num_str} 成员"
     else:
-        return f"约 {num_str}/月"
+        cell = f"约 {num_str}/月"
+    return f"{nb} · {cell}" if nb else cell
 
 
 def get_active_badge(bot: dict) -> str:
@@ -151,19 +152,20 @@ def get_category_monthly(bot: dict) -> str:
             return f"❗已失效（{mon}）"
         return "❗已失效"
     nb = not_bot_label(bot)
-    if nb:
-        return nb
     mu = fetch.get("monthly_users")
+    if nb and (not mu or int(mu) < 10000):
+        return nb
     if not mu or int(mu) < 10000:
         return "—"
     num_str = format_num(int(mu))
     typ = (fetch.get("type") or "bot").lower()
     if typ == "channel":
-        return f"{num_str} 订阅"
+        cell = f"{num_str} 订阅"
     elif typ == "group":
-        return f"{num_str} 成员"
+        cell = f"{num_str} 成员"
     else:
-        return f"约 {num_str}/月"
+        cell = f"约 {num_str}/月"
+    return f"{nb} · {cell}" if nb else cell
 
 
 def render_category_table_row(bot: dict) -> str:
@@ -365,7 +367,8 @@ def main():
         cat = b.get("category")
         if cat in VALID_CATEGORIES:
             # Skip bots already shown in featured table to avoid duplicate listing
-            if b.get("id") in featured_ids:
+            # (official stays complete: 官方入口需要集中一处可查)
+            if b.get("id") in featured_ids and cat != "official":
                 continue
             by_cat[cat].append(b)
 
@@ -382,6 +385,7 @@ def main():
 
     # 3. categories
     cat_markers = {
+        "official": "bots-category:official",
         "search": "bots-category:search",
         "group": "bots-category:group",
         "download": "bots-category:download",
@@ -405,7 +409,7 @@ def main():
     print(f"  - featured: {len(featured)} entries")
     if hidden:
         print(f"  - hidden (dead x{HIDE_AFTER}+): {', '.join(b['id'] for b in hidden)}")
-    for cat in ["search", "group", "download", "ai", "rss", "tools", "translate", "checkin", "channel", "game"]:
+    for cat in ["official", "search", "group", "download", "ai", "rss", "tools", "translate", "checkin", "channel", "game"]:
         print(f"  - {cat}: {len(by_cat.get(cat, []))} entries")
 
 

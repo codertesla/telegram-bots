@@ -21,7 +21,7 @@ import sys
 from pathlib import Path
 from collections import defaultdict
 
-VALID_CATEGORIES = {"search", "group", "download", "ai", "rss", "tools", "translate", "checkin", "channel", "game"}
+VALID_CATEGORIES = {"official", "search", "group", "download", "ai", "rss", "tools", "translate", "checkin", "channel", "game"}
 VALID_SUBSECTIONS = {"verify", "ads", "stats", "misc", None, "bilingual", "auto", "zh-en", "publish", "index", "forward", "manage"}
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -117,6 +117,7 @@ def extract_marker_inners(readme: str) -> dict:
     marker_names = [
         "last-verified",
         "bots-featured",
+        "bots-category:official",
         "bots-category:search",
         "bots-category:group",
         "bots-category:download",
@@ -144,7 +145,7 @@ def find_marker_pairs(readme: str):
     errors = []
     marker_names = [
         "last-verified", "bots-featured",
-        "bots-category:search", "bots-category:group", "bots-category:download",
+        "bots-category:official", "bots-category:search", "bots-category:group", "bots-category:download",
         "bots-category:ai", "bots-category:rss", "bots-category:tools",
         "bots-category:translate", "bots-category:checkin", "bots-category:channel",
         "bots-category:game",
@@ -164,9 +165,10 @@ def find_marker_pairs(readme: str):
 def collect_rendered_urls(inners: dict) -> set:
     urls = set()
     for inner in inners.values():
-        found = re.findall(r'https://t\.me/([A-Za-z0-9_]+)', inner)
+        # Keep an optional ?start=... deep-link suffix so urls match json exactly
+        found = re.findall(r'https://t\.me/[A-Za-z0-9_]+(?:\?[A-Za-z0-9_=&%.:+-]*)?', inner)
         for u in found:
-            urls.add(f"https://t.me/{u}")
+            urls.add(u.rstrip(".,;"))
     return urls
 
 

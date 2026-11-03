@@ -13,13 +13,13 @@
 
 - 机器人名称
 - 链接（**必须用 `https://t.me/xxx` 格式**）
-- 分类：搜索 / 群管 / 下载 / AI / RSS / 工具
+- 分类：官方 / 搜索 / 群管 / 下载 / AI / RSS / 工具（官方指 Telegram 自家账号与频道）
 - 一句话描述（核心功能 + 适用场景）
 - 是否官方
 - 开源仓库（如有）
 
 ### 方式二：报告失效机器人
-在使用中发现列表里某机器人已失效，请提「机器人失效报告」Issue，打上 `dead-bot` 标签。维护者会核验后从 README 隐藏（仍保留在 `bots.json` 留痕）。
+在使用中发现列表里某机器人已失效，请提「机器人失效报告」Issue，打上 `dead-bot` 标签。维护者核验确认后会将该条从 `bots.json` 中直接移除，列表只保留在运营的机器人。
 
 ### 方式三：提 Pull Request
 直接修改 `data/bots.json`，新增一条 bot 对象即可。**不要直接改 README 表格**——它会由 `scripts/render_readme.py` 自动生成，手改会被下次渲染覆盖。
@@ -36,7 +36,7 @@
 | `id` | 是 | username 去掉 `@`、全小写，作为主键，全局唯一 |
 | `username` | 是 | 含 `@`，如 `@jiso` |
 | `url` | 是 | `https://t.me/<username>` |
-| `category` | 是 | `search` / `group` / `download` / `ai` / `rss` / `tools` |
+| `category` | 是 | `official` / `search` / `group` / `download` / `ai` / `rss` / `tools` / `translate` / `checkin` / `channel` / `game` |
 | `subsection` | 否 | 仅 `group` 类用：`verify` / `ads` / `stats` / `misc` |
 | `featured` | 否 | `true` 进"精选必装"区，全区 ≤ 5 条 |
 | `official` | 否 | 人工判断是否官方；抓取拿到的 Telegram 蓝勾优先级更高 |
@@ -82,13 +82,14 @@ README 用 marker 包裹自动区块，其余散文由人工维护、**逐字符
 <!-- AUTO:bots-category:download:start --> … :end -->
 <!-- AUTO:bots-category:ai:start --> … :end -->
 <!-- AUTO:bots-category:rss:start --> … :end -->
+<!-- AUTO:bots-category:official:start --> … :end -->
 <!-- AUTO:bots-category:tools:start --> … :end -->
 ```
 
 `scripts/render_readme.py` 读 `bots.json` 重写 marker 区块。渲染规则：
 - 精选区：表格列 `名称 | 链接 | 一句话用途 | 月活`
 - 月活显示：bot `约 30 万/月`、channel `30 万 订阅`、group `30 万 成员`；≥1万用"万"、≥1亿用"亿"
-- dead 条目仍显示，加 `❗已失效（YYYY-MM）`；连续 3 次核验失效（`dead_streak ≥ 3`）后自动从 README 和站点隐藏（仍保留在 `bots.json` 留痕）
+- dead 条目仍显示，加 `❗已失效（YYYY-MM）`；连续 3 次核验失效（`dead_streak ≥ 3`）后自动从 README 和站点隐藏，随后由维护者从 `bots.json` 清理，列表只保留在运营的机器人
 - 页面仍存在但已不是 bot（`not_bot=true`，如变为频道/个人账号）：月活列显示 `⚠️已变为频道（非 Bot）` / `⚠️个人账号（非 Bot）`，`validate.py` 会打印警告，需人工复核后移除
 - 官方蓝勾或人工 official 在显示名后加 `✓`
 
@@ -161,7 +162,7 @@ python scripts/fetch_bots.py --sleep 3        # 调整限流（最小 1s 强制�
 - **稳定**：优先长期运营、有月活数据佐证的
 - **干净**：不收机场、流量卡、涨粉、博彩拉新、色情导航等灰产类
 - **去重**：精选区 ≤ 5 条，分类区按 username 去重
-- **失效即标**：连续 2 次核验失效标 `❗已失效`，连续 3 次则从 README / 站点自动隐藏（`bots.json` 留痕，维护者可定期清理）
+- **失效即清**：连续 2 次核验失效标 `❗已失效`，连续 3 次自动从 README / 站点隐藏，之后由维护者从 `bots.json` 删除，保持列表全部可用
 - **AI 类慎收**：AI 机器人迭代太快，`category=ai` 可用 `url=null` 占位（只渲染散文引导，不固定具体账号）
 
 ---

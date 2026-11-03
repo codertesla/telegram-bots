@@ -21,6 +21,7 @@ DATA_FILE = ROOT / "data" / "bots.json"
 OUT_FILE = ROOT / "docs" / "index.html"
 
 CATEGORY_TITLES = {
+    "official": ("Telegram 官方账号", "✅ Telegram 官方提供的会员、建号、认证、申诉与客户端入口"),
     "search": ("Telegram 搜索与发现类机器人", "🔍 用于查找群组、频道、视频、音乐、文件等资源"),
     "group": ("Telegram 群组管理与安全类机器人", "🛡️ 防止水军、广告、刷屏；建议 1-2 个验证类 + 1 个拦截类组合使用"),
     "download": ("资源解析与下载类机器人", "🎬 支持多平台内容获取（请遵守相关平台版权规定）"),
@@ -33,7 +34,7 @@ CATEGORY_TITLES = {
     "game": ("游戏娱乐类电报机器人", "🎮 群内小游戏、单人休闲、互动娱乐"),
 }
 
-CATEGORY_ORDER = ["search", "group", "download", "ai", "rss", "translate", "checkin", "channel", "game", "tools"]
+CATEGORY_ORDER = ["official", "search", "group", "download", "ai", "rss", "translate", "checkin", "channel", "game", "tools"]
 
 HIDE_AFTER = 3  # keep in sync with scripts/fetch_bots.py
 
@@ -89,10 +90,14 @@ def monthly_label(bot):
         fa = fetch.get("fetched_at", "")
         ym = fa[:7] if fa else "—"
         return f'<span class="badge badge-dead">❗已失效（{ym}）</span>'
+    users = fetch.get("monthly_users")
     if is_not_bot(bot):
         label = NOT_BOT_LABELS.get(fetch.get("page_kind"), "⚠️非 Bot")
-        return f'<span class="badge badge-dead">{label}</span>'
-    users = fetch.get("monthly_users")
+        badge = f'<span class="badge badge-dead">{label}</span>'
+        if not users:
+            return badge
+        unit = {"bot": "/月", "channel": " 订阅", "group": " 成员"}.get(fetch.get("type") or "bot", "/月")
+        return f'{badge}<br><strong>{format_num(users)}</strong>{unit.lstrip()}'
     if not users:
         return '<span class="muted">—</span>'
     typ = fetch.get("type") or "bot"
@@ -239,17 +244,18 @@ def render_featured(featured_bots):
 def build_html(data):
     bots = [b for b in data.get("bots", []) if not is_hidden(b)]
     featured = [b for b in bots if b.get("featured")]
-    non_featured = [b for b in bots if not b.get("featured")]
-
     by_cat = {}
-    for b in non_featured:
+    for b in bots:
         cat = b.get("category")
-        if cat in CATEGORY_TITLES:
+        # official 分类保持完整：精选里的官方入口同样列出
+        if cat in CATEGORY_TITLES and (not b.get("featured") or cat == "official"):
             by_cat.setdefault(cat, []).append(b)
 
     total = len(bots)
     ok_count = sum(1 for b in bots if b.get("fetch", {}).get("status") == "ok" and not is_not_bot(b))
     last_label = data.get("last_verified_label") or (data.get("last_fetched_at", "")[:7] or "—")
+
+    cat_count = len(CATEGORY_ORDER)
 
     featured_html = render_featured(featured)
     top10_html = render_top10(bots)
@@ -265,7 +271,7 @@ def build_html(data):
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>电报机器人大全 | 精选实用 Telegram Bot 推荐（{last_label}）</title>
-  <meta name="description" content="中文 Telegram 机器人导航列表：{total} 条精选 bot，带真实月活数据，每周自动核验失效。覆盖搜索、群管、下载、AI、RSS、翻译、签到、频道推送、游戏、工具 10 大分类。">
+  <meta name="description" content="中文 Telegram 机器人导航列表：{total} 条精选 bot，带真实月活数据，每周自动核验失效。覆盖官方、搜索、群管、下载、AI、RSS、翻译、签到、频道推送、游戏、工具 11 大分类。">
   <meta name="keywords" content="电报机器人,Telegram 机器人,TG 机器人,Telegram Bot 推荐,群管理机器人,中文 TG Bot">
   <meta property="og:title" content="电报机器人大全 | 精选实用 Telegram Bot 推荐">
   <meta property="og:description" content="{total} 条精选中文 Telegram Bot，带真实月活数据，每周自动核验失效。">
@@ -518,6 +524,7 @@ footer p {{ color: var(--text-secondary); font-size: 0.85rem; }}
         <ul>
           <li><a href="#featured">精选</a></li>
           <li><a href="#top10">Top 10</a></li>
+          <li><a href="#cat-official">官方</a></li>
           <li><a href="#cat-search">搜索</a></li>
           <li><a href="#cat-group">群管</a></li>
           <li><a href="#cat-download">下载</a></li>
@@ -538,10 +545,10 @@ footer p {{ color: var(--text-secondary); font-size: 0.85rem; }}
   <main class="container">
     <section class="hero">
       <h1>中文 Telegram 机器人导航</h1>
-      <p>精选 {total} 条活跃电报机器人，按 10 大场景分类组织，每条带真实月活数据，每周由 GitHub Actions 自动核验失效。</p>
+      <p>精选 {total} 条活跃电报机器人，按 {cat_count} 大场景分类组织，每条带真实月活数据，每周由 GitHub Actions 自动核验失效。</p>
       <div class="stats-grid">
         <div class="stat-card"><div class="stat-num">{total}</div><div class="stat-label">收录 Bot</div></div>
-        <div class="stat-card"><div class="stat-num">10</div><div class="stat-label">分类</div></div>
+        <div class="stat-card"><div class="stat-num">{cat_count}</div><div class="stat-label">分类</div></div>
         <div class="stat-card"><div class="stat-num">{ok_count}</div><div class="stat-label">活跃中</div></div>
         <div class="stat-card"><div class="stat-num">{last_label}</div><div class="stat-label">最近核验</div></div>
       </div>

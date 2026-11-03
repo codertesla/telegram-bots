@@ -8,3 +8,6 @@ bak/
 # Python cache
 __pycache__/
 *.pyc
+
+# Local venv
+.venv/

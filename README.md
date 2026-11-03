@@ -19,7 +19,7 @@
 - **排版更友好**：使用表格 + 锚点 + emoji，GitHub 上阅读体验极佳
 - **干扰更少**：不夹杂大量推广和 affiliate 链接
 - **关键词覆盖全**：标题、分类、描述均自然对应大家的常用搜索词
-- **易于维护**：格式统一，便于持续更新与失效核验
+- **易于维护**：格式统一，便于持续更新与失效清理
 
 ## 目录
 
@@ -27,6 +27,7 @@
 - [如何把机器人加到群组](#如何把机器人加到群组)
 - [精选必装的 Telegram 机器人](#精选必装的-telegram-机器人)
 - [按用途分类的电报机器人推荐](#按用途分类的电报机器人推荐)
+  - [Telegram 官方账号](#telegram-官方账号)
   - [Telegram 搜索与发现类机器人](#telegram-搜索与发现类机器人)
   - [Telegram 群组管理与安全类机器人](#telegram-群组管理与安全类机器人)
   - [资源解析与下载类机器人](#资源解析与下载类机器人)
@@ -70,8 +71,8 @@
 <!-- AUTO:bots-featured:start -->
 | 名称 | 链接 | 一句话用途 | 月活 |
 |------|------|------------|------|
-| BotFather ✓ | [@BotFather](https://t.me/BotFather) | 官方入口：创建和管理你自己的机器人 | 约 796.6 万/月 |
-| 极搜🔍中文搜索@JISO | [@jiso](https://t.me/jiso) | 搜索群、频道、视频、音乐、电影、新闻，综合能力强 | 约 40.0 万/月 |
+| BotFather ✓ | [@BotFather](https://t.me/BotFather) | Telegram 官方：创建机器人、设置命令与菜单、获取 API Token | 约 796.6 万/月 |
+| 极搜🔍中文搜索@JISO | [@jiso](https://t.me/jiso?start=a_6480909132) | 搜索群、频道、视频、音乐、电影、新闻，综合能力强 | 约 40.0 万/月 |
 | Combot | [@combot](https://t.me/combot) | 功能全面的群管理机器人 | 约 84.0 万/月 |
 | RSS屋 | [@RSSWBot](https://t.me/RSSWBot) | 全文 RSS 订阅 + 关键词过滤 | — |
 | 多平台解析下载机器人 | [@freedlvideo_bot](https://t.me/freedlvideo_bot) | 支持 X（Twitter）、YouTube、B站、抖音、小红书、Instagram 等 | — |
@@ -81,6 +82,23 @@
 
 ## 按用途分类的电报机器人推荐
 
+### Telegram 官方账号
+
+Telegram 官方提供的账号与频道，涵盖会员、建号、贴纸、认证、申诉和客户端下载，优先认准以下官方入口。
+
+<!-- AUTO:bots-category:official:start -->
+| 名称 | 链接 | 核心功能 | 月活 |
+|------|------|----------|------|
+| Premium Bot ✓ | [@PremiumBot](https://t.me/PremiumBot) | Telegram 官方：开通 Premium 会员（星标、更大上传、双倍限额等） | 约 679.3 万/月 |
+| Telegram Premium ✓ | [@premium](https://t.me/premium) | Telegram 官方 Premium 会员功能介绍与权益说明频道 | ⚠️已变为频道（非 Bot） · 637.3 万 订阅 |
+| BotFather ✓ | [@BotFather](https://t.me/BotFather) | Telegram 官方：创建机器人、设置命令与菜单、获取 API Token | 约 796.6 万/月 |
+| Stickers Bot ✓ | [@Stickers](https://t.me/Stickers) | Telegram 官方：创建、导入、管理自定义贴纸与表情包 | 约 65.1 万/月 |
+| Verify Bot ✓ | [@VerifyBot](https://t.me/VerifyBot) | Telegram 官方：公共账号/人物的认证申请入口 | 约 1.9 万/月 |
+| Spam Info Bot ✓ | [@SpamBot](https://t.me/SpamBot) | Telegram 官方：查询账号是否被限制、提交解封申诉、举报垃圾信息 | 约 3428.4 万/月 |
+| Telegram APKs for Android ✓ | [@TAndroidAPK](https://t.me/TAndroidAPK) | Telegram 官方 Android 客户端 APK 发布频道 | ⚠️已变为频道（非 Bot） · 25.9 万 订阅 |
+| Telegram X APKs & Build Info ✓ | [@tgx_log](https://t.me/tgx_log) | Telegram X 官方更新历史与安装包发布频道 | ⚠️已变为频道（非 Bot） · 6.3 万 订阅 |
+<!-- AUTO:bots-category:official:end -->
+
 ### Telegram 搜索与发现类机器人
 
 用于查找群组、频道、视频、音乐、文件等资源。
@@ -88,19 +106,15 @@
 <!-- AUTO:bots-category:search:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| SOSO搜搜 | [@soso](https://t.me/soso) | 关键词搜索群组、频道、视频 | 约 116.6 万/月 |
+| SOSO搜搜 | [@soso](https://t.me/soso?start=a_6480909132) | 关键词搜索群组、频道、视频 | 约 116.6 万/月 |
 | 一起搜电影 | [@sotv](https://t.me/sotv) | 影视搜索神器，支持群内使用 | 约 6.3 万/月 |
 | 阿里云盘搜索机器人🤖️ | [@aliyunshare_bot](https://t.me/aliyunshare_bot) | 阿里云盘资源搜索与投稿 | — |
 | 阿里云盘资源 Bot | [@AliYunPanBot](https://t.me/AliYunPanBot) | 阿里云盘资源搜索与投稿 | — |
 | Video Search for YouTube | [@youtube](https://t.me/youtube) | YouTube 搜索 | 约 22.7 万/月 |
-| 🐴 神马搜索 🔍 | [@smss](https://t.me/smss) | 发送关键词即可搜索关联群组与频道资源，适合中文用户发现兴趣社区和内容聚合。 | 约 81.2 万/月 |
-| 🔍超级索引 @CJSY | [@CJSY](https://t.me/CJSY) | 超级索引支持多维度搜索群组频道与媒体，适用于中文用户高效发现 Telegram 资源。 | 约 89.7 万/月 |
+| 🐴 神马搜索 🔍 | [@smss](https://t.me/smss?start=spread_6480909132) | 发送关键词即可搜索关联群组与频道资源，适合中文用户发现兴趣社区和内容聚合。 | 约 81.2 万/月 |
+| 🔍超级索引 @CJSY | [@CJSY](https://t.me/CJSY?start=6480909132) | 超级索引支持多维度搜索群组频道与媒体，适用于中文用户高效发现 Telegram 资源。 | 约 89.7 万/月 |
 | 搜啦🔍资源搜索机器人 @soula | [@soula](https://t.me/soula) | 搜啦机器人通过关键词检索群和频道内容，帮助用户快速找到感兴趣的中文社区。 | 约 2.3 万/月 |
-| i快搜-🔍强大的搜索引擎 | [@ikuaisobot](https://t.me/ikuaisobot) | 快搜索引机器人专注中文群组发现，输入关键词即可定位相关 Telegram 资源入口。 | — |
-| aiso中文搜索🔍 | [@aiso](https://t.me/aiso) | 简易搜索入口，支持发送词语查找群组与公开内容，适合新手用户快速上手。 | 约 1.8 万/月 |
-| SE-索引秘书 | [@zh_secretary_bot](https://t.me/zh_secretary_bot) | 中文秘书类搜索工具，协助索引和发现各类 Telegram 群组与频道资源。 | — |
-| 群组大全_Bot | [@qunzudaquan_bot](https://t.me/qunzudaquan_bot) | 群组大全索引机器人，提供大量中文群组目录搜索，方便用户按需加入社群。 | — |
-| TGCN-群组频道狐🦊(不是猫) | [@zh_groups_bot](https://t.me/zh_groups_bot) | 中文群组搜索机器人，专注于推荐和发现各类主题的 Telegram 群聊资源。 | — |
+| aiso中文搜索🔍 | [@aiso](https://t.me/aiso?start=telegram_6480909132) | 简易搜索入口，支持发送词语查找群组与公开内容，适合新手用户快速上手。 | 约 1.8 万/月 |
 <!-- AUTO:bots-category:search:end -->
 
 ### Telegram 群组管理与安全类机器人
@@ -277,7 +291,7 @@ AI 机器人增长最快、迭代极快，稳定性参差。本列表不固定�
 ```
 名称：
 链接（t.me/xxx）：
-分类：搜索 / 群管 / 下载 / AI / RSS / 工具
+分类：官方 / 搜索 / 群管 / 下载 / AI / RSS / 工具
 一句话描述：
 是否官方：是 / 否
 开源仓库（如有）：
@@ -285,14 +299,14 @@ AI 机器人增长最快、迭代极快，稳定性参差。本列表不固定�
 
 **链接格式约定**：请统一使用 **`https://t.me/xxx`** 格式提交。
 
-我们优先收录**实用、稳定、用户体验好**的机器人，并会在后续核验中移除长期失效的条目。
+我们优先收录**实用、稳定、用户体验好**的机器人；确认失效的条目会被直接移除，保证列表里全是在运营的机器人。
 
 ## 更新记录
 
 本列表基于 `data/bots.json` 结构化维护，每周由 GitHub Actions 自动抓取活跃度并核验失效条目。
 
 - **最近核验**：见顶部"最近核验"行（由脚本每次全量核验后自动写入）
-- **当前规模**：9 大分类 · 72 条 bot（其中 5 条精选必装，详见上方各分类）
+- **当前规模**：11 大分类 · 75 条 bot（其中 5 条精选必装，详见上方各分类）
 - **主要更新轨迹**：
   - 2026-10：全量重新核验全部条目；移除 5 条已失效（@kuaisou1_bot、@jisou2bot、@fanhaosearchbot、@jqs7zweibot、@fuckuspambot）与 3 条已不再是 Bot 的条目（@TGreCAPTCHABot、@Grinx_bot 已变为频道，@sousuo 为个人账号）；修复每周核验只抓取新条目、从未重新核验的问题
   - `t.me` 域名解析已恢复，所有链接改回 `https://t.me/xxx`（此前因注册局 serverHold 临时改用 telegram.me）
@@ -302,6 +316,7 @@ AI 机器人增长最快、迭代极快，稳定性参差。本列表不固定�
   - 补全目录，统一贡献格式与失效反馈机制
   - 群组管理与安全类补充分类与具体机器人
   - 扩展至 9 大分类（新增翻译 / 签到打卡 / 频道推送三类高需求方向）
+  - 2026-11：新增「Telegram 官方账号」分类（会员 / 建号 / 贴纸 / 认证 / 申诉 / 客户端官方入口）；搜索类改为带 `?start=` 深链；清理已停运的 i快搜 / SE-索引秘书 / 群组大全_Bot / TGCN-群组频道狐，列表只保留在运营的机器人
   - 上线 bots.json + 自动抓取 + 渲染 + CI 每周核验管线，每条带真实月活数据
   - featured bot 在分类区去重，避免重复出现
 
