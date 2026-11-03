@@ -23,7 +23,7 @@ import sys
 from pathlib import Path
 from collections import defaultdict
 
-VALID_CATEGORIES = {"official", "search", "group", "download", "ai", "tools", "translate", "checkin", "channel", "game"}
+VALID_CATEGORIES = {"official", "search", "group", "download", "ai", "tools", "translate", "checkin", "channel", "game", "crypto"}
 VALID_SUBSECTIONS = {"verify", "ads", "stats", "misc", None, "bilingual", "auto", "zh-en", "publish", "index", "forward", "manage"}
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -129,6 +129,7 @@ def extract_marker_inners(readme: str) -> dict:
         "bots-category:checkin",
         "bots-category:channel",
         "bots-category:game",
+        "bots-category:crypto",
     ]
     for m in marker_names:
         start = f"<!-- AUTO:{m}:start -->"
@@ -149,7 +150,7 @@ def find_marker_pairs(readme: str):
         "bots-category:official", "bots-category:search", "bots-category:group", "bots-category:download",
         "bots-category:ai", "bots-category:tools",
         "bots-category:translate", "bots-category:checkin", "bots-category:channel",
-        "bots-category:game",
+        "bots-category:game", "bots-category:crypto",
     ]
     for m in marker_names:
         start = f"<!-- AUTO:{m}:start -->"

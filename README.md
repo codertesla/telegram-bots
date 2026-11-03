@@ -2,7 +2,7 @@
 
 > 按真实月活与场景筛选，每周自动验活，剔除死链与伪装频道
 
-收录 **9 大高频场景、66 个在运营 Bot**。所有条目由脚本每周抓取 Telegram 公开月活数据（MAU）并核验连通性，助你快速定位可用的群管、检索、解析与效率工具。
+收录 **10 大高频场景、70 个在运营 Bot**。所有条目由脚本每周抓取 Telegram 公开月活数据（MAU）并核验连通性，助你快速定位可用的群管、检索、解析、链上交易与效率工具。
 
 <!-- AUTO:last-verified:start -->
 > 最近核验：2026-11
@@ -23,6 +23,7 @@
 - [分类索引](#分类索引)
   - [官方账号](#官方账号)
   - [搜索发现](#搜索发现)
+  - [加密交易](#加密交易)
   - [群组管理](#群组管理)
   - [解析下载](#解析下载)
   - [AI 助手](#ai-助手)
@@ -102,6 +103,19 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 | 阿里云盘搜索机器人 | [@aliyunshare_bot](https://t.me/aliyunshare_bot) | 按关键词检索阿里云盘共享资源与群内投稿 | — |
 | 阿里云盘资源 Bot | [@AliYunPanBot](https://t.me/AliYunPanBot) | 阿里云盘资源检索、收藏、订阅与导出 | — |
 <!-- AUTO:bots-category:search:end -->
+
+### 加密交易
+
+在对话窗口内直接看行情、跟单与买卖链上代币。接入前请先用小额资金测试滑点与提现流程，并确认 Bot 的授权范围。
+
+<!-- AUTO:bots-category:crypto:start -->
+| 名称 | 链接 | 核心功能 | 月活 |
+|------|------|----------|------|
+| Trojan on Solana ✓ | [@solana_trojanbot](https://t.me/solana_trojanbot?start=r-flashbonk) | Solana 链上跟单与极速交易，支持限价单、止盈止损与多钱包管理 | 约 4.1 万/月 |
+| GMGN.AI | [@gmgnaibot](https://t.me/gmgnaibot?start=i_JyY0HbjE) | Solana 链上代币行情与一键买卖，支持跟单、限价与止盈止损 | 约 3.3 万/月 |
+| Maestro | [@maestro](https://t.me/maestro?start=r-flashbonk) | 以太坊与 Solana 等多链代币狙击买入，支持跟单、限价与自动止盈止损 | 约 2.7 万/月 |
+| BONKbot | [@bonkbot_bot](https://t.me/bonkbot_bot?start=ref_xpnm5) | Bonk 生态代币极速买卖，支持限价单、止损与防夹子模式 | 约 1.6 万/月 |
+<!-- AUTO:bots-category:crypto:end -->
 
 ### 群组管理
 
@@ -258,7 +272,7 @@ AI 对话类 Bot 迭代与停运极快，固定收录极易失效。建议直接
 ```text
 名称：
 链接（https://t.me/xxx）：
-分类：official / search / group / download / ai / translate / checkin / channel / game / tools
+分类：official / search / crypto / group / download / ai / translate / checkin / channel / game / tools
 一句话功能描述：
 是否官方：是 / 否
 开源仓库（如有）：
@@ -268,9 +282,9 @@ AI 对话类 Bot 迭代与停运极快，固定收录极易失效。建议直接
 
 本仓库以 `data/bots.json` 为唯一数据源，每周由 GitHub Actions 自动抓取活跃度并核验失效条目。
 
-- **当前规模**：9 大活跃分类 · 66 个在运营条目（含 5 个精选主力入口）
+- **当前规模**：10 大活跃分类 · 70 个在运营条目（含 5 个精选主力入口）
 - **近期迭代**：
-  - **2026-11**：精简低质与重复条目（移除停运的 GIF Downloader、重复验证码与抽奖 Bot 等 7 条，73→66）；精选区按各场景最高月活重排（`@BotFather` / `@soso` / `@combot` / `@instasave_bot` / `@quizbot`）；移除无月活的 RSS 分类，新增「官方账号」分类；站名改为「电报机器人大全」，搜索分类改按月活降序，精选条目改为在所属分类中一并列出；排序改由渲染器按月活自动完成（无数据置底、失效最后），并新增 `validate --check order` 防回归
+  - **2026-11**：精简低质与重复条目（移除停运的 GIF Downloader、重复验证码与抽奖 Bot 等 7 条，73→66）；精选区按各场景最高月活重排（`@BotFather` / `@soso` / `@combot` / `@instasave_bot` / `@quizbot`）；移除无月活的 RSS 分类，新增「官方账号」分类；站名改为「电报机器人大全」，搜索分类改按月活降序，精选条目改为在所属分类中一并列出；排序改由渲染器按月活自动完成（无数据置底、失效最后），并新增 `validate --check order` 防回归；新增「加密交易」分类，收录 `@solana_trojanbot` / `@gmgnaibot` / `@maestro` / `@bonkbot_bot` 共 4 个链上交易 Bot
   - **2026-10**：全量重验所有条目，清理 5 条停运死号与 3 条已转为频道/个人号的失效条目；修复每周巡检仅抓取新条目而不复核存量条目的问题；恢复 `https://t.me/xxx` 标准链接并上线 `bots.json` 自动抓取、渲染与校验管线
 
 ## 开发参考

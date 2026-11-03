@@ -31,9 +31,10 @@ CATEGORY_TITLES = {
     "checkin": ("签到打卡", "群内每日打卡、连续天数统计与考勤汇总，量化社群活跃度与团队出勤"),
     "channel": ("频道推送", "富媒体排版、定时发布队列与跨频道规则转发，适合频道主日常运营"),
     "game": ("游戏娱乐", "群内实时抢答、HTML5 对战小游戏与文字冒险，无需跳出聊天窗口即可发起互动"),
+    "crypto": ("加密交易", "在 Telegram 内直接看行情、跟单与买卖链上代币，适合 Solana 等公链的高频交易"),
 }
 
-CATEGORY_ORDER = ["official", "search", "group", "download", "ai", "translate", "checkin", "channel", "game", "tools"]
+CATEGORY_ORDER = ["official", "search", "crypto", "group", "download", "ai", "translate", "checkin", "channel", "game", "tools"]
 
 HIDE_AFTER = 3  # keep in sync with scripts/fetch_bots.py
 

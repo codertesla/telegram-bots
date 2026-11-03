@@ -1718,6 +1718,110 @@
         "dead_streak": 0,
         "error_msg": null
       }
+    },
+    {
+      "id": "gmgnaibot",
+      "username": "@gmgnaibot",
+      "url": "https://t.me/gmgnaibot?start=i_JyY0HbjE",
+      "category": "crypto",
+      "subsection": null,
+      "featured": false,
+      "official": false,
+      "notes": "Solana 链上代币行情与一键买卖，支持跟单、限价与止盈止损",
+      "fetch": {
+        "status": "ok",
+        "http_code": 200,
+        "fetched_at": "2026-11-03T15:20:01.178330+00:00",
+        "title": "GMGN.AI",
+        "description": null,
+        "extra_raw": "33 337 monthly users",
+        "monthly_users": 33337,
+        "type": "bot",
+        "is_verified": false,
+        "photo_url": "https://cdn5.telesco.pe/file/mmrsjpD7dxNXdqZaOqr82gbVwFcmYKeoKWBn15t08u_vZm_oD1t0l-Xufa81bcMRc4XFc9HbDevGJUyMHjd4jT6YyJy607pkfSCVqT9j3IVAGHvKGU5alGKM7WZzXWOq5fm-5lZThz0sYgHY7lS_iVBR0qmH6ReoXkEaJnaO_kWSA-n1AwzsMevn2-_Oz0TD4XW__f3T3gPD1FTk5oyhNOw1CexINMq2IQu0KikhGGXqiNVOvc13txBXIkhKDxQ3YpNUeKiWbTRSZuhvJxC4NtsXSiRU39JG-NZdSUfZ6KdhYObXdh531S-pnmzeNS0LPi-UjwkJ1ZzA1o0TZgUJ9A.jpg",
+        "page_kind": "bot",
+        "not_bot": false,
+        "dead_streak": 0,
+        "error_msg": null
+      }
+    },
+    {
+      "id": "solana_trojanbot",
+      "username": "@solana_trojanbot",
+      "url": "https://t.me/solana_trojanbot?start=r-flashbonk",
+      "category": "crypto",
+      "subsection": null,
+      "featured": false,
+      "official": false,
+      "notes": "Solana 链上跟单与极速交易，支持限价单、止盈止损与多钱包管理",
+      "fetch": {
+        "status": "ok",
+        "http_code": 200,
+        "fetched_at": "2026-11-03T15:19:57.812871+00:00",
+        "title": "Trojan on Solana",
+        "description": "The Fastest and Most Advanced On-Chain Trading Bot built to put you in full control.",
+        "extra_raw": "41 194 monthly users",
+        "monthly_users": 41194,
+        "type": "bot",
+        "is_verified": true,
+        "photo_url": "https://cdn5.telesco.pe/file/VDphtkEID3SuyCVtCikiEkFIW_hrhx_dneZheJVz9PxVwd8HxmdoEuXTzsCE3Kr4a7JyodqqHFsmitDzagdzEwKSBI3U1vEK5vH28KvRxUDzm5vdanTwGjZS9SzGcW_5Q2fPk8yZ9QyB-3InCOP7sXDxehY62_hQYmq6Kl4PhgDn_z-6NQ-OX3CuFQ0uCK6-C9vfJNwZFEdLXvY92Jl23oLmIWaYxsiJPD5DTJhv3B390VuhksYSCfodZty2rgW3Fo2k-hElBxWI7LmBmEpGz7mSlTWYhhMVLbwjwXOY1v_vBwYkSgmvagF-S8dnMn4Igx3EUPeImSXTqPOg7fL1qg.jpg",
+        "page_kind": "bot",
+        "not_bot": false,
+        "dead_streak": 0,
+        "error_msg": null
+      }
+    },
+    {
+      "id": "bonkbot_bot",
+      "username": "@bonkbot_bot",
+      "url": "https://t.me/bonkbot_bot?start=ref_xpnm5",
+      "category": "crypto",
+      "subsection": null,
+      "featured": false,
+      "official": false,
+      "notes": "Bonk 生态代币极速买卖，支持限价单、止损与防夹子模式",
+      "fetch": {
+        "status": "ok",
+        "http_code": 200,
+        "fetched_at": "2026-11-03T15:20:07.814403+00:00",
+        "title": "BONKbot",
+        "description": "BONKbot is the fastest and simplest way to trade on Solana. No compromises.",
+        "extra_raw": "16 414 monthly users",
+        "monthly_users": 16414,
+        "type": "bot",
+        "is_verified": false,
+        "photo_url": "https://cdn4.telesco.pe/file/OiivcM571c44LKcRvUVRbD8Mt-vLioRgm1zGc409d1Pkx3W41BUSKUthWxtnlkiSgP5cufw7wBvfMnvp68JzLyJCRDB9EGoJnCPlBT3LTYLctK10lzDlsi5UIq443VAKHBxwiWSgYMzYOse-wT30TEJ6l0dQtoVbUDzLZ0OBXGpQxD2zUitzkmZizCIdDFTi5iuNd2llYekZ7tjXVuH3O0KjmZFnevoX4J_CxIDYywmf_qP3_HAGwwVGiMj6fN6vc7DmfUP9Uc1Tkf-E9ihUipUiFsotwovaGqQ9z2eevkp0GF6ZDgMs8M4D8SoGzcDAIl1kIYhLDMgcYP9J274LOg.jpg",
+        "page_kind": "bot",
+        "not_bot": false,
+        "dead_streak": 0,
+        "error_msg": null
+      }
+    },
+    {
+      "id": "maestro",
+      "username": "@maestro",
+      "url": "https://t.me/maestro?start=r-flashbonk",
+      "category": "crypto",
+      "subsection": null,
+      "featured": false,
+      "official": false,
+      "notes": "以太坊与 Solana 等多链代币狙击买入，支持跟单、限价与自动止盈止损",
+      "fetch": {
+        "status": "ok",
+        "http_code": 200,
+        "fetched_at": "2026-11-03T15:20:58.021989+00:00",
+        "title": "Maestro",
+        "description": "The official Maestro 🤖 trading bot!\n\nNeed help?\ndocs.maestrobots.com\n@MaestroSupport\n\nFollow us!\nx.com/MaestroBots",
+        "extra_raw": "27 468 monthly users",
+        "monthly_users": 27468,
+        "type": "bot",
+        "is_verified": false,
+        "photo_url": "https://cdn4.telesco.pe/file/p3rvHggFIlNzLKdRybKeBW-AiUqOJriZ7EE2j0ZttVFyTX1kZr0BWIIWZnZ2KfAlznMZ0fT82EdTTF9-_Gxy7joaiUp3rUjb_MOr1MWvF5TWK4WNX88y_kjx3YWb2PbzicOdFQdXddIkwu-hwNN8W6GvkG12TvtwxqfjYIwlT-TBWuC8j72OTfIHfJGiFErqtyN2KqOJz3Gue-lTasO82Fpj7zcy68L54YQgTTpZYWa0pq7uEdhdfmLYFKr49S8eNYhv98yytmaeIFLw0oqClMqdOfh_OAb85S5RDOF66RxIqzV-QJwsXR1wMPOQZ7s_3Ht7xRIo_z2dalKe2EZpcA.jpg",
+        "page_kind": "bot",
+        "not_bot": false,
+        "dead_streak": 0,
+        "error_msg": null
+      }
     }
   ]
 }

@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_FILE = ROOT / "data" / "bots.json"
 README_FILE = ROOT / "README.md"
 
-VALID_CATEGORIES = {"official", "search", "group", "download", "ai", "tools", "translate", "checkin", "channel", "game"}
+VALID_CATEGORIES = {"official", "search", "group", "download", "ai", "tools", "translate", "checkin", "channel", "game", "crypto"}
 
 HIDE_AFTER = 3  # keep in sync with scripts/fetch_bots.py
 
@@ -423,6 +423,7 @@ def main():
         "checkin": "bots-category:checkin",
         "channel": "bots-category:channel",
         "game": "bots-category:game",
+        "crypto": "bots-category:crypto",
     }
     for cat, marker in cat_markers.items():
         cat_bots = by_cat.get(cat, [])
@@ -436,7 +437,7 @@ def main():
     print(f"  - featured: {len(featured)} entries")
     if hidden:
         print(f"  - hidden (dead x{HIDE_AFTER}+): {', '.join(b['id'] for b in hidden)}")
-    for cat in ["official", "search", "group", "download", "ai", "tools", "translate", "checkin", "channel", "game"]:
+    for cat in ["official", "search", "group", "download", "ai", "tools", "translate", "checkin", "channel", "game", "crypto"]:
         print(f"  - {cat}: {len(by_cat.get(cat, []))} entries")
 
 
