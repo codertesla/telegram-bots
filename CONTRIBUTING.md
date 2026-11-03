@@ -91,6 +91,7 @@ README 用 marker 包裹自动区块，其余散文由人工维护、**逐字符
 - dead 条目仍显示，加 `❗已失效（YYYY-MM）`；连续 3 次核验失效（`dead_streak ≥ 3`）后自动从 README 和站点隐藏，随后由维护者从 `bots.json` 清理，列表只保留在运营的机器人
 - 页面仍存在但已不是 bot（`not_bot=true`，如变为频道/个人账号）：月活列显示 `⚠️已变为频道（非 Bot）` / `⚠️个人账号（非 Bot）`，`validate.py` 会打印警告，需人工复核后移除
 - 官方蓝勾或人工 official 在显示名后加 `✓`
+- 行序按 `fetch.monthly_users` 降序自动排序；未公开月活（含 <1 万）的条目排在末尾，已失效条目排最后，同档内保持 `bots.json` 原有次序。**因此新增条目不必手动插到合适位置**，渲染时会自动归位
 
 ---
 
@@ -116,10 +117,11 @@ python scripts/render_readme.py
 python scripts/validate.py
 ```
 
-`validate.py` 含 4 个子项：
+`validate.py` 含 6 个子项：
 - `--check seed`：bots.json 人工字段完整、id 唯一、category 合法、featured ≤ 5
 - `--check readme`：marker 成对、每条 bot 都被渲染、无残留手写链接
 - `--check links`：所有 `t.me/xxx` 链接与 json.url 一致
+- `--check order`：各分类块确实按月活降序排列（无数据置底、失效最后），手改表格打乱顺序会失败
 - `--check dead`：可见的 dead 条目均已附失效标记，已隐藏条目不再渲染
 - `--check notbot`：`not_bot` 条目均带 ⚠️ 标记，并打印警告清单
 

@@ -7,6 +7,8 @@ Per SPEC §4 Task D (M5):
 - --check readme : markers paired, every non-dead json bot rendered in some marker block,
                    no stray/old bot links left inside marker blocks
 - --check links  : every https://t.me/xxx inside marker blocks matches a bot's url in json
+- --check order  : each category block is sorted by monthly users desc (no-data last,
+                   dead last); guards the auto-sorting rule in the renderers
 - --check dead   : every visible dead bot entry is rendered with "已失效" / ❗ marker;
                    entries dead for HIDE_AFTER consecutive checks must NOT be rendered
 - --check notbot : live pages that are not bots (fetch.not_bot) carry a ⚠️ marker;
@@ -246,6 +248,54 @@ def check_links(data, readme):
     return True
 
 
+def rank_key(bot):
+    """与 render_readme.sort_by_monthly 一致的排序键（越靠前越小）。"""
+    fetch = bot.get("fetch", {}) or {}
+    mu = fetch.get("monthly_users")
+    if fetch.get("status") == "dead":
+        return (2, 0)
+    if not mu or int(mu) < 10000:
+        return (1, 0)
+    return (0, -int(mu))
+
+
+def check_order(data, readme):
+    """--check order : 每个分类块内必须排列为 月活降序 / 无数据置底 / 失效最后。
+
+    渲染器已内置排序，本检查防回归：手改 README 表格或改坏排序逻辑都会被抓住。
+    """
+    errors = []
+    inners = extract_marker_inners(readme)
+    url_to_bot = {b["url"]: b for b in data.get("bots", []) if b.get("url")}
+
+    for marker, inner in sorted(inners.items()):
+        if not marker.startswith("bots-category:"):
+            continue
+        prev = None
+        for line in inner.splitlines():
+            m = re.search(r'https://t\.me/[A-Za-z0-9_]+(?:\?[A-Za-z0-9_=&%.:+-]*)?', line)
+            if not m:
+                # 群管类的小标题：各子表独立排序，遇到即重置比较基准
+                if line.strip().startswith("**"):
+                    prev = None
+                continue
+            bot = url_to_bot.get(m.group(0))
+            if not bot:
+                continue
+            if prev is not None and rank_key(prev) > rank_key(bot):
+                errors.append(f"{marker}: {bot['id']} 应排在 {prev['id']} 之前（月活降序被打乱）")
+            prev = bot
+
+    if errors:
+        print("ORDER CHECK FAILED:")
+        for e in errors:
+            print(f"  - {e}")
+        print("  hint: 运行 python scripts/render_readme.py 重新排序")
+        return False
+    print("ORDER CHECK PASSED: 各分类块均为 月活降序 / 无数据置底 / 失效最后")
+    return True
+
+
 def check_dead(data, readme):
     """--check dead : dead bots must carry failure marker in their rendered line"""
     errors = []
@@ -312,7 +362,7 @@ def check_notbot(data, readme):
 
 def main():
     parser = argparse.ArgumentParser(description="Validate bots data and pipeline state (M4/M5)")
-    parser.add_argument("--check", choices=["seed", "readme", "links", "dead", "notbot"], help="Run specific check (default = all)")
+    parser.add_argument("--check", choices=["seed", "readme", "links", "order", "dead", "notbot"], help="Run specific check (default = all)")
     args = parser.parse_args()
 
     try:
@@ -331,7 +381,7 @@ def main():
 
     checks_to_run = []
     if args.check is None:
-        checks_to_run = ["seed", "readme", "links", "dead", "notbot"]
+        checks_to_run = ["seed", "readme", "links", "order", "dead", "notbot"]
     else:
         checks_to_run = [args.check]
 
@@ -342,6 +392,8 @@ def main():
             ok = check_readme(data, readme) and ok
         elif chk == "links":
             ok = check_links(data, readme) and ok
+        elif chk == "order":
+            ok = check_order(data, readme) and ok
         elif chk == "dead":
             ok = check_dead(data, readme) and ok
         elif chk == "notbot":

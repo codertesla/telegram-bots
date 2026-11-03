@@ -122,5 +122,42 @@ class MergeTests(unittest.TestCase):
         self.assertEqual(m, self.ok)
 
 
+def _bot(bid, mu=None, status="ok"):
+    return {"id": bid, "fetch": {"status": status, "monthly_users": mu}}
+
+
+class SortByMonthlyTests(unittest.TestCase):
+    """分类表行序：月活降序 → 无月活（含 <1 万）→ 已失效，同档保持原序。"""
+
+    def test_descending_with_no_data_and_dead_last(self):
+        import render_readme as rr
+        bots = [
+            _bot("low_nodata"), _bot("dead_big", 9_000_000, "dead"),
+            _bot("big", 5_000_000), _bot("tiny", 500),
+            _bot("mid", 800_000), _bot("no_data"),
+        ]
+        ids = [b["id"] for b in rr.sort_by_monthly(bots)]
+        self.assertEqual(ids, ["big", "mid", "low_nodata", "tiny", "no_data", "dead_big"])
+
+    def test_disabled_keeps_relative_order(self):
+        import render_readme as rr
+        bots = [_bot("a"), _bot("b"), _bot("c")]
+        self.assertEqual([b["id"] for b in rr.sort_by_monthly(bots)], ["a", "b", "c"])
+
+    def test_sort_is_stable_for_equal_monthly(self):
+        import render_readme as rr
+        bots = [_bot("first", 120_000), _bot("second", 120_000)]
+        self.assertEqual([b["id"] for b in rr.sort_by_monthly(bots)], ["first", "second"])
+
+    def test_site_and_readme_agree(self):
+        import render_readme as rr
+        import build_site as bs
+        bots = [_bot("x", 300_000), _bot("y"), _bot("z", 1_000_000, "dead")]
+        self.assertEqual(
+            [b["id"] for b in rr.sort_by_monthly(bots)],
+            [b["id"] for b in bs.sort_by_monthly(bots)],
+        )
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -10,7 +10,7 @@
 
 ## 核验标准
 
-- **真实月活排序**：直接抓取 Telegram 官方预览页披露的月活数据（MAU），主力工具与长尾玩具一目了然
+- **真实月活排序**：直接抓取 Telegram 官方预览页披露的月活数据（MAU），主力工具与长尾玩具一目了然。各表自动按月活从高到低排列，未公开月活的条目置底、已失效条目排最后，无需人工调序
 - **每周自动验活**：GitHub Actions 定期巡检，自动剔除停运死号、个人账号及伪装成 Bot 的频道
 - **精选一锤定音**：精选区每个核心场景仅保留 1 个月活最高且确认存活的入口，省去横向试错成本
 - **单一数据源维护**：全表由 `data/bots.json` 自动渲染生成，杜绝手动改表遗留的失效死链
@@ -59,10 +59,10 @@
 | 名称 | 链接 | 一句话用途 | 月活 |
 |------|------|------------|------|
 | BotFather ✓ | [@BotFather](https://t.me/BotFather) | 创建机器人、配置命令菜单与签发 API Token | 约 796.6 万/月 |
+| Quiz Bot ✓ | [@quizbot](https://t.me/quizbot) | 创建多媒体选择题竞赛，支持群内实时抢答与排行榜统计 | 约 162.0 万/月 |
 | SOSO搜搜 | [@soso](https://t.me/soso?start=a_6480909132) | 按关键词检索中文群组、频道与音视频资源 | 约 116.6 万/月 |
 | Combot | [@combot](https://t.me/combot) | 集成员审核、活跃度分析、反垃圾与自动回复于一体的群管套件 | 约 84.0 万/月 |
 | InstaSave: Instagram & TikTok Downloader | [@instasave_bot](https://t.me/instasave_bot) | 解析下载 Instagram、TikTok、X、Facebook 与 Pinterest 图文视频 | 约 6.4 万/月 |
-| Quiz Bot ✓ | [@quizbot](https://t.me/quizbot) | 创建多媒体选择题竞赛，支持群内实时抢答与排行榜统计 | 约 162.0 万/月 |
 <!-- AUTO:bots-featured:end -->
 
 ## 分类索引
@@ -74,14 +74,14 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 <!-- AUTO:bots-category:official:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
+| Spam Info Bot ✓ | [@SpamBot](https://t.me/SpamBot) | 查询账号受限原因、提交解封申诉与举报垃圾信息 | 约 3428.4 万/月 |
 | BotFather ✓ | [@BotFather](https://t.me/BotFather) | 创建机器人、配置命令菜单与签发 API Token | 约 796.6 万/月 |
 | Premium Bot ✓ | [@PremiumBot](https://t.me/PremiumBot) | 开通或赠送 Premium 会员（解锁双倍限额、4GB 上传与专属星标） | 约 679.3 万/月 |
 | Telegram Premium ✓ | [@premium](https://t.me/premium) | Premium 会员新功能演示与权益说明官方频道 | ⚠️已变为频道（非 Bot） · 637.3 万 订阅 |
 | Stickers Bot ✓ | [@Stickers](https://t.me/Stickers) | 创建、导入自定义贴纸包并查看使用统计 | 约 65.1 万/月 |
-| Verify Bot ✓ | [@VerifyBot](https://t.me/VerifyBot) | 公共频道、群组与机器人的官方蓝标认证申请入口 | 约 1.9 万/月 |
-| Spam Info Bot ✓ | [@SpamBot](https://t.me/SpamBot) | 查询账号受限原因、提交解封申诉与举报垃圾信息 | 约 3428.4 万/月 |
 | Telegram APKs for Android ✓ | [@TAndroidAPK](https://t.me/TAndroidAPK) | Android 客户端官方 APK 直装包发布频道 | ⚠️已变为频道（非 Bot） · 25.9 万 订阅 |
 | Telegram X APKs & Build Info ✓ | [@tgx_log](https://t.me/tgx_log) | Telegram X 客户端构建日志与安装包发布频道 | ⚠️已变为频道（非 Bot） · 6.3 万 订阅 |
+| Verify Bot ✓ | [@VerifyBot](https://t.me/VerifyBot) | 公共频道、群组与机器人的官方蓝标认证申请入口 | 约 1.9 万/月 |
 <!-- AUTO:bots-category:official:end -->
 
 ### 搜索发现
@@ -112,13 +112,13 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
+| Shieldy | [@shieldy_bot](https://t.me/shieldy_bot) | 老牌轻量入群验证，超时未验证自动移出 | 约 20.1 万/月 |
+| OrgRobot | [@orgrobot](https://t.me/orgrobot) | 新成员入群身份核验与准入考核 | 约 3.4 万/月 |
 | 入群验证机器人 | [@P4CaptchaBot](https://t.me/P4CaptchaBot) | 简洁中文图形验证码，开源且支持自建部署 | 约 1.2 万/月 |
 | Policr | [@policr_bot](https://t.me/policr_bot) | 支持自定义问答考核与付费入群验证 | — |
-| Shieldy | [@shieldy_bot](https://t.me/shieldy_bot) | 老牌轻量入群验证，超时未验证自动移出 | 约 20.1 万/月 |
 | 大掌门 | [@FengDoorBot](https://t.me/FengDoorBot) | 入群验证、进群欢迎语与消息定时自毁（开源） | — |
 | Pay Bot | [@feeMasterBot](https://t.me/feeMasterBot) | 付费入群核验，按门槛筛选付费社群成员 | — |
 | TGCN-CAPTCHA加群验证 | [@tgcnjoincaptchabot](https://t.me/tgcnjoincaptchabot) | 中文入群验证码核验，自动拦截批量脚本账号 | — |
-| OrgRobot | [@orgrobot](https://t.me/orgrobot) | 新成员入群身份核验与准入考核 | 约 3.4 万/月 |
 | 天童AL-1S | [@toorucaptchabot](https://t.me/toorucaptchabot) | 多题型强化入群验证，拦截机器号批量加群 | — |
 | LittleGuardian | [@littleGuardianBot](https://t.me/littleGuardianBot) | 轻量入群验证与新成员准入控制 | — |
 
@@ -126,10 +126,10 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
+| Protectron | [@ProtectronBot](https://t.me/ProtectronBot) | 外链过滤、反刷屏与违规广告自动拦截 | 约 9.7 万/月 |
 | TGCN-币&黄广告专杀 | [@adnamekillerbot](https://t.me/adnamekillerbot) | 识别并踢除挂有长用户名广告的水军账号 | — |
 | 广告终结者_Bot | [@adzhongjiezhe_bot](https://t.me/adzhongjiezhe_bot) | 按自定义关键词规则自动拦截群内广告 | — |
 | AntiHyperlinkBot | [@AntiHyperlinkBot](https://t.me/AntiHyperlinkBot) | 自动删除群聊中包含外部链接与超链接的消息 | — |
-| Protectron | [@ProtectronBot](https://t.me/ProtectronBot) | 外链过滤、反刷屏与违规广告自动拦截 | 约 9.7 万/月 |
 | Auto Restrict Bot [beta] | [@AutoRestrictBot](https://t.me/AutoRestrictBot) | 自动限制新入群成员的初期发言与发图权限 | — |
 | FreqRobot | [@freqrobot](https://t.me/freqrobot) | 限制单用户高频连发消息，防止恶意刷屏 | — |
 
@@ -138,9 +138,9 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
 | Combot | [@combot](https://t.me/combot) | 集成员审核、活跃度分析、反垃圾与自动回复于一体的群管套件 | 约 84.0 万/月 |
-| 统计秘书 | [@FengStatsBot](https://t.me/FengStatsBot) | 统计群内发言频次与成员活跃度排行 | — |
 | SangMata | [@SangMata_BOT](https://t.me/SangMata_BOT) | 追踪并查询群成员的历史昵称与用户名变更记录 | 约 14.5 万/月 |
 | joinhider_bot | [@joinhider_bot](https://t.me/joinhider_bot) | 自动删除成员进群与退群的系统提示消息 | 约 1.1 万/月 |
+| 统计秘书 | [@FengStatsBot](https://t.me/FengStatsBot) | 统计群内发言频次与成员活跃度排行 | — |
 
 **秩序维护**
 
@@ -158,9 +158,9 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
 | InstaSave: Instagram & TikTok Downloader | [@instasave_bot](https://t.me/instasave_bot) | 解析下载 Instagram、TikTok、X、Facebook 与 Pinterest 图文视频 | 约 6.4 万/月 |
+| YoutubeDL - YouTube Download Bot | [@YtbDownBot](https://t.me/YtbDownBot) | 按分辨率提取并下载 YouTube 视频与音频 | 约 4.6 万/月 |
 | 多平台解析下载机器人 | [@freedlvideo_bot](https://t.me/freedlvideo_bot) | 解析下载 X、YouTube、B站、抖音、小红书与 Instagram 视频 | — |
 | AI在线解析视频 (DC5) | [@bilibiliparse_bot](https://t.me/bilibiliparse_bot) | 解析下载 B站及主流视频平台无水印内容 | — |
-| YoutubeDL - YouTube Download Bot | [@YtbDownBot](https://t.me/YtbDownBot) | 按分辨率提取并下载 YouTube 视频与音频 | 约 4.6 万/月 |
 <!-- AUTO:bots-category:download:end -->
 
 ### AI 助手
@@ -181,9 +181,9 @@ AI 对话类 Bot 迭代与停运极快，固定收录极易失效。建议直接
 <!-- AUTO:bots-category:translate:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| Google Translate | [@TranslateBot](https://t.me/TranslateBot) | 调用 Google 翻译引擎，支持私聊与群内多语种双向互译 | — |
 | Yandex Translate | [@YTranslateBot](https://t.me/YTranslateBot) | 调用 Yandex 翻译引擎，俄语及欧洲语种互译准确度高 | 约 4.2 万/月 |
 | Translator | [@TgTranslatorBot](https://t.me/TgTranslatorBot) | 群聊实时翻译，支持 100+ 语种消息自动转译 | 约 2.7 万/月 |
+| Google Translate | [@TranslateBot](https://t.me/TranslateBot) | 调用 Google 翻译引擎，支持私聊与群内多语种双向互译 | — |
 | TransChat - AI Translate | [@TransChat_bot](https://t.me/TransChat_bot) | 结合群聊上下文自动互译多语种对话 | — |
 <!-- AUTO:bots-category:translate:end -->
 
@@ -207,9 +207,9 @@ AI 对话类 Bot 迭代与停运极快，固定收录极易失效。建议直接
 <!-- AUTO:bots-category:channel:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
+| Channel Help | [@chelpbot](https://t.me/chelpbot) | 频道定时排版、互动数据统计与抽奖管理 | 约 256.4 万/月 |
 | Post Bot | [@postbot](https://t.me/postbot) | 编辑含内联按钮的富媒体图文并发布至频道 | 约 249.1 万/月 |
 | TelepostBot | [@telepostbot](https://t.me/telepostbot) | 频道图文排版、定时发布队列与浏览数据统计 | 约 53.4 万/月 |
-| Channel Help | [@chelpbot](https://t.me/chelpbot) | 频道定时排版、互动数据统计与抽奖管理 | 约 256.4 万/月 |
 | Auto Forward Bot | [@autoforwardroxybot](https://t.me/autoforwardroxybot) | 按过滤规则与时间表自动跨频道转发推送内容 | — |
 <!-- AUTO:bots-category:channel:end -->
 
@@ -270,7 +270,7 @@ AI 对话类 Bot 迭代与停运极快，固定收录极易失效。建议直接
 
 - **当前规模**：9 大活跃分类 · 66 个在运营条目（含 5 个精选主力入口）
 - **近期迭代**：
-  - **2026-11**：精简低质与重复条目（移除停运的 GIF Downloader、重复验证码与抽奖 Bot 等 7 条，73→66）；精选区按各场景最高月活重排（`@BotFather` / `@soso` / `@combot` / `@instasave_bot` / `@quizbot`）；移除无月活的 RSS 分类，新增「官方账号」分类；站名改为「电报机器人大全」，搜索分类改按月活降序，精选条目改为在所属分类中一并列出
+  - **2026-11**：精简低质与重复条目（移除停运的 GIF Downloader、重复验证码与抽奖 Bot 等 7 条，73→66）；精选区按各场景最高月活重排（`@BotFather` / `@soso` / `@combot` / `@instasave_bot` / `@quizbot`）；移除无月活的 RSS 分类，新增「官方账号」分类；站名改为「电报机器人大全」，搜索分类改按月活降序，精选条目改为在所属分类中一并列出；排序改由渲染器按月活自动完成（无数据置底、失效最后），并新增 `validate --check order` 防回归
   - **2026-10**：全量重验所有条目，清理 5 条停运死号与 3 条已转为频道/个人号的失效条目；修复每周巡检仅抓取新条目而不复核存量条目的问题；恢复 `https://t.me/xxx` 标准链接并上线 `bots.json` 自动抓取、渲染与校验管线
 
 ## 开发参考

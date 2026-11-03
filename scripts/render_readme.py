@@ -40,6 +40,25 @@ def is_hidden(bot: dict) -> bool:
     return fetch.get("status") == "dead" and int(fetch.get("dead_streak") or 0) >= HIDE_AFTER
 
 
+def sort_by_monthly(bots: list[dict]) -> list[dict]:
+    """稳定排序：月活降序，无月活靠后，已失效最后。
+
+    分类表与精选表都走这一条规则，保证每周自动刷新后顺序无需人工维护。
+    同档内保持 bots.json 的原有相对次序。
+    """
+    def key(item):
+        idx, bot = item
+        fetch = bot.get("fetch", {}) or {}
+        mu = fetch.get("monthly_users")
+        if fetch.get("status") == "dead":
+            return (2, 0, idx)
+        if not mu or int(mu) < 10000:
+            return (1, 0, idx)
+        return (0, -int(mu), idx)
+
+    return [bot for _, bot in sorted(enumerate(bots), key=key)]
+
+
 def not_bot_label(bot: dict) -> str:
     fetch = bot.get("fetch", {}) or {}
     if fetch.get("status") == "ok" and fetch.get("not_bot"):
@@ -251,6 +270,7 @@ def render_category(cat: str, bots_in_cat: list[dict]) -> str:
     - group: 4 subsection titles, each followed by its own small table
     - ai: keep prose line rendering (url=null placeholders never go into table)
     Dead bots are included (月活 cell carries the ❗ marker).
+    行序统一按月活降序（见 sort_by_monthly）。
     """
     if not bots_in_cat:
         return ""
@@ -258,14 +278,14 @@ def render_category(cat: str, bots_in_cat: list[dict]) -> str:
     # AI category: never table the url=null prose placeholders. Use legacy prose render.
     if cat == "ai":
         lines = []
-        for b in bots_in_cat:
+        for b in sort_by_monthly(bots_in_cat):
             item = render_list_item(b)
             if item:
                 lines.append(item)
         return "\n".join(lines)
 
     # Collect table-eligible (have url) vs prose-only
-    table_bots = [b for b in bots_in_cat if b.get("url")]
+    table_bots = sort_by_monthly([b for b in bots_in_cat if b.get("url")])
     prose_only = [b for b in bots_in_cat if not b.get("url")]
 
     if cat == "group":
@@ -369,10 +389,10 @@ def main():
     hidden = [b for b in all_bots if is_hidden(b)]
     bots = [b for b in all_bots if not is_hidden(b)]
 
-    # Group by category (preserve encounter order)
-    # 分类表保持完整：精选区命中的条目也在所属分类里再出现一次，
-    # 避免用户只看分类表时漏掉该场景的头部入口。
-    featured = [b for b in bots if b.get("featured")]
+    # Group by category. 行序不再依赖 json 顺序：分类表与精选表都在渲染时
+    # 按月活降序排序（sort_by_monthly），每周自动刷新后无需人工重排。
+    # 精选条目同时在所属分类里出现一次，避免只看分类表时漏掉头部入口。
+    featured = sort_by_monthly([b for b in bots if b.get("featured")])
 
     by_cat: dict[str, list[dict]] = defaultdict(list)
     for b in bots:

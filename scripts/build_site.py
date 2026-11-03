@@ -54,6 +54,21 @@ def is_not_bot(bot):
     return fetch.get("status") == "ok" and bool(fetch.get("not_bot"))
 
 
+def sort_by_monthly(bots):
+    """稳定排序：月活降序，无月活靠后，已失效最后（与 render_readme.py 规则一致）。"""
+    def key(item):
+        idx, bot = item
+        fetch = bot.get("fetch", {}) or {}
+        mu = fetch.get("monthly_users")
+        if fetch.get("status") == "dead":
+            return (2, 0, idx)
+        if not mu or int(mu) < 10000:
+            return (1, 0, idx)
+        return (0, -int(mu), idx)
+
+    return [bot for _, bot in sorted(enumerate(bots), key=key)]
+
+
 def format_verified_time(iso):
     """'2026-10-12T04:00:00+00:00' -> '2026-10-12' (UTC date; deterministic, from data)."""
     if not iso:
@@ -169,10 +184,10 @@ def render_category_table(bots):
 
 
 def render_group_section(bots):
-    """群管类按 subsection 分组渲染 4 个小表。"""
+    """群管类按 subsection 分组渲染 4 个小表；组内按月活降序。"""
     parts = []
     for sub_key in ["verify", "ads", "stats", "misc"]:
-        sub_bots = [b for b in bots if (b.get("subsection") or "misc") == sub_key]
+        sub_bots = sort_by_monthly([b for b in bots if (b.get("subsection") or "misc") == sub_key])
         if not sub_bots:
             continue
         title = SUBSECTION_TITLES.get(sub_key, sub_key)
@@ -186,7 +201,7 @@ def render_category_section(cat, bots):
     if cat == "group":
         body = render_group_section(bots)
     else:
-        body = render_category_table(bots)
+        body = render_category_table(sort_by_monthly(bots))
     return f"""  <section class="category-section" id="cat-{cat}" data-category="{cat}">
     <h2 class="section-heading">{title}</h2>
     <p class="category-desc">{desc}</p>
@@ -231,7 +246,7 @@ def render_featured(featured_bots):
     if not featured_bots:
         return ""
     cards = []
-    for b in featured_bots:
+    for b in sort_by_monthly(featured_bots):
         fetch = b.get("fetch", {})
         name = display_name(b)
         url = url_field(b)
