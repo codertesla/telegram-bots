@@ -76,3 +76,10 @@ document.addEventListener('keydown', event => {
     applyFilters();
   }
 });
+
+// 头像加载失败时回退到文字头像；独立处理，不影响搜索、分类筛选与快捷键。
+document.querySelectorAll('.avatar-img').forEach(img => {
+  img.addEventListener('error', () => { img.hidden = true; });
+  // 命中缓存的失败响应时不会再触发 error 事件，需主动检查
+  if (img.complete && img.naturalWidth === 0) img.hidden = true;
+});

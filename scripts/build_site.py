@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_FILE = ROOT / "data" / "bots.json"
 OUT_FILE = ROOT / "docs" / "index.html"
 TEMPLATE_DIR = ROOT / "templates"
+AVATAR_DIR = ROOT / "docs" / "avatars"
 
 CATEGORY_TITLES = {
     "official": ("官方账号", "Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉与客户端分发入口"),
@@ -150,6 +151,20 @@ def url_field(bot):
     return Markup(f'<a href="{url}" target="_blank" rel="noopener">{username}</a>')
 
 
+def photo_url(bot):
+    """整理头像地址。
+
+    优先使用 scripts/fetch_avatars.py 抓取到 docs/avatars/ 的本地快照
+    （telesco.pe 临时链接会过期，本地文件永不过期）；无本地快照时退回
+    fetch.photo_url（仅接受 https）；都没有则输出空串，模板回退文字头像。
+    """
+    username = str(bot.get("username", "")).lstrip("@")
+    if username and (AVATAR_DIR / f"{username}.jpg").is_file():
+        return f"avatars/{username}.jpg"
+    url = str((bot.get("fetch", {}) or {}).get("photo_url") or "").strip()
+    return url if url.startswith("https://") else ""
+
+
 def bot_view(bot):
     """把一条数据整理为模板所需的展示字段。"""
     fetch = bot.get("fetch", {}) or {}
@@ -164,6 +179,7 @@ def bot_view(bot):
         "url": url_field(bot),
         "notes": bot.get("notes", ""),
         "monthly": monthly_label(bot),
+        "photo_url": photo_url(bot),
     }
 
 

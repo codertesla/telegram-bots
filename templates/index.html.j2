@@ -1,3 +1,11 @@
+{% macro avatar(bot, small=False, eager=False) -%}
+<span class="avatar{% if small %} avatar-small{% endif %}">
+{%- if bot.photo_url -%}
+<img class="avatar-img" src="{{ bot.photo_url }}" alt="" width="{{ 36 if small else 44 }}" height="{{ 36 if small else 44 }}"{% if not eager %} loading="lazy"{% endif %} decoding="async" referrerpolicy="no-referrer">
+{%- endif -%}
+<span class="avatar-fallback" aria-hidden="true">{{ bot.initial }}</span>
+</span>
+{%- endmacro -%}
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -60,7 +68,7 @@
 {% for bot in top10[:3] %}
           <div class="pulse-item">
             <span class="pulse-rank">0{{ loop.index }}</span>
-            <span class="avatar avatar-small">{{ bot.initial }}</span>
+            {{ avatar(bot, small=True, eager=True) }}
             <span class="pulse-name">{{ bot.name }}<small>{{ bot.username }}</small></span>
             <strong>{{ bot.users }}</strong>
           </div>
@@ -89,7 +97,7 @@
         <div class="featured-grid">
 {% for bot in featured %}
           <article class="featured-card">
-            <div class="card-topline"><span class="avatar">{{ bot.initial }}</span><span class="category-tag">{{ bot.category_label }}</span></div>
+            <div class="card-topline">{{ avatar(bot) }}<span class="category-tag">{{ bot.category_label }}</span></div>
             <h3>{{ bot.name }}</h3>
             <p>{{ bot.notes }}</p>
             <div class="card-footer"><span class="monthly">{{ bot.monthly }}</span>{{ bot.url }}</div>
@@ -109,7 +117,7 @@
 {% for bot in top10 %}
           <li class="top-item">
             <span class="rank">{{ "%02d"|format(loop.index) }}</span>
-            <span class="avatar avatar-small">{{ bot.initial }}</span>
+            {{ avatar(bot, small=True) }}
             <span class="top-name">{{ bot.name }}<small>{{ bot.username }}</small></span>
             <span class="top-monthly"><strong>{{ bot.users }}</strong>{{ bot.unit }}</span>
             {{ bot.url }}
@@ -150,7 +158,7 @@
               <div class="bot-grid">
 {% for bot in group.bots %}
                 <article class="bot-card">
-                  <div class="bot-card-header"><span class="avatar">{{ bot.initial }}</span><span class="monthly">{{ bot.monthly }}</span></div>
+                  <div class="bot-card-header">{{ avatar(bot) }}<span class="monthly">{{ bot.monthly }}</span></div>
                   <h4>{{ bot.name }}</h4>
                   <p>{{ bot.notes }}</p>
                   <div class="bot-card-footer">{{ bot.url }}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
