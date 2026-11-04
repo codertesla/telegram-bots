@@ -1,8 +1,8 @@
 # 中文 Telegram 电报机器人大全
 
-> 按真实月活与场景筛选，每周自动验活，剔除死链与伪装频道
+> 按真实月活与场景筛选，每周核验公开预览页与月活；失效条目标记下架，官方频道单独分组标注
 
-收录 **11 大高频场景、76 个在运营 Bot**。所有条目由脚本每周抓取 Telegram 公开月活数据（MAU）并核验连通性，助你快速定位可用的群管、检索、解析、AI 助手、链上交易与效率工具。
+收录 **11 大高频场景、76 个在运营条目**：72 条有公开活跃度数据（其中 3 个官方发布频道统计的是订阅数，已单独成表），4 条未公开月活。所有条目由脚本每周抓取 Telegram 公开预览页并更新月活（MAU）；**页面可访问不等于 `/start` 一定有响应**，实际可用性请以私聊实测为准。助你快速定位可用的群管、检索、解析、AI 助手、链上交易与效率工具。
 
 <!-- AUTO:last-verified:start -->
 > 最近核验：2026-11
@@ -11,8 +11,9 @@
 ## 核验标准
 
 - **真实月活排序**：直接抓取 Telegram 官方预览页披露的月活数据（MAU），主力工具与长尾玩具一目了然。各表自动按月活从高到低排列，未公开月活的条目置底、已失效条目排最后，无需人工调序
-- **每周自动验活**：GitHub Actions 定期巡检，自动剔除停运死号、个人账号及伪装成 Bot 的频道
-- **精选一锤定音**：精选区每个核心场景仅保留 1 个月活最高且确认存活的入口，省去横向试错成本
+- **每周核验公开数据**：GitHub Actions 定期复核预览页与月活；连续失效的死号会标记并隐藏，个人账号与频道另行标注，官方发布频道单独成表、不与 Bot 混排
+- **数据可溯源**：`data/bots.json` 的 `fetch` 字段只允许抓取脚本写入，`validate.py --check provenance` 会核对 `extra_raw` 与月活、时间戳指纹与批次时间，拦截手工编造的活跃度
+- **精选一锤定音**：精选区每个核心场景保留 1 个已核验的主力入口，省去横向试错成本
 - **单一数据源维护**：全表由 `data/bots.json` 自动渲染生成，杜绝手动改表遗留的失效死链
 
 ## 目录索引
@@ -54,14 +55,14 @@
 
 ## 精选必装
 
-覆盖 5 个最高频场景（官方 / 搜索 / 群管 / 下载 / 娱乐），每类仅取当前月活最高且核验存活的 1 个主力入口。
+覆盖 5 个最高频场景（官方 / 搜索 / 群管 / 娱乐 / AI），每类保留 1 个已核验的主力入口。解析下载类的头部入口（`@SaveAsBot`，界面为俄文）仍列在下方分类表中；AI 类改推公开月活更高的 `@GPT4Telegrambot`。
 
 <!-- AUTO:bots-featured:start -->
 | 名称 | 链接 | 一句话用途 | 月活 |
 |------|------|------------|------|
-| BotFather ✓ | [@BotFather](https://t.me/BotFather) | 创建机器人、配置命令菜单与签发 API Token | 约 799.6 万/月 |
-| SaveAsBot | [@SaveAsBot](https://t.me/SaveAsBot) | 提取 Instagram、TikTok、Pinterest 与 Twitter/X 高清图文与无水印视频 | 约 407.0 万/月 |
-| Group Help | [@GroupHelpBot](https://t.me/GroupHelpBot) | 全中文交互菜单的综合群管，支持滑动/算术入群验证、自动禁言与日志审计 | 约 236.0 万/月 |
+| BotFather ✓ | [@BotFather](https://t.me/BotFather) | 创建机器人、配置命令菜单与签发 API Token | 约 801.9 万/月 |
+| GPT-4 Telegram Bot | [@GPT4Telegrambot](https://t.me/GPT4Telegrambot) | 集成 GPT-4o、Claude 3.5 与 Gemini 的智能对话助手，支持长上下文与语音交互 | 约 508.8 万/月 |
+| Group Help | [@GroupHelpBot](https://t.me/GroupHelpBot) | 英文界面综合群管，支持滑动/算术入群验证、自动禁言与日志审计；拉群后请核对实际入群账号，第三方实测曾拉入 GHClone1Bot 克隆号 | 约 236.0 万/月 |
 | Quiz Bot ✓ | [@quizbot](https://t.me/quizbot) | 创建多媒体选择题竞赛，支持群内实时抢答与排行榜统计 | 约 162.8 万/月 |
 | SOSO搜搜 | [@soso](https://t.me/soso?start=a_6480909132) | 按关键词检索中文群组、频道与音视频资源 | 约 116.7 万/月 |
 <!-- AUTO:bots-featured:end -->
@@ -70,20 +71,27 @@
 
 ### 官方账号
 
-Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉与客户端分发入口。
+Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉与客户端分发入口。官方发布频道不是 Bot，已在下方单独成表，其数字为订阅数而非月活，请勿与 Bot 月活横向比较。
 
 <!-- AUTO:bots-category:official:start -->
+**官方 Bot**
+
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
 | Spam Info Bot ✓ | [@SpamBot](https://t.me/SpamBot) | 查询账号受限原因、提交解封申诉与举报垃圾信息 | 约 3441.1 万/月 |
-| BotFather ✓ | [@BotFather](https://t.me/BotFather) | 创建机器人、配置命令菜单与签发 API Token | 约 799.6 万/月 |
+| BotFather ✓ | [@BotFather](https://t.me/BotFather) | 创建机器人、配置命令菜单与签发 API Token | 约 801.9 万/月 |
 | Premium Bot ✓ | [@PremiumBot](https://t.me/PremiumBot) | 开通或赠送 Premium 会员（解锁双倍限额、4GB 上传与专属星标） | 约 681.1 万/月 |
-| Telegram Premium ✓ | [@premium](https://t.me/premium) | Premium 会员新功能演示与权益说明官方频道 | ⚠️已变为频道（非 Bot） · 636.9 万 订阅 |
 | Stickers Bot ✓ | [@Stickers](https://t.me/Stickers) | 创建、导入自定义贴纸包并查看使用统计 | 约 65.2 万/月 |
+| Verify Bot ✓ | [@VerifyBot](https://t.me/VerifyBot) | 公共频道、群组与机器人的官方蓝标认证申请入口 | 约 1.9 万/月 |
+| Walt (ex. Wallet) ✓ | [@wallet](https://t.me/wallet) | Walt（原 Wallet）加密钱包入口，支持 USDT、黄金与 BTC 买卖转账；账号已更名且未公开月活，接入前请核对运营方 | — |
+
+**官方频道（非 Bot · 仅统计订阅数）**
+
+| 名称 | 链接 | 核心功能 | 月活 |
+|------|------|----------|------|
+| Telegram Premium ✓ | [@premium](https://t.me/premium) | Premium 会员新功能演示与权益说明官方频道 | ⚠️已变为频道（非 Bot） · 636.9 万 订阅 |
 | Telegram APKs for Android ✓ | [@TAndroidAPK](https://t.me/TAndroidAPK) | Android 客户端官方 APK 直装包发布频道 | ⚠️已变为频道（非 Bot） · 25.9 万 订阅 |
 | Telegram X APKs & Build Info ✓ | [@tgx_log](https://t.me/tgx_log) | Telegram X 客户端构建日志与安装包发布频道 | ⚠️已变为频道（非 Bot） · 6.3 万 订阅 |
-| Verify Bot ✓ | [@VerifyBot](https://t.me/VerifyBot) | 公共频道、群组与机器人的官方蓝标认证申请入口 | 约 1.9 万/月 |
-| Walt (ex. Wallet) ✓ | [@wallet](https://t.me/wallet) | Telegram 官方原生加密钱包，支持免手续费向联系人直接转账 USDT、TON 与 BTC | — |
 <!-- AUTO:bots-category:official:end -->
 
 ### 搜索发现
@@ -94,7 +102,7 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
 | SOSO搜搜 | [@soso](https://t.me/soso?start=a_6480909132) | 按关键词检索中文群组、频道与音视频资源 | 约 116.7 万/月 |
-| 超级索引 | [@CJSY](https://t.me/CJSY?start=6480909132) | 多维度检索中文群组、频道与媒体文件 | 约 89.4 万/月 |
+| 超级索引 | [@CJSY](https://t.me/CJSY?start=6480909132) | 多维度检索中文群组、频道与媒体文件 | 约 89.7 万/月 |
 | 神马搜索 | [@smss](https://t.me/smss?start=spread_6480909132) | 按关键词检索关联群组、频道与细分兴趣社区 | 约 83.5 万/月 |
 | 极搜中文搜索 | [@jiso](https://t.me/jiso?start=a_6480909132) | 跨群组、频道、影视、音乐与新闻的综合中文检索 | 约 41.5 万/月 |
 | Searchee Bot | [@searcheebot](https://t.me/searcheebot) | 跨频道全文检索，按关键词定位公开频道与内容 | 约 25.4 万/月 |
@@ -104,7 +112,7 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 | 一起搜电影 | [@sotv](https://t.me/sotv) | 检索电影与剧集资源，支持挂载至群聊内直接调用 | 约 6.2 万/月 |
 | 搜啦资源搜索机器人 | [@soula](https://t.me/soula) | 按关键词检索中文群组与频道公开内容 | 约 2.2 万/月 |
 | 狗狗索引 - 搜索神器 | [@dogeindexbot](https://t.me/dogeindexbot) | 中文检索频道、群组与机器人，可挂载群内调用 | 约 2.2 万/月 |
-| aiso中文搜索 | [@aiso](https://t.me/aiso?start=telegram_6480909132) | 发送关键词直接匹配公开群组与频道内容 | 约 1.8 万/月 |
+| aiso中文搜索 | [@aiso](https://t.me/aiso?start=telegram_6480909132) | 发送关键词直接匹配公开群组与频道内容 | 约 2.0 万/月 |
 <!-- AUTO:bots-category:search:end -->
 
 ### 加密交易
@@ -130,7 +138,7 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| Group Help | [@GroupHelpBot](https://t.me/GroupHelpBot) | 全中文交互菜单的综合群管，支持滑动/算术入群验证、自动禁言与日志审计 | 约 236.0 万/月 |
+| Group Help | [@GroupHelpBot](https://t.me/GroupHelpBot) | 英文界面综合群管，支持滑动/算术入群验证、自动禁言与日志审计；拉群后请核对实际入群账号，第三方实测曾拉入 GHClone1Bot 克隆号 | 约 236.0 万/月 |
 | Shieldy | [@shieldy_bot](https://t.me/shieldy_bot) | 老牌轻量入群验证，超时未验证自动移出 | 约 20.7 万/月 |
 | 自訂型入群驗證 | [@customize_captcha_bot](https://t.me/customize_captcha_bot) | 自定义题库入群验证，中文界面并可维护全局黑名单 | 约 16.8 万/月 |
 | OrgRobot | [@orgrobot](https://t.me/orgrobot) | 新成员入群身份核验与准入考核 | 约 3.5 万/月 |
@@ -161,7 +169,7 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| Rose | [@MissRose_bot](https://t.me/MissRose_bot) | 全球用户量最大的综合群管，支持防刷屏、进群验证、关键词过滤与警告惩罚 | 约 233.9 万/月 |
+| Rose | [@MissRose_bot](https://t.me/MissRose_bot) | 老牌英文综合群管，支持防刷屏、进群验证、关键词过滤与警告惩罚，规则配置需参考其官方文档 | 约 233.9 万/月 |
 <!-- AUTO:bots-category:group:end -->
 
 ### 解析下载
@@ -179,7 +187,14 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 
 ### AI 助手
 
-多模型聚合对话与代码问答。第三方 AI 账号迭代极快且普遍设有免费提问条数或频道订阅门槛（微软官方 `@CopilotOfficialBot` 已于 2026-01 停止 Telegram 接入）；查询实时资讯前可先核对系统时间，涉及充值或绑定自有 API Key 时请确认运营方背景。
+多模型聚合对话与代码问答；第三方 AI 账号迭代极快，普遍设有免费提问条数或频道订阅门槛，接入前先核实运营方与授权范围（站点分类导语与此一致）。下表按月活排序并每周复核，失效即下架。挑选时另有四条经验：
+
+- **先问今天的日期**：语言模型不会自带时间，Bot 若不注入当天日期就会按训练截止日作答；问价格、新闻、法规前务必先试一次
+- **数到三**：两三句之后才弹「先订阅频道」的，基本就是这套商业模式，头部大号的免费额度普遍只有 1–5 条
+- **看见「同意」先别按**：部分 Bot 把营销邮件与个人数据处理打包在同一个同意按钮里
+- **别信名字**：用户名带 official、标题写模型名都不作数。带蓝勾的微软 `@CopilotOfficialBot` 官方已公告于 2026-01 停止第三方 IM 接入，实测 `/start` 无响应；但微软 Get Copilot 页面目前仍列 Telegram，故此处只标注「可用性存疑」、不予收录
+
+涉及充值或绑定自有 API Key 时，请先核实运营方背景。如果你长期使用某个稳定的 AI Bot，欢迎按下方 [提交贡献](#提交贡献) 补充收录。
 
 <!-- AUTO:bots-category:ai:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
@@ -264,7 +279,7 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 
 - **最小权限原则**：将第三方 Bot 设为群管理员时，仅勾选功能必需的权限（例如验证码 Bot 只需「删除消息」与「封禁用户」，切勿开启「添加管理员」）
 - **敏感信息隔离**：切勿在任何第三方 Bot 对话中发送账号密码、登录验证码、助记词或支付凭证
-- **警惕仿冒与频道墙**：同名同图标的克隆号很常见，添加后回群成员列表核对实际入群用户名；遇到以「先订阅频道」换取功能的，按需取舍
+- **警惕仿冒与频道墙**：同名同图标的克隆号很常见，添加后回群成员列表核对实际入群用户名——第三方 2026-10 实测点击精选的 `@GroupHelpBot`「Add me to a Group」，实际拉入的是 GHClone1Bot 克隆号，授予管理员权限前务必确认成员列表；遇到以「先订阅频道」换取功能的，按需取舍
 - **异常与失效反馈**：遇到仿冒诈骗账号可直接向官方 [@SpamBot](https://t.me/SpamBot) 举报；发现本列表条目停运，欢迎提交带有 `dead-bot` 标签的 Issue
 
 ## 提交贡献
@@ -285,11 +300,12 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 
 ## 维护记录
 
-本仓库以 `data/bots.json` 为唯一数据源，每周由 GitHub Actions 自动抓取活跃度并核验失效条目。
+本仓库以 `data/bots.json` 为唯一数据源，每周由 GitHub Actions 复核公开预览页、更新月活并标记失效条目（不检测 `/start` 实际响应）。
 
-- **当前规模**：11 大活跃场景 · 76 个高质量在运营条目（含 5 个精选主力入口）
+- **当前规模**：11 大活跃场景 · 76 个在运营条目（72 条有公开活跃度，含 3 个官方频道的订阅数；5 个精选主力入口）
 - **近期迭代**：
-  - **2026-11（全站实测复核与头部生态补齐）**：清理 28 个零月活或停更长尾条目，按实时抓取的真实月活补齐 34 个各赛道头部入口（70→76）——群管补入 `@GroupHelpBot`（236.0 万）、`@MissRose_bot`（233.9 万）、`@nmnmfunbot`（85.1 万）、`@chatkeeperbot`（54.5 万）、`@fangzhang_bot`（21.7 万）、`@customize_captcha_bot`（16.8 万）等；启用 AI 分类表格并收录 `@GPT4Telegrambot`（508.8 万）、`@gpt3_unlim_chatbot`（270.6 万）、`@gpt5tgbot`（24.0 万）与 `@deepseek_gidbot`（3.5 万）；新增官方钱包 `@wallet`、加密支付 `@cryptobot`（123.7 万）、社媒提取 `@SaveAsBot`（407.0 万）与 `@MusicsHuntersbot`（15.4 万）、频道运营 `@livegrambot` / `@like` / `@controllerbot` / `@discussbot`、检索与数据核实 `@searcheebot` / `@telemetr_io_bot` / `@tgstat_bot` / `@dogeindexbot`、群狼人杀 `@truemafiabot`（95.3 万）以及工具类 `@fragment` / `@newfileconverterbot` / `@uploadbot` / `@pdfbot` / `@SkeddyBot` / `@voicemsgbot` / `@flowerss_bot` / `@FeedReaderBot`；精选区升级为 `@SaveAsBot` 与 `@GroupHelpBot`，并支持 `display_name` 人工显示名以规整俄文与营销后缀
+  - **2026-11（整合后复核修订）**：全量重抓 76 条（76/76 成功），顶层批次时间更新为 2026-11-04 09:43 UTC；按脚本幂等设计，仅 7 条数据实际变化的条目刷新逐条 `fetched_at`，其余 69 条保留原抓取时刻（`@maestro` / `@joinhider_bot` 仍是 11-02、11-03 的原始快照）；更正 `@GroupHelpBot`「全中文菜单」、`@MissRose_bot`「全球第一」与 `@wallet` 已更名三处失实描述，恢复四条 AI 避坑要点；精选区撤下俄文界面的 `@SaveAsBot`、改推 `@GPT4Telegrambot` 并补克隆号授权提示；3 个官方频道在 README / 站点单独分组；新增 `validate.py --check provenance` 防伪造校验与 PR 检查 workflow；审计结论订正后归档于 [docs/audit-2026-11.md](./docs/audit-2026-11.md)
+  - **2026-11（全站实测复核与头部生态补齐）**：相对上一版按集合差清理 30 个零月活或停更长尾条目、补齐 36 个各赛道头部入口（70→76）——群管补入 `@GroupHelpBot`、`@MissRose_bot`、`@nmnmfunbot`、`@chatkeeperbot`、`@fangzhang_bot`、`@customize_captcha_bot` 等；启用 AI 分类表格并收录 `@GPT4Telegrambot`、`@gpt3_unlim_chatbot`、`@gpt5tgbot` 与 `@deepseek_gidbot`；新增 `@wallet`、`@cryptobot`、`@SaveAsBot`、`@MusicsHuntersbot`、频道运营 `@livegrambot` / `@like` / `@controllerbot` / `@discussbot`、检索与数据核实 `@searcheebot` / `@telemetr_io_bot` / `@tgstat_bot` / `@dogeindexbot`、`@truemafiabot` 以及工具类 `@fragment` / `@newfileconverterbot` / `@uploadbot` / `@pdfbot` / `@SkeddyBot` / `@voicemsgbot` / `@flowerss_bot` / `@FeedReaderBot`；启用 `display_name` 人工显示名以规整俄文与营销后缀。月活数值随每周快照变动，以 `data/bots.json` 当次数据为准
   - **2026-11**：精简低质与重复条目（移除停运的 GIF Downloader、重复验证码与抽奖 Bot 等 7 条，73→66）；精选区按各场景最高月活重排（`@BotFather` / `@soso` / `@combot` / `@instasave_bot` / `@quizbot`）；移除无月活的 RSS 分类，新增「官方账号」分类；站名改为「电报机器人大全」，搜索分类改按月活降序，精选条目改为在所属分类中一并列出；排序改由渲染器按月活自动完成（无数据置底、失效最后），并新增 `validate --check order` 防回归；新增「加密交易」分类，收录 `@solana_trojanbot` / `@gmgnaibot` / `@maestro` / `@bonkbot_bot` 共 4 个链上交易 Bot
   - **2026-10**：全量重验所有条目，清理 5 条停运死号与 3 条已转为频道/个人号的失效条目；修复每周巡检仅抓取新条目而不复核存量条目的问题；恢复 `https://t.me/xxx` 标准链接并上线 `bots.json` 自动抓取、渲染与校验管线
 
@@ -304,4 +320,4 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 
 本项目基于 [MIT License](./LICENSE) 开源。如果这份索引帮你省下了检索与试错时间，欢迎点亮右上角 **Star**。
 
-> 连通性与月活数据每周由脚本自动核验更新。第三方 Bot 均由各自开发者独立运营，接入群组前请按需收敛管理员权限。
+> 公开预览页与月活数据每周由脚本核验更新（不覆盖 `/start` 可用性）。第三方 Bot 均由各自开发者独立运营，接入群组前请按需收敛管理员权限。

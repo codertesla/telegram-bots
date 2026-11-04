@@ -1,0 +1,44 @@
+name: PR Checks
+
+# 每周刷新（refresh.yml）只在定时任务里跑校验，拦不住 PR 直接把手工编造的
+# fetch 数据带进 main。此 workflow 在每次 PR / push 时执行同一套离线校验。
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Validate data and provenance
+        run: python scripts/validate.py
+
+      - name: Renderers must be idempotent
+        run: |
+          python scripts/render_readme.py
+          python scripts/build_site.py
+          git diff --exit-code -- README.md docs/index.html

@@ -15,6 +15,7 @@ Per SPEC §4 Task C (M4):
 """
 
 import json
+import re
 from collections import defaultdict
 from pathlib import Path
 from datetime import datetime
@@ -109,6 +110,17 @@ def get_display_name(bot: dict) -> str:
     # fallback
     uname = bot.get("username", "") or bot.get("id", "")
     return uname.lstrip("@").strip() or bot.get("id", "")
+
+
+def escape_md_cell(text) -> str:
+    """表格/列表单元格内的 Markdown 特殊字符统一处理。
+
+    竖线会切断表格列，换行会切断表格行；两者都来自人工 notes / display_name，
+    必须在拼装行之前压平，不能依赖贡献者自觉。
+    """
+    s = str(text if text is not None else "")
+    s = s.replace("|", "｜").replace("\r\n", " ").replace("\n", " ").replace("\r", " ")
+    return re.sub(r"\s{2,}", " ", s).strip()
 
 
 def get_verified_suffix(bot: dict) -> str:
@@ -210,10 +222,8 @@ def render_category_table_row(bot: dict) -> str:
     link = f"[@{uwo}]({url})" if uwo and url else ""
     purpose = (bot.get("notes") or "").strip()
     monthly = get_category_monthly(bot)
-    # escape pipe chars inside cells (rare)
-    disp = disp.replace("|", "｜")
-    purpose = purpose.replace("|", "｜")
-    link = link.replace("|", "｜")
+    # 所有单元格统一转义（含人工字段与脚本生成字段）
+    disp, link, purpose, monthly = map(escape_md_cell, (disp, link, purpose, monthly))
     return f"| {disp} | {link} | {purpose} | {monthly} |"
 
 
@@ -231,13 +241,12 @@ def render_list_item(bot: dict) -> str:
     """Render one - **name** [@u](url) — notes + badge line."""
     if not bot.get("url"):
         # AI placeholder url=null : render prose line only (no link)
-        notes = bot.get("notes", "").strip()
-        return notes or ""
-    disp = get_display_name(bot) + get_verified_suffix(bot)
+        return escape_md_cell(bot.get("notes", ""))
+    disp = escape_md_cell(get_display_name(bot) + get_verified_suffix(bot))
     uwo = bot.get("username", "").lstrip("@")
     url = bot.get("url")
     link = f"[@{uwo}]({url})" if uwo and url else ""
-    notes = bot.get("notes", "").strip()
+    notes = escape_md_cell(bot.get("notes", ""))
     badge = get_active_badge(bot)
     if link:
         if badge:
@@ -260,9 +269,8 @@ def render_featured_table(featured_bots: list[dict]) -> str:
         link = f"[@{uwo}]({url})" if uwo and url else ""
         purpose = (bot.get("notes") or "").strip()
         monthly = get_monthly_cell(bot)
-        # Basic escape for | inside text (rare)
-        disp = disp.replace("|", "｜")
-        purpose = purpose.replace("|", "｜")
+        # 所有单元格统一转义，包括 url 中可能夹带的竖线
+        disp, link, purpose, monthly = map(escape_md_cell, (disp, link, purpose, monthly))
         lines.append(f"| {disp} | {link} | {purpose} | {monthly} |")
     return "\n".join(lines)
 
@@ -321,6 +329,31 @@ def render_category(cat: str, bots_in_cat: list[dict]) -> str:
                 item = render_list_item(b)
                 if item:
                     lines.append(item)
+        return "\n".join(lines)
+
+    if cat == "official":
+        # 官方发布频道（@premium / @TAndroidAPK / @tgx_log）不是 Bot，单独成表，
+        # 避免读者把订阅数当作 Bot 月活，也避免与「剔除伪装频道」的宣传语冲突。
+        real_bots = [b for b in table_bots if not not_bot_label(b)]
+        channels = [b for b in table_bots if not_bot_label(b)]
+        lines: list[str] = []
+        header = ["| 名称 | 链接 | 核心功能 | 月活 |", "|------|------|----------|------|"]
+        for sub_title, items in (
+            ("**官方 Bot**", real_bots),
+            ("**官方频道（非 Bot · 仅统计订阅数）**", channels),
+        ):
+            if not items:
+                continue
+            if lines:
+                lines.append("")
+            lines.append(sub_title)
+            lines.append("")
+            lines.extend(header)
+            lines.extend(row for row in (render_category_table_row(b) for b in items) if row)
+        for b in prose_only:
+            item = render_list_item(b)
+            if item:
+                lines.append(item)
         return "\n".join(lines)
 
     # Normal categories (search, download, tools, translate, checkin, channel, game, ...)

@@ -13,6 +13,8 @@ Per SPEC §4 Task D (M5):
                    entries dead for HIDE_AFTER consecutive checks must NOT be rendered
 - --check notbot : live pages that are not bots (fetch.not_bot) carry a ⚠️ marker;
                    prints a warning listing them so maintainers can review/remove
+- --check provenance : fetch 字段必须可由抓取脚本复现（extra_raw ↔ monthly_users、
+                   http_code、时间戳指纹、顶层批次时间）；拦截手工编造的月活数据
 - (no arg)       : run ALL checks; exit 0 only if every check passes
 """
 
@@ -20,8 +22,9 @@ import argparse
 import json
 import re
 import sys
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from collections import defaultdict
+from collections import Counter, defaultdict
 
 VALID_CATEGORIES = {"official", "search", "group", "download", "ai", "tools", "translate", "checkin", "channel", "game", "crypto"}
 VALID_SUBSECTIONS = {"verify", "ads", "stats", "misc", None, "bilingual", "auto", "zh-en", "publish", "index", "forward", "manage"}
@@ -349,7 +352,8 @@ def check_notbot(data, readme):
         for e in errors:
             print(f"  - {e}")
         return False
-    # official 分类里的频道（如 @premium / @TAndroidAPK）是刻意收录，不必逐周复核
+    # official 分类里的频道（@premium / @TAndroidAPK / @tgx_log）是刻意收录，
+    # 且已在 README / 站点单独分组标注，不必按「疑似伪装 Bot」逐周告警。
     warned = [b for b in flagged if b.get("category") != "official"]
     if warned:
         kinds = ", ".join(f"{b['id']}({b['fetch'].get('page_kind')})" for b in warned)
@@ -357,13 +361,124 @@ def check_notbot(data, readme):
         if __import__("os").environ.get("GITHUB_ACTIONS"):
             print(f"::warning title=not_bot entries::{kinds}")
     print(f"NOTBOT CHECK PASSED: {len(flagged)} not_bot entr(y/ies) marked"
-          f" ({len(flagged) - len(warned)} official exempt)")
+          f" ({len(flagged) - len(warned)} 官方频道已在渲染层单独分组)")
+    return True
+
+
+EXTRA_RAW_RE = re.compile(r"^\s*([\d\s\u00a0,\.]+?)\s+(monthly users|subscribers|members)\s*$", re.I)
+CLOCK_SKEW = timedelta(minutes=5)
+
+
+def parse_extra_raw(raw):
+    """把 tgme_page_extra 原文反解成整数；无法识别返回 None。"""
+    if not isinstance(raw, str):
+        return None
+    m = EXTRA_RAW_RE.match(raw)
+    if not m:
+        return None
+    digits = re.sub(r"[\s\u00a0,\.]", "", m.group(1))
+    return int(digits) if digits.isdigit() else None
+
+
+def parse_fetched_at(raw):
+    """解析脚本写入的 UTC ISO 时间戳；缺失/无时区/格式错误返回 None。"""
+    if not isinstance(raw, str) or not raw:
+        return None
+    try:
+        dt = datetime.fromisoformat(raw)
+    except ValueError:
+        return None
+    if dt.tzinfo is None:
+        return None
+    return dt.astimezone(timezone.utc)
+
+
+def check_provenance(data, now=None):
+    """--check provenance : fetch 字段必须具备「抓取脚本生成」的特征。
+
+    背景：PR #8 把 12 条估算月活连同 extra_raw、http_code 一起手工写进 fetch，
+    旧的六项检查全部放行。本检查从三面设防：
+      1. monthly_users 必须能由 extra_raw 反解（双向一致），且 status=ok / http_code=200
+      2. 抓取脚本每条间隔 ≥1s，写入的 fetched_at 取自各次请求的
+         datetime.now().isoformat()，因此 ok 条目不得共享同一 fetched_at，也不得
+         出现「整分零微秒」这类人工填写指纹（幂等保留的旧时间戳不受影响）
+      3. fetched_at / last_fetched_at 不得为未来时间；条目时间不得晚于批次时间；
+         last_fetched_at 不得与任何条目时间完全相同
+
+    边界：这只能证明「数据具备脚本生成的特征」，不能替代真实抓取，也无法排除
+    精心伪造的逐条时间戳。需要复核时请跑 `python scripts/fetch_bots.py --sleep 2`。
+    """
+    errors = []
+    now = now or datetime.now(timezone.utc)
+    bots = data.get("bots", [])
+
+    top_raw = data.get("last_fetched_at")
+    top_dt = parse_fetched_at(top_raw)
+    if top_dt is None:
+        errors.append(f"last_fetched_at 缺失或不是带时区的 ISO 时间: {top_raw!r}")
+    else:
+        if top_dt > now + CLOCK_SKEW:
+            errors.append(f"last_fetched_at 在未来: {top_raw}")
+        label = data.get("last_verified_label")
+        if label and top_dt.strftime("%Y-%m") != label:
+            errors.append(f"last_verified_label={label!r} 与 last_fetched_at={top_raw[:7]} 不一致")
+
+    seen_times = Counter()
+    for b in bots:
+        bid = b.get("id") or b.get("username")
+        f = b.get("fetch") or {}
+        mu = f.get("monthly_users")
+        raw = f.get("extra_raw")
+        status = f.get("status")
+
+        parsed = parse_extra_raw(raw)
+        if mu is not None:
+            if not isinstance(mu, int) or isinstance(mu, bool) or mu < 0:
+                errors.append(f"{bid}: monthly_users 必须是非负整数, got {mu!r}")
+            elif parsed is None:
+                errors.append(f"{bid}: monthly_users={mu} 但 extra_raw 缺失或无法反解: {raw!r}")
+            elif parsed != mu:
+                errors.append(f"{bid}: extra_raw 反解为 {parsed}，与 monthly_users={mu} 不符")
+            if status != "ok":
+                errors.append(f"{bid}: 有月活数据但 status={status!r}（应为 ok）")
+            if f.get("http_code") != 200:
+                errors.append(f"{bid}: 有月活数据但 http_code={f.get('http_code')!r}（应为 200）")
+        elif raw:
+            errors.append(f"{bid}: extra_raw 有值但 monthly_users 为空: {raw!r}")
+
+        fa_raw = f.get("fetched_at")
+        fa_dt = parse_fetched_at(fa_raw)
+        if fa_dt is None:
+            errors.append(f"{bid}: fetched_at 缺失或不是带时区的 ISO 时间: {fa_raw!r}")
+        else:
+            if fa_dt > now + CLOCK_SKEW:
+                errors.append(f"{bid}: fetched_at 在未来: {fa_raw}")
+            if top_dt and fa_dt > top_dt + CLOCK_SKEW:
+                errors.append(f"{bid}: fetched_at 晚于批次 last_fetched_at: {fa_raw} > {top_raw}")
+            # 人工填写指纹：xx:00:00.000000 这类整分零微秒值，脚本几乎不可能生成
+            if fa_dt.microsecond == 0 and fa_dt.second == 0:
+                errors.append(f"{bid}: fetched_at 为整分零微秒（疑似手工填写）: {fa_raw}")
+            seen_times[fa_raw] += 1
+
+    for ts, n in seen_times.items():
+        if n > 1:
+            errors.append(f"{n} 条条目共享同一 fetched_at（抓取脚本每条间隔 ≥1s，不可能）: {ts}")
+    if top_dt and top_raw in seen_times:
+        errors.append(f"last_fetched_at 与 {seen_times[top_raw]} 条条目时间戳完全相同（疑似手工填写）: {top_raw}")
+
+    if errors:
+        print("PROVENANCE CHECK FAILED:")
+        for e in errors:
+            print(f"  - {e}")
+        return False
+    print(f"PROVENANCE CHECK PASSED: {len(bots)} 条 fetch 数据可溯源，"
+          f"{len(seen_times)} 个互异抓取时间戳，批次 {top_raw[:10] if top_raw else '—'}")
     return True
 
 
 def main():
     parser = argparse.ArgumentParser(description="Validate bots data and pipeline state (M4/M5)")
-    parser.add_argument("--check", choices=["seed", "readme", "links", "order", "dead", "notbot"], help="Run specific check (default = all)")
+    parser.add_argument("--check", choices=["seed", "readme", "links", "order", "dead", "notbot", "provenance"], help="Run specific check (default = all)")
     args = parser.parse_args()
 
     try:
@@ -382,7 +497,7 @@ def main():
 
     checks_to_run = []
     if args.check is None:
-        checks_to_run = ["seed", "readme", "links", "order", "dead", "notbot"]
+        checks_to_run = ["seed", "readme", "links", "order", "dead", "notbot", "provenance"]
     else:
         checks_to_run = [args.check]
 
@@ -399,6 +514,8 @@ def main():
             ok = check_dead(data, readme) and ok
         elif chk == "notbot":
             ok = check_notbot(data, readme) and ok
+        elif chk == "provenance":
+            ok = check_provenance(data) and ok
 
     if args.check is None:
         if ok:

@@ -2,7 +2,7 @@
 
 欢迎为「电报机器人大全」贡献优质机器人、修复失效条目或改进基础设施。
 
-本仓库的机器人列表不是手维护的 Markdown 表格，而是由 `data/bots.json` 驱动、脚本自动渲染到 README。这样能保证每条都有真实活跃度数据、每周自动核验失效，比纯手维护的列表更可信。贡献前请先阅读本指南。
+本仓库的机器人列表不是手维护的 Markdown 表格，而是由 `data/bots.json` 驱动、脚本自动渲染到 README。活跃度数据来自 Telegram 公开预览页并每周复核，比纯手维护的列表更可信。注意脚本只核验**预览页存在性与公开月活**，不检测 `/start` 是否真的响应。贡献前请先阅读本指南。
 
 ---
 
@@ -48,6 +48,8 @@
 
 新增 bot 时 `fetch` 填 `{"status": "pending"}` 即可，下次抓取脚本会自动填入真实数据。
 
+> ⚠️ **严禁手工填写抓取值**（包括"估算"）：`monthly_users`、`extra_raw`、`fetched_at`、`http_code` 只能由 `fetch_bots.py` 写入。`python scripts/validate.py --check provenance` 会核对 `extra_raw` 与 `monthly_users` 是否可相互反解、`http_code` 是否为 200、时间戳是否具备脚本生成特征（不得整分零微秒、不得多条共享同一时间戳、不得晚于批次时间、顶层批次时间不得与条目时间雷同），以及 `last_verified_label` 是否与批次月份一致。数值有疑问请跑 `python scripts/fetch_bots.py --sleep 2` 全量重抓，**不要手改**。该检查同时由 `.github/workflows/ci.yml` 在每次 PR 时执行。
+
 ### 全局字段
 `schema_version`（当前 `1`）、`last_fetched_at`（由脚本写）、`last_verified_label`（人类可读核验批次，写进 README 顶部"最近核验"）。
 
@@ -92,6 +94,8 @@ README 用 marker 包裹自动区块，其余散文由人工维护、**逐字符
 - dead 条目仍显示，加 `❗已失效（YYYY-MM）`；连续 3 次核验失效（`dead_streak ≥ 3`）后自动从 README 和站点隐藏，随后由维护者从 `bots.json` 清理，列表只保留在运营的机器人
 - 页面仍存在但已不是 bot（`not_bot=true`，如变为频道/个人账号）：月活列显示 `⚠️已变为频道（非 Bot）` / `⚠️个人账号（非 Bot）`，`validate.py` 会打印警告，需人工复核后移除
 - 官方蓝勾或人工 official 在显示名后加 `✓`
+- `notes` / `display_name` 中的竖线与换行由 `escape_md_cell()` 统一压平，不会撑破表格；站点的显示名、链接同样做 HTML 转义，只有脚本自己拼的 ✓ 徽标按 HTML 直出
+- `category=official` 中 `not_bot=true` 的官方发布频道单独成表并标注「非 Bot · 仅统计订阅数」，不与真正的官方 Bot 混排
 - 行序按 `fetch.monthly_users` 降序自动排序；未公开月活（含 <1 万）的条目排在末尾，已失效条目排最后，同档内保持 `bots.json` 原有次序。**因此新增条目不必手动插到合适位置**，渲染时会自动归位
 
 ---
@@ -119,13 +123,14 @@ python scripts/build_site.py
 python scripts/validate.py
 ```
 
-`validate.py` 含 6 个子项：
+`validate.py` 含 7 个子项：
 - `--check seed`：bots.json 人工字段完整、id 唯一、category 合法、featured ≤ 5
 - `--check readme`：marker 成对、每条 bot 都被渲染、无残留手写链接
 - `--check links`：所有 `t.me/xxx` 链接与 json.url 一致
 - `--check order`：各分类块确实按月活降序排列（无数据置底、失效最后），手改表格打乱顺序会失败
 - `--check dead`：可见的 dead 条目均已附失效标记，已隐藏条目不再渲染
-- `--check notbot`：`not_bot` 条目均带 ⚠️ 标记，并打印警告清单
+- `--check notbot`：`not_bot` 条目均带 ⚠️ 标记，并打印警告清单（官方频道已单独分组，不作疑似伪装告警）
+- `--check provenance`：`fetch` 数据可溯源——`extra_raw ↔ monthly_users` 双向一致、时间戳指纹、批次时间合理，拦截手工编造的活跃度
 
 离线单元测试：`python -m unittest discover -s tests`
 
@@ -140,11 +145,13 @@ python scripts/fetch_bots.py --dry-run        # 只打印不写文件
 python scripts/fetch_bots.py --sleep 3        # 调整限流（最小 1s 强制下限）
 ```
 
-幂等保证：新抓结果与旧值完全一致时不刷新单条的 `fetched_at`；站点页脚时间取自数据（`last_fetched_at` 日期）而非构建时间，数据不变则 `docs/index.html` 不变。每次全量核验成功后更新顶层 `last_fetched_at` 与 `last_verified_label`（YYYY-MM）。若超过 50% 请求失败（如被 Telegram 限流/拦截），本次视为失败、不写入任何数据，CI 会自动开 Issue。
+幂等保证：新抓结果与旧值完全一致时不刷新单条的 `fetched_at`（因此全量重抓后**多数条目仍保留原抓取时刻**，个别甚至保留更早批次的时间戳；「全量重抓」不等于「全库时间戳统一」，这是预期行为，`--check provenance` 允许）；站点页脚时间取自数据（`last_fetched_at` 日期）而非构建时间，数据不变则 `docs/index.html` 不变。每次全量核验成功后更新顶层 `last_fetched_at` 与 `last_verified_label`（YYYY-MM）。若超过 50% 请求失败（如被 Telegram 限流/拦截），本次视为失败、不写入任何数据，CI 会自动开 Issue。
 
 ---
 
 ## CI 自动刷新
+
+`.github/workflows/ci.yml` 在每次 **pull_request / push main** 时跑离线单测、`validate.py` 全项（含 provenance）与渲染幂等检查（重渲染后 `README.md` / `docs/index.html` 必须零差异），防止手工编造的 `fetch` 数据或手改表格直接合入。
 
 `.github/workflows/refresh.yml` 每周一 03:00 UTC 自动跑：
 1. 离线单元测试（`tests/`）
@@ -166,6 +173,7 @@ python scripts/fetch_bots.py --sleep 3        # 调整限流（最小 1s 强制�
 - **干净**：不收机场、流量卡、涨粉、博彩拉新、色情导航等灰产类
 - **去重**：精选区 ≤ 5 条，分类区按 username 去重
 - **失效即清**：连续 2 次核验失效标 `❗已失效`，连续 3 次自动从 README / 站点隐藏，之后由维护者从 `bots.json` 删除，保持列表全部可用
+- **月活门槛与例外**：默认只收有公开月活（≥1 万）的条目。确需保留无月活条目，必须满足以下之一，并在 PR 描述中写明理由：① Telegram 官方或带蓝勾、身份可核验的入口；② 中文场景无同类替代；③ 老牌开源、可自建的工具。当前保留 4 条例外：`@wallet`（更名中的官方钱包入口）、`@FeedReaderBot` / `@flowerss_bot`（老牌 / 开源 RSS）、`@TransChat_bot`（群聊上下文翻译）。例外条目在表中自动置底；不满足门槛又无理由的新增会在审阅时退回
 - **AI 类慎收**：AI 机器人迭代太快，`category=ai` 可用 `url=null` 占位（只渲染散文引导，不固定具体账号）
 
 ---

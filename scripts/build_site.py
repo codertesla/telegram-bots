@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
-from markupsafe import Markup
+from markupsafe import Markup, escape
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_FILE = ROOT / "data" / "bots.json"
@@ -24,7 +24,7 @@ CATEGORY_TITLES = {
     "search": ("搜索发现", "按关键词检索中文群组、频道、影视、网盘与音视频资源"),
     "group": ("群组管理", "拦截水军、外链广告与高频刷屏；中大型群组建议搭配「1 个进群验证 + 1 个广告拦截」组合使用"),
     "download": ("解析下载", "提取主流社媒与视频平台无水印内容，支持私聊发送链接或挂载至群内解析"),
-    "ai": ("AI 助手", "多模型聚合对话与代码问答；优先选择支持长上下文与多模态输入的活跃账号"),
+    "ai": ("AI 助手", "多模型聚合对话与代码问答；第三方 AI 账号迭代极快，普遍设有免费提问条数或频道订阅门槛，接入前先核实运营方与授权范围"),
     "tools": ("实用工具", "拍卖提醒、跨格式文件转换、一次性临时邮箱、直链转存、PDF 处理与 RSS 订阅工具"),
     "translate": ("多语翻译", "私聊双向互译与群聊消息实时自动转译，适合多语种社群与跨国协作"),
     "checkin": ("签到打卡", "群内每日打卡、连续天数统计与考勤汇总，量化社群活跃度与团队出勤"),
@@ -110,7 +110,7 @@ def monthly_label(bot):
     fetch = bot.get("fetch", {}) or {}
     if fetch.get("status") == "dead":
         fa = fetch.get("fetched_at", "")
-        ym = fa[:7] if fa else "—"
+        ym = escape(fa[:7] if fa else "—")
         return Markup(f'<span class="badge badge-dead">❗已失效（{ym}）</span>')
     users = fetch.get("monthly_users")
     if is_not_bot(bot):
@@ -135,18 +135,16 @@ def clean_display_title(raw: str) -> str:
 
 
 def display_name(bot):
+    """显示名文本一律 escape，只有本函数自己拼的 ✓ 徽标才允许作为 HTML 直出。"""
     fetch = bot.get("fetch", {}) or {}
     override = (bot.get("display_name") or "").strip()
     if override:
-        title = override
-        if fetch.get("is_verified") or bot.get("official"):
-            title = f'{title} <span class="verified">✓</span>'
-        return Markup(title)
-    raw_title = fetch.get("title") or bot.get("username", "").lstrip("@")
-    title = clean_display_title(str(raw_title)) or str(raw_title).strip()
-    if fetch.get("is_verified") or bot.get("official"):
-        title = f'{title} <span class="verified">✓</span>'
-    return Markup(title)
+        title = escape(override)
+    else:
+        raw_title = fetch.get("title") or bot.get("username", "").lstrip("@")
+        title = escape(clean_display_title(str(raw_title)) or str(raw_title).strip())
+    badge = Markup('<span class="verified">✓</span>') if (fetch.get("is_verified") or bot.get("official")) else Markup("")
+    return title + (Markup(" ") + badge if badge else badge)
 
 
 def url_field(bot):
@@ -154,7 +152,7 @@ def url_field(bot):
     if not url:
         return Markup('<span class="muted">—</span>')
     username = bot.get("username", "")
-    return Markup(f'<a href="{url}" target="_blank" rel="noopener">{username}</a>')
+    return Markup(f'<a href="{escape(url)}" target="_blank" rel="noopener">{escape(username)}</a>')
 
 
 def photo_url(bot):
@@ -208,6 +206,18 @@ def build_sections(by_cat):
                         "title": SUBSECTION_TITLES.get(sub_key, sub_key),
                         "bots": [bot_view(b) for b in sub_bots],
                     })
+        elif cat == "official":
+            # 官方发布频道不是 Bot：单独分组，避免与真正的官方 Bot 混排。
+            groups = []
+            real_bots = [b for b in bots if not is_not_bot(b)]
+            channels = [b for b in bots if is_not_bot(b)]
+            if real_bots:
+                groups.append({"title": "官方 Bot", "bots": [bot_view(b) for b in sort_by_monthly(real_bots)]})
+            if channels:
+                groups.append({
+                    "title": "官方频道（非 Bot · 仅统计订阅数）",
+                    "bots": [bot_view(b) for b in sort_by_monthly(channels)],
+                })
         else:
             groups = [{
                 "title": None,
