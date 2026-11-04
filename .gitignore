@@ -11,3 +11,6 @@ __pycache__/
 
 # Local venv
 .venv/
+
+# WorkBuddy workspace data
+.workbuddy/
