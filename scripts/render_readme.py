@@ -275,18 +275,18 @@ def render_category(cat: str, bots_in_cat: list[dict]) -> str:
     if not bots_in_cat:
         return ""
 
-    # AI category: never table the url=null prose placeholders. Use legacy prose render.
-    if cat == "ai":
+    # Collect table-eligible (have url) vs prose-only
+    table_bots = sort_by_monthly([b for b in bots_in_cat if b.get("url")])
+    prose_only = [b for b in bots_in_cat if not b.get("url")]
+
+    # AI category fallback: if only prose placeholders exist, keep prose render.
+    if cat == "ai" and not table_bots:
         lines = []
         for b in sort_by_monthly(bots_in_cat):
             item = render_list_item(b)
             if item:
                 lines.append(item)
         return "\n".join(lines)
-
-    # Collect table-eligible (have url) vs prose-only
-    table_bots = sort_by_monthly([b for b in bots_in_cat if b.get("url")])
-    prose_only = [b for b in bots_in_cat if not b.get("url")]
 
     if cat == "group":
         by_sub: dict[str, list[dict]] = defaultdict(list)
