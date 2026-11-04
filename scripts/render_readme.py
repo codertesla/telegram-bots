@@ -98,6 +98,9 @@ def clean_display_title(raw: str) -> str:
 
 def get_display_name(bot: dict) -> str:
     fetch = bot.get("fetch", {}) or {}
+    override = (bot.get("display_name") or "").strip()
+    if override:
+        return override
     title = fetch.get("title")
     if title:
         cleaned = clean_display_title(str(title))

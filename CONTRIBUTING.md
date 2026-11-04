@@ -41,6 +41,7 @@
 | `featured` | 否 | `true` 进"精选必装"区，全区 ≤ 5 条 |
 | `official` | 否 | 人工判断是否官方；抓取拿到的 Telegram 蓝勾优先级更高 |
 | `notes` | 是 | 30-60 字中文，写清"核心功能 + 适用场景"，不带链接（链接由 url 自动渲染） |
+| `display_name` | 否 | 列表显示名。仅当抓取到的标题为西里尔字母或含杂乱符号时填写，留空则用平台标题清理后显示 |
 
 ### 抓取字段（由 `scripts/fetch_bots.py` 维护，贡献者勿改）
 `fetch` 对象：`status`（`ok`/`dead`/`error`/`pending`）、`http_code`、`fetched_at`、`title`、`description`、`monthly_users`（int）、`type`（`bot`/`channel`/`group`/`user`/`unknown`）、`is_verified`、`photo_url`、`page_kind`（`bot`/`user`/`channel`/`group`/`unknown`）、`not_bot`（bool）、`dead_streak`（连续判定失效次数）、`error_msg`。

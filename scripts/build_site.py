@@ -24,13 +24,13 @@ CATEGORY_TITLES = {
     "search": ("搜索发现", "按关键词检索中文群组、频道、影视、网盘与音视频资源"),
     "group": ("群组管理", "拦截水军、外链广告与高频刷屏；中大型群组建议搭配「1 个进群验证 + 1 个广告拦截」组合使用"),
     "download": ("解析下载", "提取主流社媒与视频平台无水印内容，支持私聊发送链接或挂载至群内解析"),
-    "ai": ("AI 助手", "AI 对话机器人迭代极快，建议在 Telegram 内直接检索当月活跃账号"),
-    "tools": ("实用工具", "一次性临时邮箱、词典、天气、安装包提取与群内抽奖工具"),
+    "ai": ("AI 助手", "多模型聚合对话与群内 AI 客服；警惕两三句后的频道墙与瞎报日期，详见本节说明"),
+    "tools": ("实用工具", "一次性临时邮箱、文件与直链处理、语音转写、词典天气与群内抽奖工具"),
     "translate": ("多语翻译", "私聊双向互译与群聊消息实时自动转译，适合多语种社群与跨国协作"),
     "checkin": ("签到打卡", "群内每日打卡、连续天数统计与考勤汇总，量化社群活跃度与团队出勤"),
-    "channel": ("频道推送", "富媒体排版、定时发布队列与跨频道规则转发，适合频道主日常运营"),
-    "game": ("游戏娱乐", "群内实时抢答、HTML5 对战小游戏与文字冒险，无需跳出聊天窗口即可发起互动"),
-    "crypto": ("加密交易", "在 Telegram 内直接看行情、跟单与买卖链上代币，适合 Solana 等公链的高频交易"),
+    "channel": ("频道推送", "富媒体排版、定时发布队列、跨频道转发与评论/回应按钮，适合频道主日常运营"),
+    "game": ("游戏娱乐", "群内实时抢答、棋牌对战、HTML5 小游戏与文字冒险，无需跳出聊天窗口即可发起互动"),
+    "crypto": ("加密交易", "内建支付钱包与链上代币买卖；接入前用小额资金测试滑点与提现，并确认授权范围"),
 }
 
 CATEGORY_ORDER = ["official", "search", "crypto", "group", "download", "ai", "translate", "checkin", "channel", "game", "tools"]
@@ -136,6 +136,12 @@ def clean_display_title(raw: str) -> str:
 
 def display_name(bot):
     fetch = bot.get("fetch", {}) or {}
+    override = (bot.get("display_name") or "").strip()
+    if override:
+        title = override
+        if fetch.get("is_verified") or bot.get("official"):
+            title = f'{title} <span class="verified">✓</span>'
+        return Markup(title)
     raw_title = fetch.get("title") or bot.get("username", "").lstrip("@")
     title = clean_display_title(str(raw_title)) or str(raw_title).strip()
     if fetch.get("is_verified") or bot.get("official"):
