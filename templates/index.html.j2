@@ -62,18 +62,18 @@
             <div><dt>确认活跃</dt><dd>{{ ok_count }}<span>个</span></dd></div>
           </dl>
         </div>
-{% if top10 %}
-        <aside class="hero-panel" aria-label="热门机器人速览">
-          <div class="panel-heading"><span>正在被大家使用</span><span class="panel-label">MAU</span></div>
-{% for bot in top10[:3] %}
+{% if search_top %}
+        <aside class="hero-panel" aria-label="热门中文搜索机器人速览">
+          <div class="panel-heading"><span>热门中文搜索 Bot</span><span class="panel-label">HOT</span></div>
+{% for bot in search_top %}
           <a class="pulse-item" href="{{ bot.link_url }}" target="_blank" rel="noopener" aria-label="打开 {{ bot.username }}">
-            <span class="pulse-rank">0{{ loop.index }}</span>
+            <span class="pulse-rank">{{ "%02d"|format(loop.index) }}</span>
             {{ avatar(bot, small=True, eager=True) }}
             <span class="pulse-name">{{ bot.name }}<small>{{ bot.username }}</small></span>
             <strong>{{ bot.users }}</strong>
           </a>
 {% endfor %}
-          <a href="#top10" class="panel-link">查看完整热门榜单<span aria-hidden="true">→</span></a>
+          <a href="#cat-search" class="panel-link">查看全部搜索 Bot<span aria-hidden="true">→</span></a>
         </aside>
 {% endif %}
       </div>

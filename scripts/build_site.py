@@ -211,6 +211,16 @@ def build_sections(by_cat):
     return sections
 
 
+def rank_top(pool, limit):
+    """按公开月活降序取前 N 条，附带格式化后的月活与单位。"""
+    top = sorted(pool, key=lambda b: -b["fetch"]["monthly_users"])[:limit]
+    return [{
+        **bot_view(bot),
+        "users": format_num(bot["fetch"]["monthly_users"]),
+        "unit": UNITS.get(bot["fetch"].get("type", "bot"), "/月"),
+    } for bot in top]
+
+
 def build_top10(bots):
     # 官方账号月活天然巨大，榜单只排第三方 bot。
     pool = [
@@ -219,12 +229,18 @@ def build_top10(bots):
         and not is_not_bot(b)
         and b.get("category") != "official"
     ]
-    top = sorted(pool, key=lambda b: -b["fetch"]["monthly_users"])[:10]
-    return [{
-        **bot_view(bot),
-        "users": format_num(bot["fetch"]["monthly_users"]),
-        "unit": UNITS.get(bot["fetch"].get("type", "bot"), "/月"),
-    } for bot in top]
+    return rank_top(pool, 10)
+
+
+def build_search_top(bots, limit=3):
+    """首屏速览面板：搜索分类内按公开月活取前 N 条。"""
+    pool = [
+        b for b in bots
+        if b.get("category") == "search"
+        and b.get("fetch", {}).get("monthly_users")
+        and not is_not_bot(b)
+    ]
+    return rank_top(pool, limit)
 
 
 def build_context(data):
@@ -248,6 +264,7 @@ def build_context(data):
         "verified_time": format_verified_time(data.get("last_fetched_at")),
         "featured": [bot_view(b) for b in featured],
         "top10": build_top10(bots),
+        "search_top": build_search_top(bots),
         "sections": build_sections(by_cat),
     }
 
