@@ -2,7 +2,7 @@
 
 > 按真实月活与场景筛选，每周核验公开预览页与月活；失效条目标记下架，官方频道单独分组标注
 
-收录 **11 大高频场景、76 个在运营条目**：72 条有公开活跃度数据（其中 3 个官方发布频道统计的是订阅数，已单独成表），4 条未公开月活。所有条目由脚本每周抓取 Telegram 公开预览页并更新月活（MAU）；**页面可访问不等于 `/start` 一定有响应**，实际可用性请以私聊实测为准。助你快速定位可用的群管、检索、解析、AI 助手、链上交易与效率工具。
+收录 **11 大高频场景、75 个在运营条目**：71 条有公开活跃度数据（其中 3 个官方发布频道统计的是订阅数，已单独成表），4 条未公开月活。所有条目由脚本每周抓取 Telegram 公开预览页并更新月活（MAU）；**页面可访问不等于 `/start` 一定有响应**，实际可用性请以私聊实测为准。助你快速定位可用的群管、检索、解析、AI 助手、链上交易与效率工具。
 
 <!-- AUTO:last-verified:start -->
 > 最近核验：2026-11
@@ -111,7 +111,7 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 | TGStat Bot | [@tgstat_bot](https://t.me/tgstat_bot) | 查询任意频道、群组的订阅量与发帖统计 | 约 8.0 万/月 |
 | 一起搜电影 | [@sotv](https://t.me/sotv) | 检索电影与剧集资源，支持挂载至群聊内直接调用 | 约 6.2 万/月 |
 | 搜啦资源搜索机器人 | [@soula](https://t.me/soula) | 按关键词检索中文群组与频道公开内容 | 约 2.2 万/月 |
-| 狗狗索引 - 搜索神器 | [@dogeindexbot](https://t.me/dogeindexbot) | 中文检索频道、群组与机器人，可挂载群内调用 | 约 2.2 万/月 |
+| 狗狗索引 - 搜索神器 | [@dogeindexbot](https://t.me/DogeIndexBot?start=DGB-de61ef43caea41a294a2379ae3d4c6ea) | 中文检索频道、群组与机器人，可挂载群内调用 | 约 2.2 万/月 |
 | aiso中文搜索 | [@aiso](https://t.me/aiso?start=telegram_6480909132) | 发送关键词直接匹配公开群组与频道内容 | 约 2.0 万/月 |
 <!-- AUTO:bots-category:search:end -->
 
@@ -122,7 +122,7 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 <!-- AUTO:bots-category:crypto:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| Crypto Bot | [@cryptobot](https://t.me/cryptobot) | Telegram 内建支付与钱包入口，支持 Crypto Pay 收款与转账 | 约 123.7 万/月 |
+| Crypto Bot | [@cryptobot](https://t.me/send?start=r-pupvt) | Telegram 内建支付与钱包入口，支持 Crypto Pay 收款与转账 | 约 123.7 万/月 |
 | Trojan on Solana ✓ | [@solana_trojanbot](https://t.me/solana_trojanbot?start=r-flashbonk) | Solana 链上跟单与极速交易，支持限价单、止盈止损与多钱包管理 | 约 4.1 万/月 |
 | GMGN.AI | [@gmgnaibot](https://t.me/gmgnaibot?start=i_JyY0HbjE) | Solana 链上代币行情与一键买卖，支持跟单、限价与止盈止损 | 约 3.3 万/月 |
 | Maestro | [@maestro](https://t.me/maestro?start=r-flashbonk) | 以太坊与 Solana 等多链代币狙击买入，支持跟单、限价与自动止盈止损 | 约 2.7 万/月 |
@@ -201,8 +201,8 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 |------|------|----------|------|
 | GPT-4 Telegram Bot | [@GPT4Telegrambot](https://t.me/GPT4Telegrambot) | 集成 GPT-4o、Claude 3.5 与 Gemini 的智能对话助手，支持长上下文与语音交互 | 约 508.8 万/月 |
 | ChatGPT Unlim Bot | [@gpt3_unlim_chatbot](https://t.me/gpt3_unlim_chatbot) | 多模型聚合对话，按额度计费且免费额度较宽 | 约 270.6 万/月 |
-| GPT-5 多模型聚合 | [@gpt5tgbot](https://t.me/gpt5tgbot) | 聚合 ChatGPT、Gemini、Claude 与 Midjourney 的多模型入口 | 约 24.0 万/月 |
-| DeepSeek | [@deepseek_gidbot](https://t.me/deepseek_gidbot) | DeepSeek 对话入口，中文语料与代码能力较强 | 约 3.5 万/月 |
+| GPT-5 多模型聚合 | [@gpt5tgbot](https://t.me/GPT5TGBot?start=ref9Bxl) | 聚合 ChatGPT、Gemini、Claude 与 Midjourney 的多模型入口 | 约 24.0 万/月 |
+| DeepSeek | [@deepseek_gidbot](https://t.me/deepseek_gidbot?start=ref_6480909132) | DeepSeek 对话入口，中文语料与代码能力较强 | 约 3.5 万/月 |
 <!-- AUTO:bots-category:ai:end -->
 
 ### 多语翻译
@@ -235,8 +235,7 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 <!-- AUTO:bots-category:channel:start -->
 | 名称 | 链接 | 核心功能 | 月活 |
 |------|------|----------|------|
-| Channel Help | [@chelpbot](https://t.me/chelpbot) | 频道定时排版、互动数据统计与抽奖管理 | 约 257.2 万/月 |
-| Post Bot | [@postbot](https://t.me/postbot) | 编辑含内联按钮的富媒体图文并发布至频道 | 约 245.0 万/月 |
+| Post Bot | [@postbot](https://t.me/PostBot?start=6480909132) | 编辑含内联按钮的富媒体图文并发布至频道 | 约 245.0 万/月 |
 | Livegram Bot | [@livegrambot](https://t.me/livegrambot) | 免代码搭建双向反馈机器人，解决账号无法主动私聊的问题 | 约 104.7 万/月 |
 | LikeBot | [@like](https://t.me/like) | 为频道帖子批量生成表情回应按钮 | 约 56.4 万/月 |
 | TelepostBot | [@telepostbot](https://t.me/telepostbot) | 频道图文排版、定时发布队列与浏览数据统计 | 约 54.9 万/月 |
@@ -302,8 +301,9 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 
 本仓库以 `data/bots.json` 为唯一数据源，每周由 GitHub Actions 复核公开预览页、更新月活并标记失效条目（不检测 `/start` 实际响应）。
 
-- **当前规模**：11 大活跃场景 · 76 个在运营条目（72 条有公开活跃度，含 3 个官方频道的订阅数；5 个精选主力入口）
+- **当前规模**：11 大活跃场景 · 75 个在运营条目（71 条有公开活跃度，含 3 个官方频道的订阅数；5 个精选主力入口）
 - **近期迭代**：
+  - **2026-11（深链与内容审核）**：将 `@cryptobot`（Crypto Pay 转账深链 `t.me/send`）、`@dogeindexbot`、`@gpt5tgbot`、`@deepseek_gidbot` 与 `@postbot` 五条入口改为带邀请码的 `?start=` 深链，链接文字仍显示原 username；下架 `@chelpbot`——其预览页有 257.2 万月活且状态正常，但私聊 `/start` 会推送不适宜图片，属自动巡检无法覆盖的内容适宜性问题，同时清理对应本地头像。规模由 76 → 75（71 条有公开活跃度、4 条无月活）
   - **2026-11（整合后复核修订）**：全量重抓 76 条（76/76 成功），顶层批次时间更新为 2026-11-04 09:43 UTC；按脚本幂等设计，仅 7 条数据实际变化的条目刷新逐条 `fetched_at`，其余 69 条保留原抓取时刻（`@maestro` / `@joinhider_bot` 仍是 11-02、11-03 的原始快照）；更正 `@GroupHelpBot`「全中文菜单」、`@MissRose_bot`「全球第一」与 `@wallet` 已更名三处失实描述，恢复四条 AI 避坑要点；精选区撤下俄文界面的 `@SaveAsBot`、改推 `@GPT4Telegrambot` 并补克隆号授权提示；3 个官方频道在 README / 站点单独分组；新增 `validate.py --check provenance` 防伪造校验与 PR 检查 workflow；审计结论订正后归档于 [docs/audit-2026-11.md](./docs/audit-2026-11.md)
   - **2026-11（全站实测复核与头部生态补齐）**：相对上一版按集合差清理 30 个零月活或停更长尾条目、补齐 36 个各赛道头部入口（70→76）——群管补入 `@GroupHelpBot`、`@MissRose_bot`、`@nmnmfunbot`、`@chatkeeperbot`、`@fangzhang_bot`、`@customize_captcha_bot` 等；启用 AI 分类表格并收录 `@GPT4Telegrambot`、`@gpt3_unlim_chatbot`、`@gpt5tgbot` 与 `@deepseek_gidbot`；新增 `@wallet`、`@cryptobot`、`@SaveAsBot`、`@MusicsHuntersbot`、频道运营 `@livegrambot` / `@like` / `@controllerbot` / `@discussbot`、检索与数据核实 `@searcheebot` / `@telemetr_io_bot` / `@tgstat_bot` / `@dogeindexbot`、`@truemafiabot` 以及工具类 `@fragment` / `@newfileconverterbot` / `@uploadbot` / `@pdfbot` / `@SkeddyBot` / `@voicemsgbot` / `@flowerss_bot` / `@FeedReaderBot`；启用 `display_name` 人工显示名以规整俄文与营销后缀。月活数值随每周快照变动，以 `data/bots.json` 当次数据为准
   - **2026-11**：精简低质与重复条目（移除停运的 GIF Downloader、重复验证码与抽奖 Bot 等 7 条，73→66）；精选区按各场景最高月活重排（`@BotFather` / `@soso` / `@combot` / `@instasave_bot` / `@quizbot`）；移除无月活的 RSS 分类，新增「官方账号」分类；站名改为「电报机器人大全」，搜索分类改按月活降序，精选条目改为在所属分类中一并列出；排序改由渲染器按月活自动完成（无数据置底、失效最后），并新增 `validate --check order` 防回归；新增「加密交易」分类，收录 `@solana_trojanbot` / `@gmgnaibot` / `@maestro` / `@bonkbot_bot` 共 4 个链上交易 Bot

@@ -12,7 +12,7 @@
 点击 [New Issue](https://github.com/codertesla/telegram-bots/issues/new/choose)，选择「推荐机器人」模板，填入：
 
 - 机器人名称
-- 链接（**必须用 `https://t.me/xxx` 格式**）
+- 链接（**必须用 `https://t.me/xxx` 格式**；允许追加 `?start=<邀请码>` 深链参数。唯一例外是 Crypto Pay 的转账深链 `https://t.me/send?start=...`，路径与 username 不同；抓取脚本始终按 `username` 请求 `t.me/<username>` 预览页，不受 url 参数影响）
 - 分类：官方 / 搜索 / 加密交易 / 群管 / 下载 / AI / 翻译 / 签到 / 频道推送 / 游戏 / 工具（官方指 Telegram 自家账号与频道）
 - 一句话描述（核心功能 + 适用场景）
 - 是否官方
@@ -35,7 +35,7 @@
 |---|---|---|
 | `id` | 是 | username 去掉 `@`、全小写，作为主键，全局唯一 |
 | `username` | 是 | 含 `@`，如 `@jiso` |
-| `url` | 是 | `https://t.me/<username>` |
+| `url` | 是 | `https://t.me/<username>`，可带 `?start=` 邀请参数；`t.me/send` 为 Crypto Pay 转账深链特例 |
 | `category` | 是 | `official` / `search` / `group` / `download` / `ai` / `tools` / `translate` / `checkin` / `channel` / `game` |
 | `subsection` | 否 | 仅 `group` 类用：`verify` / `ads` / `stats` / `misc` |
 | `featured` | 否 | `true` 进"精选必装"区，全区 ≤ 5 条 |

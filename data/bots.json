@@ -708,7 +708,7 @@
     {
       "id": "postbot",
       "username": "@postbot",
-      "url": "https://t.me/postbot",
+      "url": "https://t.me/PostBot?start=6480909132",
       "category": "channel",
       "subsection": "publish",
       "featured": false,
@@ -751,32 +751,6 @@
         "type": "bot",
         "is_verified": false,
         "photo_url": "https://cdn4.telesco.pe/file/Gyt2jG87o2xYnhuneYbtscSWBOHeFOAlfha2yGxNJZMGpHNo764ginzDkDhVf90_UTvuwoaQLJ1dF3Bpr_7m4R2R1WhBSPvJsjMO3cT6MNJXBvzG1VCEhqMO0xt-_fbAmkdzpULG6m0whYKLM5pEsNuYOWxctYSWDrltIGIS8hHOzSlewi0S8CqLjQ8Nr9tDq9Sd1TakRLJI_5hKFRAKZRfqdMYxOkAws5B2HWg3Vhfg3GP8xwo-ouocvAgGPrvEHrmkXPOoKEq9BS2kpxLB7MJt9cfFDCziYH-M8qopPXPWWlpn6wwhEBgdWaa_h25cLCU21prdyqR_CwSFId6fZQ.jpg",
-        "page_kind": "bot",
-        "not_bot": false,
-        "dead_streak": 0,
-        "error_msg": null
-      }
-    },
-    {
-      "id": "chelpbot",
-      "username": "@chelpbot",
-      "url": "https://t.me/chelpbot",
-      "category": "channel",
-      "subsection": "manage",
-      "featured": false,
-      "official": false,
-      "notes": "频道定时排版、互动数据统计与抽奖管理",
-      "fetch": {
-        "status": "ok",
-        "http_code": 200,
-        "fetched_at": "2026-11-04T08:56:44.099547+00:00",
-        "title": "Channel Help",
-        "description": "Most complete channel bot: post with buttons and PREMIUM EMOJI, welcome message, recurring posts, join filters and more!",
-        "extra_raw": "2 572 341 monthly users",
-        "monthly_users": 2572341,
-        "type": "bot",
-        "is_verified": false,
-        "photo_url": "https://cdn4.telesco.pe/file/HBi-Am7MjE1368Lco5G5bO28cZhNXubKlC1pp3AAh62nL8weUJ64R2rERMZGVksjLwNxbRqmuvbKVt42LpeC5Qol-TZbqzchMl2CQ3mEfq_Bw5L435xPsxyd_H-k8sD6d-_X_onOilqguB4P2sBsHEHWTxROBjCPmdHhzhEAWJ70-wX6N0PJzyU-hb6np5j11wpU-Uph1FH0weFV2jqhdl4G8EwJomSqNQR4XRoeBoXZdG33PnCdpBE0TZxkRaX-LNuipS0l_FoYY_-wHi-jL327OpLxgomsxSF3Va0otco6p-acF8Ex-zWkITIu0sqnX4fZhqT4sB-Sat31t1ls6A.jpg",
         "page_kind": "bot",
         "not_bot": false,
         "dead_streak": 0,
@@ -1202,7 +1176,7 @@
     {
       "id": "dogeindexbot",
       "username": "@dogeindexbot",
-      "url": "https://t.me/dogeindexbot",
+      "url": "https://t.me/DogeIndexBot?start=DGB-de61ef43caea41a294a2379ae3d4c6ea",
       "category": "search",
       "subsection": null,
       "featured": false,
@@ -1280,7 +1254,7 @@
     {
       "id": "cryptobot",
       "username": "@cryptobot",
-      "url": "https://t.me/cryptobot",
+      "url": "https://t.me/send?start=r-pupvt",
       "category": "crypto",
       "subsection": null,
       "featured": false,
@@ -1569,7 +1543,7 @@
     {
       "id": "gpt5tgbot",
       "username": "@gpt5tgbot",
-      "url": "https://t.me/gpt5tgbot",
+      "url": "https://t.me/GPT5TGBot?start=ref9Bxl",
       "category": "ai",
       "subsection": null,
       "featured": false,
@@ -1596,7 +1570,7 @@
     {
       "id": "deepseek_gidbot",
       "username": "@deepseek_gidbot",
-      "url": "https://t.me/deepseek_gidbot",
+      "url": "https://t.me/deepseek_gidbot?start=ref_6480909132",
       "category": "ai",
       "subsection": null,
       "featured": false,
