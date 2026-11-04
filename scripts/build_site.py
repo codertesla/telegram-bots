@@ -85,6 +85,22 @@ def sort_by_monthly(bots):
     return [bot for _, bot in sorted(enumerate(bots), key=key)]
 
 
+def sort_featured(bots, order=None):
+    """精选区顺序：优先按顶层 featured_order 人工指定，未列出的条目按月活降序列在其后。
+
+    与 render_readme.sort_featured 规则保持一致；分类表仍走 sort_by_monthly。
+    order 缺失时退回月活降序。
+    """
+    pinned = [str(u).lower().lstrip("@") for u in (order or []) if str(u).strip()]
+    rank = {u: i for i, u in enumerate(pinned)}
+    return sorted(
+        sort_by_monthly(bots),
+        key=lambda b: rank.get(
+            str(b.get("username", "")).lower().lstrip("@"), len(pinned)
+        ),
+    )
+
+
 def format_verified_time(iso):
     """将 ISO 时间转换为 UTC 日期，保持构建结果可复现。"""
     if not iso:
@@ -268,7 +284,9 @@ def build_context(data):
         if cat in CATEGORY_TITLES:
             by_cat.setdefault(cat, []).append(bot)
 
-    featured = sort_by_monthly([b for b in bots if b.get("featured")])
+    featured = sort_featured(
+        [b for b in bots if b.get("featured")], data.get("featured_order")
+    )
     return {
         "total": len(bots),
         "ok_count": sum(

@@ -13,7 +13,7 @@
 - **真实月活排序**：直接抓取 Telegram 官方预览页披露的月活数据（MAU），主力工具与长尾玩具一目了然。各表自动按月活从高到低排列，未公开月活的条目置底、已失效条目排最后，无需人工调序
 - **每周核验公开数据**：GitHub Actions 定期复核预览页与月活；连续失效的死号会标记并隐藏，个人账号与频道另行标注，官方发布频道单独成表、不与 Bot 混排
 - **数据可溯源**：`data/bots.json` 的 `fetch` 字段只允许抓取脚本写入，`validate.py --check provenance` 会核对 `extra_raw` 与月活、时间戳指纹与批次时间，拦截手工编造的活跃度
-- **精选一锤定音**：精选区每个核心场景保留 1 个已核验的主力入口，省去横向试错成本
+- **精选一锤定音**：精选区每个核心场景保留 1 个已核验的主力入口，展示顺序由编辑指定（`@soso` → `@BotFather` 打头），省去横向试错成本
 - **单一数据源维护**：全表由 `data/bots.json` 自动渲染生成，杜绝手动改表遗留的失效死链
 
 ## 目录索引
@@ -55,16 +55,16 @@
 
 ## 精选必装
 
-覆盖 5 个最高频场景（官方 / 搜索 / 群管 / 娱乐 / AI），每类保留 1 个已核验的主力入口。解析下载类的头部入口（`@SaveAsBot`，界面为俄文）仍列在下方分类表中；AI 类改推公开月活更高的 `@GPT4Telegrambot`。
+覆盖 5 个最高频场景（官方 / 搜索 / 群管 / 娱乐 / AI），每类保留 1 个已核验的主力入口。展示顺序为编辑精选，按 `data/bots.json` 顶层的 `featured_order` 指定，与月活高低无关；下方分类表仍按月活自动降序。解析下载类的头部入口（`@SaveAsBot`，界面为俄文）仍列在下方分类表中；AI 类改推公开月活更高的 `@GPT4Telegrambot`。
 
 <!-- AUTO:bots-featured:start -->
 | 名称 | 链接 | 一句话用途 | 月活 |
 |------|------|------------|------|
+| SOSO搜搜 | [@soso](https://t.me/soso?start=a_6480909132) | 按关键词检索中文群组、频道与音视频资源 | 约 116.7 万/月 |
 | BotFather ✓ | [@BotFather](https://t.me/BotFather) | 创建机器人、配置命令菜单与签发 API Token | 约 801.9 万/月 |
 | GPT-4 Telegram Bot | [@GPT4Telegrambot](https://t.me/GPT4Telegrambot) | 集成 GPT-4o、Claude 3.5 与 Gemini 的智能对话助手，支持长上下文与语音交互 | 约 508.8 万/月 |
 | Group Help | [@GroupHelpBot](https://t.me/GroupHelpBot) | 英文界面综合群管，支持滑动/算术入群验证、自动禁言与日志审计；拉群后请核对实际入群账号，第三方实测曾拉入 GHClone1Bot 克隆号 | 约 236.0 万/月 |
 | Quiz Bot ✓ | [@quizbot](https://t.me/quizbot) | 创建多媒体选择题竞赛，支持群内实时抢答与排行榜统计 | 约 162.8 万/月 |
-| SOSO搜搜 | [@soso](https://t.me/soso?start=a_6480909132) | 按关键词检索中文群组、频道与音视频资源 | 约 116.7 万/月 |
 <!-- AUTO:bots-featured:end -->
 
 ## 分类索引
@@ -303,6 +303,7 @@ Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉�
 
 - **当前规模**：11 大活跃场景 · 75 个在运营条目（71 条有公开活跃度，含 3 个官方频道的订阅数；5 个精选主力入口）
 - **近期迭代**：
+  - **2026-11（精选区人工排序）**：新增顶层 `featured_order` 显式声明精选区展示顺序，`@soso` 置顶、`@BotFather` 第二，其余三条保持原有月活降序相对次序；README 与站点两个渲染器共用该规则，`--check seed` 校验顺序表与 `featured=true` 集合完全一致，并补 8 项单元测试。分类表仍按月活自动降序，规则不变
   - **2026-11（深链与内容审核）**：将 `@cryptobot`（Crypto Pay 转账深链 `t.me/send`）、`@dogeindexbot`、`@gpt5tgbot`、`@deepseek_gidbot` 与 `@postbot` 五条入口改为带邀请码的 `?start=` 深链，链接文字仍显示原 username；下架 `@chelpbot`——其预览页有 257.2 万月活且状态正常，但私聊 `/start` 会推送不适宜图片，属自动巡检无法覆盖的内容适宜性问题，同时清理对应本地头像。规模由 76 → 75（71 条有公开活跃度、4 条无月活）
   - **2026-11（整合后复核修订）**：全量重抓 76 条（76/76 成功），顶层批次时间更新为 2026-11-04 09:43 UTC；按脚本幂等设计，仅 7 条数据实际变化的条目刷新逐条 `fetched_at`，其余 69 条保留原抓取时刻（`@maestro` / `@joinhider_bot` 仍是 11-02、11-03 的原始快照）；更正 `@GroupHelpBot`「全中文菜单」、`@MissRose_bot`「全球第一」与 `@wallet` 已更名三处失实描述，恢复四条 AI 避坑要点；精选区撤下俄文界面的 `@SaveAsBot`、改推 `@GPT4Telegrambot` 并补克隆号授权提示；3 个官方频道在 README / 站点单独分组；新增 `validate.py --check provenance` 防伪造校验与 PR 检查 workflow；审计结论订正后归档于 [docs/audit-2026-11.md](./docs/audit-2026-11.md)
   - **2026-11（全站实测复核与头部生态补齐）**：相对上一版按集合差清理 30 个零月活或停更长尾条目、补齐 36 个各赛道头部入口（70→76）——群管补入 `@GroupHelpBot`、`@MissRose_bot`、`@nmnmfunbot`、`@chatkeeperbot`、`@fangzhang_bot`、`@customize_captcha_bot` 等；启用 AI 分类表格并收录 `@GPT4Telegrambot`、`@gpt3_unlim_chatbot`、`@gpt5tgbot` 与 `@deepseek_gidbot`；新增 `@wallet`、`@cryptobot`、`@SaveAsBot`、`@MusicsHuntersbot`、频道运营 `@livegrambot` / `@like` / `@controllerbot` / `@discussbot`、检索与数据核实 `@searcheebot` / `@telemetr_io_bot` / `@tgstat_bot` / `@dogeindexbot`、`@truemafiabot` 以及工具类 `@fragment` / `@newfileconverterbot` / `@uploadbot` / `@pdfbot` / `@SkeddyBot` / `@voicemsgbot` / `@flowerss_bot` / `@FeedReaderBot`；启用 `display_name` 人工显示名以规整俄文与营销后缀。月活数值随每周快照变动，以 `data/bots.json` 当次数据为准

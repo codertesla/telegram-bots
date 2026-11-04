@@ -2,6 +2,13 @@
   "schema_version": 1,
   "last_fetched_at": "2026-11-04T09:43:49.905141+00:00",
   "last_verified_label": "2026-11",
+  "featured_order": [
+    "@soso",
+    "@BotFather",
+    "@GPT4Telegrambot",
+    "@GroupHelpBot",
+    "@quizbot"
+  ],
   "bots": [
     {
       "id": "botfather",

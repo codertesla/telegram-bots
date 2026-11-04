@@ -43,6 +43,8 @@
 | `notes` | 是 | 30-60 字中文，写清"核心功能 + 适用场景"，不带链接（链接由 url 自动渲染） |
 | `display_name` | 否 | 列表显示名。仅当抓取到的标题为西里尔字母或含杂乱符号时填写，留空则用平台标题清理后显示 |
 
+顶层字段 `featured_order`（可选）：精选区展示顺序数组，元素为带 `@` 的 username。声明后必须**恰好列出所有 `featured=true` 的条目**，`--check seed` 会校验集合一致；不声明则沿用月活降序。当前顺序以 `@soso`、`@BotFather` 打头。
+
 ### 抓取字段（由 `scripts/fetch_bots.py` 维护，贡献者勿改）
 `fetch` 对象：`status`（`ok`/`dead`/`error`/`pending`）、`http_code`、`fetched_at`、`title`、`description`、`monthly_users`（int）、`type`（`bot`/`channel`/`group`/`user`/`unknown`）、`is_verified`、`photo_url`、`page_kind`（`bot`/`user`/`channel`/`group`/`unknown`）、`not_bot`（bool）、`dead_streak`（连续判定失效次数）、`error_msg`。
 
@@ -96,7 +98,8 @@ README 用 marker 包裹自动区块，其余散文由人工维护、**逐字符
 - 官方蓝勾或人工 official 在显示名后加 `✓`
 - `notes` / `display_name` 中的竖线与换行由 `escape_md_cell()` 统一压平，不会撑破表格；站点的显示名、链接同样做 HTML 转义，只有脚本自己拼的 ✓ 徽标按 HTML 直出
 - `category=official` 中 `not_bot=true` 的官方发布频道单独成表并标注「非 Bot · 仅统计订阅数」，不与真正的官方 Bot 混排
-- 行序按 `fetch.monthly_users` 降序自动排序；未公开月活（含 <1 万）的条目排在末尾，已失效条目排最后，同档内保持 `bots.json` 原有次序。**因此新增条目不必手动插到合适位置**，渲染时会自动归位
+- 分类表行序按 `fetch.monthly_users` 降序自动排序；未公开月活（含 <1 万）的条目排在末尾，已失效条目排最后，同档内保持 `bots.json` 原有次序。**因此新增条目不必手动插到合适位置**，渲染时会自动归位
+- **精选区例外**：顺序由顶层 `featured_order` 人工指定（编辑精选，与月活高低无关），未写入该数组的精选条目按上述月活降序列在末尾。增删 `featured=true` 条目时必须同步更新数组，否则 `--check seed` 报错；README 与站点两个渲染器共用同一规则
 
 ---
 

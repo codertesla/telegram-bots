@@ -107,6 +107,31 @@ def check_seed(data):
     if featured_count > 5:
         errors.append(f"featured count {featured_count} > 5 (SPEC limit)")
 
+    # 顶层 featured_order 是精选区的人工顺序；一旦声明，必须与 featured=true
+    # 的集合完全一致，避免增删精选后顺序表静默失配（缺失时退回月活降序）。
+    fo = data.get("featured_order")
+    if fo is not None:
+        if not isinstance(fo, list) or not all(
+            isinstance(u, str) and u.strip() for u in fo
+        ):
+            errors.append("featured_order must be a list of non-empty username strings")
+        else:
+            norm = [u.lower().lstrip("@") for u in fo]
+            if len(set(norm)) != len(norm):
+                errors.append("featured_order contains duplicate usernames")
+            featured_set = {
+                str(b.get("username", "")).lower().lstrip("@")
+                for b in bots
+                if b.get("featured")
+            }
+            missing = featured_set - set(norm)
+            extra = set(norm) - featured_set
+            if missing or extra:
+                errors.append(
+                    "featured_order must list exactly the featured bots "
+                    f"(missing: {sorted(missing)}, not featured: {sorted(extra)})"
+                )
+
     if errors:
         print("SEED CHECK FAILED:")
         for e in errors:

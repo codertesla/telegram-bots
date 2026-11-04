@@ -44,7 +44,8 @@ def is_hidden(bot: dict) -> bool:
 def sort_by_monthly(bots: list[dict]) -> list[dict]:
     """稳定排序：月活降序，无月活靠后，已失效最后。
 
-    分类表与精选表都走这一条规则，保证每周自动刷新后顺序无需人工维护。
+    分类表走这一条规则，保证每周自动刷新后顺序无需人工维护；
+    精选表见 sort_featured（编辑指定的顺序优先）。
     同档内保持 bots.json 的原有相对次序。
     """
     def key(item):
@@ -58,6 +59,23 @@ def sort_by_monthly(bots: list[dict]) -> list[dict]:
         return (0, -int(mu), idx)
 
     return [bot for _, bot in sorted(enumerate(bots), key=key)]
+
+
+def sort_featured(bots: list[dict], order=None) -> list[dict]:
+    """精选区顺序：优先按顶层 featured_order 人工指定，未列出的条目按月活降序列在其后。
+
+    featured_order 只影响精选区；分类表仍由 sort_by_monthly 自动排序。
+    order 缺失或留空时退回月活降序，保持向后兼容。sorted 为稳定排序，
+    因此未列出的条目彼此之间仍保持月活降序。
+    """
+    pinned = [str(u).lower().lstrip("@") for u in (order or []) if str(u).strip()]
+    rank = {u: i for i, u in enumerate(pinned)}
+    return sorted(
+        sort_by_monthly(bots),
+        key=lambda b: rank.get(
+            str(b.get("username", "")).lower().lstrip("@"), len(pinned)
+        ),
+    )
 
 
 def not_bot_label(bot: dict) -> str:
@@ -425,10 +443,12 @@ def main():
     hidden = [b for b in all_bots if is_hidden(b)]
     bots = [b for b in all_bots if not is_hidden(b)]
 
-    # Group by category. 行序不再依赖 json 顺序：分类表与精选表都在渲染时
-    # 按月活降序排序（sort_by_monthly），每周自动刷新后无需人工重排。
+    # Group by category. 分类表按月活降序（sort_by_monthly）自动排；
+    # 精选区按顶层 featured_order 人工指定顺序，未列出的再按月活降序兜底。
     # 精选条目同时在所属分类里出现一次，避免只看分类表时漏掉头部入口。
-    featured = sort_by_monthly([b for b in bots if b.get("featured")])
+    featured = sort_featured(
+        [b for b in bots if b.get("featured")], data.get("featured_order")
+    )
 
     by_cat: dict[str, list[dict]] = defaultdict(list)
     for b in bots:
