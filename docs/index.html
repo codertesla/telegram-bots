@@ -15,1088 +15,779 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <style>
-:root {
-  /* Editorial Dark (synced with portfolio) */
-  --bg-color: #0a0a0a;
-  --card-bg: #161616;
-  --text-primary: #ededed;
-  --text-secondary: #9a9a9a;
-  --border: rgba(255, 255, 255, 0.08);
-  --accent: #e8b04d;
-  --accent-hover: #f5d68a;
-  --error: #ef4444;
-
-  /* Typography */
-  --font-heading: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
-  --transition-smooth: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  background-color: var(--bg-color);
-  color: var(--text-primary);
-  font-family: var(--font-main);
-  line-height: 1.65;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-a { color: var(--accent); text-decoration: none; transition: var(--transition-smooth); }
-a:hover { color: var(--accent-hover); text-decoration: underline; }
-.muted { color: var(--text-secondary); }
-.verified { color: var(--accent); font-weight: 700; }
-.badge { font-size: 0.8rem; padding: 2px 8px; border-radius: 6px; }
-.badge-dead { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
-
-/* Header */
-header {
-  padding: 1rem 0;
-  display: flex; justify-content: space-between; align-items: center;
-  position: sticky; top: 0; z-index: 1000;
-  background: #0a0a0a;
-  border-bottom: 1px solid var(--border);
-}
-.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-.logo {
-  font-family: var(--font-heading);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-}
-nav ul { list-style: none; display: flex; gap: 1rem; flex-wrap: wrap; }
-nav a { color: var(--text-secondary); font-size: 0.9rem; }
-nav a:hover { color: var(--accent); text-decoration: none; }
-
-/* Search */
-.search-wrap {
-  position: sticky; top: 56px; z-index: 999;
-  background: #0a0a0a;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--border);
-}
-.search-box {
-  width: 100%; max-width: 600px; margin: 0 auto; display: block;
-  padding: 0.65rem 1rem; font-size: 0.95rem; font-family: var(--font-main);
-  background: var(--card-bg); border: 1px solid var(--border); border-radius: 999px;
-  color: var(--text-primary); outline: none; transition: var(--transition-smooth);
-}
-.search-box:focus { border-color: var(--accent); }
-.search-box::placeholder { color: var(--text-secondary); }
-
-/* Hero - subtle radial only */
-.hero {
-  padding: 5rem 0 4rem;
-  text-align: center;
-  background: radial-gradient(ellipse at 50% 0%, rgba(232,176,77,0.06), transparent 60%);
-}
-.hero h1 {
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-}
-.hero p { font-size: 1.1rem; color: var(--text-secondary); max-width: 640px; margin: 0 auto 2rem; }
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; max-width: 700px; margin: 0 auto 2rem; }
-.stat-card {
-  background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 1rem;
-  transition: var(--transition-smooth);
-}
-.stat-card:hover { border-color: rgba(232,176,77,0.4); background: #1a1a1a; }
-.stat-num {
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--accent);
-}
-.stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 0.25rem; }
-.hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-.btn {
-  display: inline-block; padding: 0.7rem 1.5rem; font-weight: 600; border-radius: 6px;
-  background: var(--accent); color: #0a0a0a; border: none; cursor: pointer;
-  font-size: 0.95rem; transition: var(--transition-smooth);
-}
-.btn:hover { background: var(--accent-hover); text-decoration: none; }
-.btn-outline {
-  background: transparent; border: 1px solid rgba(255,255,255,0.15); color: var(--text-primary);
-}
-.btn-outline:hover { border-color: var(--accent); color: var(--accent); background: transparent; }
-
-/* Section */
-section { padding: 4rem 0 3rem; }
-.section-heading {
-  font-family: var(--font-heading);
-  font-size: 1.75rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  position: relative;
-  display: inline-block;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-}
-.section-heading::after {
-  content: ''; position: absolute; bottom: -10px; left: 0; width: 40px; height: 3px;
-  background: var(--accent); border-radius: 2px;
-}
-.category-desc { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
-
-/* Featured cards */
-.featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
-.featured-card {
-  background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 1.25rem;
-  transition: var(--transition-smooth);
-}
-.featured-card:hover { border-color: rgba(232,176,77,0.4); background: #1a1a1a; }
-.featured-name {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
-}
-.featured-link { font-size: 0.9rem; margin-bottom: 0.5rem; }
-.featured-notes { color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 0.5rem; }
-.featured-monthly { font-size: 0.85rem; color: var(--accent); }
-
-/* Top 10 list */
-.top-list { list-style: none; padding: 0; }
-.top-item {
-  display: grid; grid-template-columns: 40px 1fr auto auto; gap: 1.25rem; align-items: center;
-  padding: 0.9rem 1rem; margin-bottom: 0.5rem; border-radius: 12px;
-  background: var(--card-bg); border: 1px solid var(--border); transition: var(--transition-smooth);
-}
-.top-item:hover { border-color: rgba(232,176,77,0.4); background: #1a1a1a; }
-.top-item.rank-1 { border-color: rgba(232,176,77,0.35); }
-.top-item.rank-2 { border-color: rgba(232,176,77,0.22); }
-.top-item.rank-3 { border-color: rgba(232,176,77,0.15); }
-.rank {
-  font-family: var(--font-heading);
-  font-size: 1.35rem;
-  font-weight: 700;
-  text-align: center;
-  color: var(--accent);
-}
-.top-name { font-weight: 600; color: var(--text-primary); }
-.top-link { font-size: 0.85rem; }
-.top-monthly { font-size: 0.85rem; color: var(--accent); white-space: nowrap; }
-
-/* Bot table */
-.table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); }
-.bot-table { width: 100%; border-collapse: collapse; min-width: 600px; }
-.bot-table th {
-  text-align: left; padding: 0.9rem 1rem; font-size: 0.85rem; font-weight: 600;
-  color: var(--text-secondary); background: rgba(255,255,255,0.02);
-  border-bottom: 1px solid var(--border); position: sticky; top: 0;
-}
-.bot-table td { padding: 0.9rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; vertical-align: top; }
-.bot-table tr { transition: var(--transition-smooth); }
-.bot-table tbody tr:hover { background: rgba(255,255,255,0.015); }
-.bot-table tr:last-child td { border-bottom: none; }
-.col-name { font-weight: 600; white-space: nowrap; color: var(--text-primary); }
-.col-link { white-space: nowrap; }
-.col-monthly { white-space: nowrap; color: var(--accent); }
-.subsection-title {
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin: 1.75rem 0 0.75rem;
-  color: var(--accent);
-}
-
-/* Footer - improved spacing (task 3) */
-footer {
-  padding: 4rem 0 3rem;
-  border-top: 1px solid var(--border);
-  margin-top: 3rem;
-}
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-footer p { color: var(--text-secondary); font-size: 0.85rem; }
-.footer-links { display: flex; gap: 1rem; }
-.footer-links a { color: var(--text-secondary); }
-.footer-links a:hover { color: var(--accent); text-decoration: none; }
-
-/* Search filter: hide non-matching rows */
-.bot-table tr.is-hidden { display: none; }
-.category-section.is-hidden { display: none; }
-.featured-card.is-hidden { display: none; }
-.top-item.is-hidden { display: none; }
-
-/* Responsive */
-@media (max-width: 768px) {
-  .hero { padding: 3.5rem 0 3rem; }
-  .top-item { grid-template-columns: 30px 1fr; gap: 0.5rem; }
-  .top-link, .top-monthly { grid-column: 2; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  nav ul { gap: 0.6rem; }
-  nav a { font-size: 0.8rem; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .featured-card:hover, .top-item:hover, .stat-card:hover, .btn:hover { transform: none; }
-}
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-      <a href="/" class="logo">电报机器人大全</a>
-      <nav>
-        <ul>
-          <li><a href="#featured">精选</a></li>
-          <li><a href="#top10">Top 10</a></li>
-          <li><a href="#cat-official">官方</a></li>
-          <li><a href="#cat-search">搜索</a></li>
-          <li><a href="#cat-group">群管</a></li>
-          <li><a href="#cat-download">下载</a></li>
-          <li><a href="#cat-translate">翻译</a></li>
-          <li><a href="#cat-game">游戏</a></li>
-          <li><a href="https://github.com/codertesla/telegram-bots" target="_blank" rel="noopener">GitHub ↗</a></li>
-        </ul>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand" aria-label="电报机器人大全首页">
+        <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.4 3.3 2.8 10.5c-1 .4-.9 1.7.1 2l4.8 1.5 1.8 5.7c.3.9 1.4 1.1 2 .4l2.6-3.1 4.9 3.6c.7.5 1.7.2 1.9-.7l2.2-15.2c.2-1-.7-1.8-1.7-1.4ZM8 13.3l10.6-6.5-8.2 8.1-.3 3-1.3-4.2c-.2-.5-.3-.6-.8-.4Z" fill="currentColor"/></svg>
+        <span>电报机器人大全</span>
+      </a>
+      <nav class="main-nav" aria-label="主导航">
+        <a href="#featured">精选</a>
+        <a href="#top10">热门榜单</a>
+        <a href="#directory">全部分类</a>
       </nav>
+      <a class="github-link" href="https://github.com/codertesla/telegram-bots" target="_blank" rel="noopener" aria-label="在 GitHub 查看项目">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.9c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.5 9.5 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z" fill="currentColor"/></svg>
+        <span>GitHub</span>
+      </a>
     </div>
   </header>
 
-  <div class="search-wrap">
-    <div class="container">
-      <input type="text" class="search-box" id="search" placeholder="🔍 搜索机器人名称、关键词、用户名..." aria-label="搜索机器人">
-    </div>
-  </div>
-
-  <main class="container">
+  <main>
     <section class="hero">
-      <h1>中文 Telegram 机器人导航</h1>
-      <p>精选 70 条活跃电报机器人，按 10 大场景分类组织，每条带真实月活数据，每周由 GitHub Actions 自动核验失效。</p>
-      <div class="stats-grid">
-        <div class="stat-card"><div class="stat-num">70</div><div class="stat-label">收录 Bot</div></div>
-        <div class="stat-card"><div class="stat-num">10</div><div class="stat-label">分类</div></div>
-        <div class="stat-card"><div class="stat-num">67</div><div class="stat-label">活跃中</div></div>
-        <div class="stat-card"><div class="stat-num">2026-11</div><div class="stat-label">最近核验</div></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="live-dot"></span>每周自动核验 · 2026-11 更新</p>
+          <h1>找到真正好用的<br><span>Telegram 机器人</span></h1>
+          <p class="hero-intro">不做漫无目的的收录。从真实月活、使用场景到存活状态，帮你更快找到值得信赖的工具。</p>
+          <div class="hero-actions">
+            <a href="#directory" class="btn">开始探索<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="#featured" class="text-link">看看编辑精选<span aria-hidden="true">↘</span></a>
+          </div>
+          <dl class="hero-stats">
+            <div><dt>精选收录</dt><dd>70<span>个</span></dd></div>
+            <div><dt>实用场景</dt><dd>10<span>类</span></dd></div>
+            <div><dt>确认活跃</dt><dd>67<span>个</span></dd></div>
+          </dl>
+        </div>
+        <aside class="hero-panel" aria-label="热门机器人速览">
+          <div class="panel-heading"><span>正在被大家使用</span><span class="panel-label">MAU</span></div>
+          <div class="pulse-item">
+            <span class="pulse-rank">01</span>
+            <span class="avatar avatar-small">C</span>
+            <span class="pulse-name">Channel Help<small>@chelpbot</small></span>
+            <strong>256.4 万</strong>
+          </div>
+          <div class="pulse-item">
+            <span class="pulse-rank">02</span>
+            <span class="avatar avatar-small">P</span>
+            <span class="pulse-name">Post Bot<small>@postbot</small></span>
+            <strong>249.1 万</strong>
+          </div>
+          <div class="pulse-item">
+            <span class="pulse-rank">03</span>
+            <span class="avatar avatar-small">Q</span>
+            <span class="pulse-name">Quiz Bot <span class="verified">✓</span><small>@quizbot</small></span>
+            <strong>162.0 万</strong>
+          </div>
+          <a href="#top10" class="panel-link">查看完整热门榜单<span aria-hidden="true">→</span></a>
+        </aside>
       </div>
-      <div class="hero-actions">
-        <a href="#featured" class="btn">浏览精选</a>
-        <a href="https://github.com/codertesla/telegram-bots" target="_blank" rel="noopener" class="btn btn-outline">查看 GitHub</a>
+      <div class="container search-container">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m16 16 4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="search" id="search" placeholder="搜索名称、用户名或功能，例如「下载」" aria-label="搜索机器人" autocomplete="off">
+          <kbd>/</kbd>
+        </div>
+        <p>输入关键词，立即从 70 个机器人中筛选</p>
       </div>
     </section>
 
-  <section class="featured-section" id="featured">
-    <h2 class="section-heading">精选必装</h2>
-    <p class="category-desc">覆盖 5 个最高频使用场景的入口（官方 / 搜索 / 群管 / 下载 / 娱乐），每个场景只放该分类月活最高、确认在运营的一个</p>
-    <div class="featured-grid">
-      <div class="featured-card">
-        <div class="featured-name">BotFather <span class="verified">✓</span></div>
-        <div class="featured-link"><a href="https://t.me/BotFather" target="_blank" rel="noopener">@BotFather</a></div>
-        <div class="featured-notes">创建机器人、配置命令菜单与签发 API Token</div>
-        <div class="featured-monthly">约 <strong>796.6 万</strong>/月</div>
-      </div>
-      <div class="featured-card">
-        <div class="featured-name">Quiz Bot <span class="verified">✓</span></div>
-        <div class="featured-link"><a href="https://t.me/quizbot" target="_blank" rel="noopener">@quizbot</a></div>
-        <div class="featured-notes">创建多媒体选择题竞赛，支持群内实时抢答与排行榜统计</div>
-        <div class="featured-monthly">约 <strong>162.0 万</strong>/月</div>
-      </div>
-      <div class="featured-card">
-        <div class="featured-name">SOSO搜搜</div>
-        <div class="featured-link"><a href="https://t.me/soso?start=a_6480909132" target="_blank" rel="noopener">@soso</a></div>
-        <div class="featured-notes">按关键词检索中文群组、频道与音视频资源</div>
-        <div class="featured-monthly">约 <strong>116.6 万</strong>/月</div>
-      </div>
-      <div class="featured-card">
-        <div class="featured-name">Combot</div>
-        <div class="featured-link"><a href="https://t.me/combot" target="_blank" rel="noopener">@combot</a></div>
-        <div class="featured-notes">集成员审核、活跃度分析、反垃圾与自动回复于一体的群管套件</div>
-        <div class="featured-monthly">约 <strong>84.0 万</strong>/月</div>
-      </div>
-      <div class="featured-card">
-        <div class="featured-name">InstaSave: Instagram & TikTok Downloader</div>
-        <div class="featured-link"><a href="https://t.me/instasave_bot" target="_blank" rel="noopener">@instasave_bot</a></div>
-        <div class="featured-notes">解析下载 Instagram、TikTok、X、Facebook 与 Pinterest 图文视频</div>
-        <div class="featured-monthly">约 <strong>6.4 万</strong>/月</div>
-      </div>
-    </div>
-  </section>
+    <div class="container content-shell">
+      <section class="featured-section discovery-section" id="featured">
+        <div class="section-header">
+          <div><p class="section-kicker">EDITOR'S PICKS</p><h2>从这些开始</h2></div>
+          <p>每个高频场景，只保留一个值得信赖的选择。</p>
+        </div>
+        <div class="featured-grid">
+          <article class="featured-card">
+            <div class="card-topline"><span class="avatar">B</span><span class="category-tag">官方账号</span></div>
+            <h3>BotFather <span class="verified">✓</span></h3>
+            <p>创建机器人、配置命令菜单与签发 API Token</p>
+            <div class="card-footer"><span class="monthly">约 <strong>796.6 万</strong>/月</span><a href="https://t.me/BotFather" target="_blank" rel="noopener">@BotFather</a></div>
+          </article>
+          <article class="featured-card">
+            <div class="card-topline"><span class="avatar">Q</span><span class="category-tag">游戏娱乐</span></div>
+            <h3>Quiz Bot <span class="verified">✓</span></h3>
+            <p>创建多媒体选择题竞赛，支持群内实时抢答与排行榜统计</p>
+            <div class="card-footer"><span class="monthly">约 <strong>162.0 万</strong>/月</span><a href="https://t.me/quizbot" target="_blank" rel="noopener">@quizbot</a></div>
+          </article>
+          <article class="featured-card">
+            <div class="card-topline"><span class="avatar">S</span><span class="category-tag">搜索发现</span></div>
+            <h3>SOSO搜搜</h3>
+            <p>按关键词检索中文群组、频道与音视频资源</p>
+            <div class="card-footer"><span class="monthly">约 <strong>116.6 万</strong>/月</span><a href="https://t.me/soso?start=a_6480909132" target="_blank" rel="noopener">@soso</a></div>
+          </article>
+          <article class="featured-card">
+            <div class="card-topline"><span class="avatar">C</span><span class="category-tag">群组管理</span></div>
+            <h3>Combot</h3>
+            <p>集成员审核、活跃度分析、反垃圾与自动回复于一体的群管套件</p>
+            <div class="card-footer"><span class="monthly">约 <strong>84.0 万</strong>/月</span><a href="https://t.me/combot" target="_blank" rel="noopener">@combot</a></div>
+          </article>
+          <article class="featured-card">
+            <div class="card-topline"><span class="avatar">I</span><span class="category-tag">解析下载</span></div>
+            <h3>InstaSave: Instagram & TikTok Downloader</h3>
+            <p>解析下载 Instagram、TikTok、X、Facebook 与 Pinterest 图文视频</p>
+            <div class="card-footer"><span class="monthly">约 <strong>6.4 万</strong>/月</span><a href="https://t.me/instasave_bot" target="_blank" rel="noopener">@instasave_bot</a></div>
+          </article>
+        </div>
+      </section>
 
-  <section class="top10-section" id="top10">
-    <h2 class="section-heading">月活 Top 10</h2>
-    <p class="category-desc">本列表中第三方 bot 按 Telegram 公开月活数据排名的前 10 名（每周自动核验，官方账号另见官方分类）</p>
-    <ol class="top-list">
-      <li class="top-item rank-1">
-        <span class="rank">1</span>
-        <span class="top-name">Channel Help</span>
-        <span class="top-link"><a href="https://t.me/chelpbot" target="_blank" rel="noopener">@chelpbot</a></span>
-        <span class="top-monthly">约 <strong>256.4 万</strong>/月</span>
-      </li>
-      <li class="top-item rank-2">
-        <span class="rank">2</span>
-        <span class="top-name">Post Bot</span>
-        <span class="top-link"><a href="https://t.me/postbot" target="_blank" rel="noopener">@postbot</a></span>
-        <span class="top-monthly">约 <strong>249.1 万</strong>/月</span>
-      </li>
-      <li class="top-item rank-3">
-        <span class="rank">3</span>
-        <span class="top-name">Quiz Bot <span class="verified">✓</span></span>
-        <span class="top-link"><a href="https://t.me/quizbot" target="_blank" rel="noopener">@quizbot</a></span>
-        <span class="top-monthly">约 <strong>162.0 万</strong>/月</span>
-      </li>
-      <li class="top-item rank-4">
-        <span class="rank">4</span>
-        <span class="top-name">SOSO搜搜</span>
-        <span class="top-link"><a href="https://t.me/soso?start=a_6480909132" target="_blank" rel="noopener">@soso</a></span>
-        <span class="top-monthly">约 <strong>116.6 万</strong>/月</span>
-      </li>
-      <li class="top-item rank-5">
-        <span class="rank">5</span>
-        <span class="top-name">超级索引</span>
-        <span class="top-link"><a href="https://t.me/CJSY?start=6480909132" target="_blank" rel="noopener">@CJSY</a></span>
-        <span class="top-monthly">约 <strong>89.7 万</strong>/月</span>
-      </li>
-      <li class="top-item rank-6">
-        <span class="rank">6</span>
-        <span class="top-name">Combot</span>
-        <span class="top-link"><a href="https://t.me/combot" target="_blank" rel="noopener">@combot</a></span>
-        <span class="top-monthly">约 <strong>84.0 万</strong>/月</span>
-      </li>
-      <li class="top-item rank-7">
-        <span class="rank">7</span>
-        <span class="top-name">神马搜索</span>
-        <span class="top-link"><a href="https://t.me/smss?start=spread_6480909132" target="_blank" rel="noopener">@smss</a></span>
-        <span class="top-monthly">约 <strong>81.2 万</strong>/月</span>
-      </li>
-      <li class="top-item rank-8">
-        <span class="rank">8</span>
-        <span class="top-name">TelepostBot</span>
-        <span class="top-link"><a href="https://t.me/telepostbot" target="_blank" rel="noopener">@telepostbot</a></span>
-        <span class="top-monthly">约 <strong>53.4 万</strong>/月</span>
-      </li>
-      <li class="top-item rank-9">
-        <span class="rank">9</span>
-        <span class="top-name">极搜中文搜索</span>
-        <span class="top-link"><a href="https://t.me/jiso?start=a_6480909132" target="_blank" rel="noopener">@jiso</a></span>
-        <span class="top-monthly">约 <strong>40.0 万</strong>/月</span>
-      </li>
-      <li class="top-item rank-10">
-        <span class="rank">10</span>
-        <span class="top-name">Gamee <span class="verified">✓</span></span>
-        <span class="top-link"><a href="https://t.me/gamee" target="_blank" rel="noopener">@gamee</a></span>
-        <span class="top-monthly">约 <strong>28.2 万</strong>/月</span>
-      </li>
-    </ol>
-  </section>
+      <section class="top10-section discovery-section" id="top10">
+        <div class="section-header">
+          <div><p class="section-kicker">MOST USED</p><h2>热门机器人</h2></div>
+          <p>按 Telegram 公开月活排序，官方账号不计入榜单。</p>
+        </div>
+        <ol class="top-list">
+          <li class="top-item">
+            <span class="rank">01</span>
+            <span class="avatar avatar-small">C</span>
+            <span class="top-name">Channel Help<small>@chelpbot</small></span>
+            <span class="top-monthly"><strong>256.4 万</strong>/月</span>
+            <a href="https://t.me/chelpbot" target="_blank" rel="noopener">@chelpbot</a>
+          </li>
+          <li class="top-item">
+            <span class="rank">02</span>
+            <span class="avatar avatar-small">P</span>
+            <span class="top-name">Post Bot<small>@postbot</small></span>
+            <span class="top-monthly"><strong>249.1 万</strong>/月</span>
+            <a href="https://t.me/postbot" target="_blank" rel="noopener">@postbot</a>
+          </li>
+          <li class="top-item">
+            <span class="rank">03</span>
+            <span class="avatar avatar-small">Q</span>
+            <span class="top-name">Quiz Bot <span class="verified">✓</span><small>@quizbot</small></span>
+            <span class="top-monthly"><strong>162.0 万</strong>/月</span>
+            <a href="https://t.me/quizbot" target="_blank" rel="noopener">@quizbot</a>
+          </li>
+          <li class="top-item">
+            <span class="rank">04</span>
+            <span class="avatar avatar-small">S</span>
+            <span class="top-name">SOSO搜搜<small>@soso</small></span>
+            <span class="top-monthly"><strong>116.6 万</strong>/月</span>
+            <a href="https://t.me/soso?start=a_6480909132" target="_blank" rel="noopener">@soso</a>
+          </li>
+          <li class="top-item">
+            <span class="rank">05</span>
+            <span class="avatar avatar-small">超</span>
+            <span class="top-name">超级索引<small>@CJSY</small></span>
+            <span class="top-monthly"><strong>89.7 万</strong>/月</span>
+            <a href="https://t.me/CJSY?start=6480909132" target="_blank" rel="noopener">@CJSY</a>
+          </li>
+          <li class="top-item">
+            <span class="rank">06</span>
+            <span class="avatar avatar-small">C</span>
+            <span class="top-name">Combot<small>@combot</small></span>
+            <span class="top-monthly"><strong>84.0 万</strong>/月</span>
+            <a href="https://t.me/combot" target="_blank" rel="noopener">@combot</a>
+          </li>
+          <li class="top-item">
+            <span class="rank">07</span>
+            <span class="avatar avatar-small">神</span>
+            <span class="top-name">神马搜索<small>@smss</small></span>
+            <span class="top-monthly"><strong>81.2 万</strong>/月</span>
+            <a href="https://t.me/smss?start=spread_6480909132" target="_blank" rel="noopener">@smss</a>
+          </li>
+          <li class="top-item">
+            <span class="rank">08</span>
+            <span class="avatar avatar-small">T</span>
+            <span class="top-name">TelepostBot<small>@telepostbot</small></span>
+            <span class="top-monthly"><strong>53.4 万</strong>/月</span>
+            <a href="https://t.me/telepostbot" target="_blank" rel="noopener">@telepostbot</a>
+          </li>
+          <li class="top-item">
+            <span class="rank">09</span>
+            <span class="avatar avatar-small">极</span>
+            <span class="top-name">极搜中文搜索<small>@jiso</small></span>
+            <span class="top-monthly"><strong>40.0 万</strong>/月</span>
+            <a href="https://t.me/jiso?start=a_6480909132" target="_blank" rel="noopener">@jiso</a>
+          </li>
+          <li class="top-item">
+            <span class="rank">10</span>
+            <span class="avatar avatar-small">G</span>
+            <span class="top-name">Gamee <span class="verified">✓</span><small>@gamee</small></span>
+            <span class="top-monthly"><strong>28.2 万</strong>/月</span>
+            <a href="https://t.me/gamee" target="_blank" rel="noopener">@gamee</a>
+          </li>
+        </ol>
+      </section>
 
-  <section class="category-section" id="cat-official" data-category="official">
-    <h2 class="section-heading">官方账号</h2>
-    <p class="category-desc">Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉与客户端分发入口</p>
-    <div class="table-wrap">
-      <table class="bot-table">
-        <thead>
-          <tr>
-            <th>名称</th>
-            <th>链接</th>
-            <th>核心功能</th>
-            <th>月活</th>
-          </tr>
-        </thead>
-        <tbody>
-      <tr>
-        <td class="col-name">Spam Info Bot <span class="verified">✓</span></td>
-        <td class="col-link"><a href="https://t.me/SpamBot" target="_blank" rel="noopener">@SpamBot</a></td>
-        <td class="col-notes">查询账号受限原因、提交解封申诉与举报垃圾信息</td>
-        <td class="col-monthly">约 <strong>3428.4 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">BotFather <span class="verified">✓</span></td>
-        <td class="col-link"><a href="https://t.me/BotFather" target="_blank" rel="noopener">@BotFather</a></td>
-        <td class="col-notes">创建机器人、配置命令菜单与签发 API Token</td>
-        <td class="col-monthly">约 <strong>796.6 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">Premium Bot <span class="verified">✓</span></td>
-        <td class="col-link"><a href="https://t.me/PremiumBot" target="_blank" rel="noopener">@PremiumBot</a></td>
-        <td class="col-notes">开通或赠送 Premium 会员（解锁双倍限额、4GB 上传与专属星标）</td>
-        <td class="col-monthly">约 <strong>679.3 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">Telegram Premium <span class="verified">✓</span></td>
-        <td class="col-link"><a href="https://t.me/premium" target="_blank" rel="noopener">@premium</a></td>
-        <td class="col-notes">Premium 会员新功能演示与权益说明官方频道</td>
-        <td class="col-monthly"><span class="badge badge-dead">⚠️已变为频道（非 Bot）</span><br><strong>637.3 万</strong>订阅</td>
-      </tr>
-      <tr>
-        <td class="col-name">Stickers Bot <span class="verified">✓</span></td>
-        <td class="col-link"><a href="https://t.me/Stickers" target="_blank" rel="noopener">@Stickers</a></td>
-        <td class="col-notes">创建、导入自定义贴纸包并查看使用统计</td>
-        <td class="col-monthly">约 <strong>65.1 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">Telegram APKs for Android <span class="verified">✓</span></td>
-        <td class="col-link"><a href="https://t.me/TAndroidAPK" target="_blank" rel="noopener">@TAndroidAPK</a></td>
-        <td class="col-notes">Android 客户端官方 APK 直装包发布频道</td>
-        <td class="col-monthly"><span class="badge badge-dead">⚠️已变为频道（非 Bot）</span><br><strong>25.9 万</strong>订阅</td>
-      </tr>
-      <tr>
-        <td class="col-name">Telegram X APKs & Build Info <span class="verified">✓</span></td>
-        <td class="col-link"><a href="https://t.me/tgx_log" target="_blank" rel="noopener">@tgx_log</a></td>
-        <td class="col-notes">Telegram X 客户端构建日志与安装包发布频道</td>
-        <td class="col-monthly"><span class="badge badge-dead">⚠️已变为频道（非 Bot）</span><br><strong>6.3 万</strong>订阅</td>
-      </tr>
-      <tr>
-        <td class="col-name">Verify Bot <span class="verified">✓</span></td>
-        <td class="col-link"><a href="https://t.me/VerifyBot" target="_blank" rel="noopener">@VerifyBot</a></td>
-        <td class="col-notes">公共频道、群组与机器人的官方蓝标认证申请入口</td>
-        <td class="col-monthly">约 <strong>1.9 万</strong>/月</td>
-      </tr>
-        </tbody>
-      </table>
+      <section class="directory" id="directory">
+        <div class="section-header directory-heading">
+          <div><p class="section-kicker">EXPLORE BY NEED</p><h2>按场景探索</h2></div>
+          <p>不用读完一张长表，直接前往你的使用场景。</p>
+        </div>
+        <div class="filter-bar" role="group" aria-label="按分类筛选">
+          <button class="filter-chip" type="button" data-filter="all" aria-pressed="true">全部<span>70</span></button>
+          <button class="filter-chip" type="button" data-filter="official" aria-pressed="false">官方账号<span>8</span></button>
+          <button class="filter-chip" type="button" data-filter="search" aria-pressed="false">搜索发现<span>10</span></button>
+          <button class="filter-chip" type="button" data-filter="crypto" aria-pressed="false">加密交易<span>4</span></button>
+          <button class="filter-chip" type="button" data-filter="group" aria-pressed="false">群组管理<span>21</span></button>
+          <button class="filter-chip" type="button" data-filter="download" aria-pressed="false">解析下载<span>4</span></button>
+          <button class="filter-chip" type="button" data-filter="translate" aria-pressed="false">多语翻译<span>4</span></button>
+          <button class="filter-chip" type="button" data-filter="checkin" aria-pressed="false">签到打卡<span>4</span></button>
+          <button class="filter-chip" type="button" data-filter="channel" aria-pressed="false">频道推送<span>4</span></button>
+          <button class="filter-chip" type="button" data-filter="game" aria-pressed="false">游戏娱乐<span>6</span></button>
+          <button class="filter-chip" type="button" data-filter="tools" aria-pressed="false">实用工具<span>5</span></button>
+        </div>
+        <div class="results-bar">
+          <p id="results-status" role="status" aria-live="polite">70 个机器人 · 10 个分类</p>
+          <button id="reset-filters" class="reset-button" type="button" hidden>清除筛选</button>
+        </div>
+
+        <div class="category-list">
+          <section class="category-section" id="cat-official" data-category="official">
+            <div class="category-heading">
+              <div><h2>官方账号</h2><p>Telegram 官方维护的建号、会员、贴纸、蓝标认证、解封申诉与客户端分发入口</p></div>
+              <span>8 个</span>
+            </div>
+            <div class="bot-group">
+              <div class="bot-grid">
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">S</span><span class="monthly">约 <strong>3428.4 万</strong>/月</span></div>
+                  <h4>Spam Info Bot <span class="verified">✓</span></h4>
+                  <p>查询账号受限原因、提交解封申诉与举报垃圾信息</p>
+                  <div class="bot-card-footer"><a href="https://t.me/SpamBot" target="_blank" rel="noopener">@SpamBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">B</span><span class="monthly">约 <strong>796.6 万</strong>/月</span></div>
+                  <h4>BotFather <span class="verified">✓</span></h4>
+                  <p>创建机器人、配置命令菜单与签发 API Token</p>
+                  <div class="bot-card-footer"><a href="https://t.me/BotFather" target="_blank" rel="noopener">@BotFather</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">P</span><span class="monthly">约 <strong>679.3 万</strong>/月</span></div>
+                  <h4>Premium Bot <span class="verified">✓</span></h4>
+                  <p>开通或赠送 Premium 会员（解锁双倍限额、4GB 上传与专属星标）</p>
+                  <div class="bot-card-footer"><a href="https://t.me/PremiumBot" target="_blank" rel="noopener">@PremiumBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">T</span><span class="monthly"><span class="badge badge-dead">⚠️已变为频道（非 Bot）</span><br><strong>637.3 万</strong>订阅</span></div>
+                  <h4>Telegram Premium <span class="verified">✓</span></h4>
+                  <p>Premium 会员新功能演示与权益说明官方频道</p>
+                  <div class="bot-card-footer"><a href="https://t.me/premium" target="_blank" rel="noopener">@premium</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">S</span><span class="monthly">约 <strong>65.1 万</strong>/月</span></div>
+                  <h4>Stickers Bot <span class="verified">✓</span></h4>
+                  <p>创建、导入自定义贴纸包并查看使用统计</p>
+                  <div class="bot-card-footer"><a href="https://t.me/Stickers" target="_blank" rel="noopener">@Stickers</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">T</span><span class="monthly"><span class="badge badge-dead">⚠️已变为频道（非 Bot）</span><br><strong>25.9 万</strong>订阅</span></div>
+                  <h4>Telegram APKs for Android <span class="verified">✓</span></h4>
+                  <p>Android 客户端官方 APK 直装包发布频道</p>
+                  <div class="bot-card-footer"><a href="https://t.me/TAndroidAPK" target="_blank" rel="noopener">@TAndroidAPK</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">T</span><span class="monthly"><span class="badge badge-dead">⚠️已变为频道（非 Bot）</span><br><strong>6.3 万</strong>订阅</span></div>
+                  <h4>Telegram X APKs & Build Info <span class="verified">✓</span></h4>
+                  <p>Telegram X 客户端构建日志与安装包发布频道</p>
+                  <div class="bot-card-footer"><a href="https://t.me/tgx_log" target="_blank" rel="noopener">@tgx_log</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">V</span><span class="monthly">约 <strong>1.9 万</strong>/月</span></div>
+                  <h4>Verify Bot <span class="verified">✓</span></h4>
+                  <p>公共频道、群组与机器人的官方蓝标认证申请入口</p>
+                  <div class="bot-card-footer"><a href="https://t.me/VerifyBot" target="_blank" rel="noopener">@VerifyBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+              </div>
+            </div>
+          </section>
+          <section class="category-section" id="cat-search" data-category="search">
+            <div class="category-heading">
+              <div><h2>搜索发现</h2><p>按关键词检索中文群组、频道、影视、网盘与音视频资源</p></div>
+              <span>10 个</span>
+            </div>
+            <div class="bot-group">
+              <div class="bot-grid">
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">S</span><span class="monthly">约 <strong>116.6 万</strong>/月</span></div>
+                  <h4>SOSO搜搜</h4>
+                  <p>按关键词检索中文群组、频道与音视频资源</p>
+                  <div class="bot-card-footer"><a href="https://t.me/soso?start=a_6480909132" target="_blank" rel="noopener">@soso</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">超</span><span class="monthly">约 <strong>89.7 万</strong>/月</span></div>
+                  <h4>超级索引</h4>
+                  <p>多维度检索中文群组、频道与媒体文件</p>
+                  <div class="bot-card-footer"><a href="https://t.me/CJSY?start=6480909132" target="_blank" rel="noopener">@CJSY</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">神</span><span class="monthly">约 <strong>81.2 万</strong>/月</span></div>
+                  <h4>神马搜索</h4>
+                  <p>按关键词检索关联群组、频道与细分兴趣社区</p>
+                  <div class="bot-card-footer"><a href="https://t.me/smss?start=spread_6480909132" target="_blank" rel="noopener">@smss</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">极</span><span class="monthly">约 <strong>40.0 万</strong>/月</span></div>
+                  <h4>极搜中文搜索</h4>
+                  <p>跨群组、频道、影视、音乐与新闻的综合中文检索</p>
+                  <div class="bot-card-footer"><a href="https://t.me/jiso?start=a_6480909132" target="_blank" rel="noopener">@jiso</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">V</span><span class="monthly">约 <strong>22.7 万</strong>/月</span></div>
+                  <h4>Video Search for YouTube</h4>
+                  <p>在聊天框内直接检索并分享 YouTube 视频</p>
+                  <div class="bot-card-footer"><a href="https://t.me/youtube" target="_blank" rel="noopener">@youtube</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">一</span><span class="monthly">约 <strong>6.3 万</strong>/月</span></div>
+                  <h4>一起搜电影</h4>
+                  <p>检索电影与剧集资源，支持挂载至群聊内直接调用</p>
+                  <div class="bot-card-footer"><a href="https://t.me/sotv" target="_blank" rel="noopener">@sotv</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">搜</span><span class="monthly">约 <strong>2.3 万</strong>/月</span></div>
+                  <h4>搜啦资源搜索机器人</h4>
+                  <p>按关键词检索中文群组与频道公开内容</p>
+                  <div class="bot-card-footer"><a href="https://t.me/soula" target="_blank" rel="noopener">@soula</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">A</span><span class="monthly">约 <strong>1.8 万</strong>/月</span></div>
+                  <h4>aiso中文搜索</h4>
+                  <p>发送关键词直接匹配公开群组与频道内容</p>
+                  <div class="bot-card-footer"><a href="https://t.me/aiso?start=telegram_6480909132" target="_blank" rel="noopener">@aiso</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">阿</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>阿里云盘搜索机器人</h4>
+                  <p>按关键词检索阿里云盘共享资源与群内投稿</p>
+                  <div class="bot-card-footer"><a href="https://t.me/aliyunshare_bot" target="_blank" rel="noopener">@aliyunshare_bot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">阿</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>阿里云盘资源 Bot</h4>
+                  <p>阿里云盘资源检索、收藏、订阅与导出</p>
+                  <div class="bot-card-footer"><a href="https://t.me/AliYunPanBot" target="_blank" rel="noopener">@AliYunPanBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+              </div>
+            </div>
+          </section>
+          <section class="category-section" id="cat-crypto" data-category="crypto">
+            <div class="category-heading">
+              <div><h2>加密交易</h2><p>在 Telegram 内直接看行情、跟单与买卖链上代币，适合 Solana 等公链的高频交易</p></div>
+              <span>4 个</span>
+            </div>
+            <div class="bot-group">
+              <div class="bot-grid">
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">T</span><span class="monthly">约 <strong>4.1 万</strong>/月</span></div>
+                  <h4>Trojan on Solana <span class="verified">✓</span></h4>
+                  <p>Solana 链上跟单与极速交易，支持限价单、止盈止损与多钱包管理</p>
+                  <div class="bot-card-footer"><a href="https://t.me/solana_trojanbot?start=r-flashbonk" target="_blank" rel="noopener">@solana_trojanbot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">G</span><span class="monthly">约 <strong>3.3 万</strong>/月</span></div>
+                  <h4>GMGN.AI</h4>
+                  <p>Solana 链上代币行情与一键买卖，支持跟单、限价与止盈止损</p>
+                  <div class="bot-card-footer"><a href="https://t.me/gmgnaibot?start=i_JyY0HbjE" target="_blank" rel="noopener">@gmgnaibot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">M</span><span class="monthly">约 <strong>2.7 万</strong>/月</span></div>
+                  <h4>Maestro</h4>
+                  <p>以太坊与 Solana 等多链代币狙击买入，支持跟单、限价与自动止盈止损</p>
+                  <div class="bot-card-footer"><a href="https://t.me/maestro?start=r-flashbonk" target="_blank" rel="noopener">@maestro</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">B</span><span class="monthly">约 <strong>1.6 万</strong>/月</span></div>
+                  <h4>BONKbot</h4>
+                  <p>Bonk 生态代币极速买卖，支持限价单、止损与防夹子模式</p>
+                  <div class="bot-card-footer"><a href="https://t.me/bonkbot_bot?start=ref_xpnm5" target="_blank" rel="noopener">@bonkbot_bot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+              </div>
+            </div>
+          </section>
+          <section class="category-section" id="cat-group" data-category="group">
+            <div class="category-heading">
+              <div><h2>群组管理</h2><p>拦截水军、外链广告与高频刷屏；中大型群组建议搭配「1 个进群验证 + 1 个广告拦截」组合使用</p></div>
+              <span>21 个</span>
+            </div>
+            <div class="bot-group">
+              <h3 class="subsection-title">进群验证</h3>
+              <div class="bot-grid">
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">S</span><span class="monthly">约 <strong>20.1 万</strong>/月</span></div>
+                  <h4>Shieldy</h4>
+                  <p>老牌轻量入群验证，超时未验证自动移出</p>
+                  <div class="bot-card-footer"><a href="https://t.me/shieldy_bot" target="_blank" rel="noopener">@shieldy_bot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">O</span><span class="monthly">约 <strong>3.4 万</strong>/月</span></div>
+                  <h4>OrgRobot</h4>
+                  <p>新成员入群身份核验与准入考核</p>
+                  <div class="bot-card-footer"><a href="https://t.me/orgrobot" target="_blank" rel="noopener">@orgrobot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">入</span><span class="monthly">约 <strong>1.2 万</strong>/月</span></div>
+                  <h4>入群验证机器人</h4>
+                  <p>简洁中文图形验证码，开源且支持自建部署</p>
+                  <div class="bot-card-footer"><a href="https://t.me/P4CaptchaBot" target="_blank" rel="noopener">@P4CaptchaBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">P</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>Policr</h4>
+                  <p>支持自定义问答考核与付费入群验证</p>
+                  <div class="bot-card-footer"><a href="https://t.me/policr_bot" target="_blank" rel="noopener">@policr_bot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">大</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>大掌门</h4>
+                  <p>入群验证、进群欢迎语与消息定时自毁（开源）</p>
+                  <div class="bot-card-footer"><a href="https://t.me/FengDoorBot" target="_blank" rel="noopener">@FengDoorBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">P</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>Pay Bot</h4>
+                  <p>付费入群核验，按门槛筛选付费社群成员</p>
+                  <div class="bot-card-footer"><a href="https://t.me/feeMasterBot" target="_blank" rel="noopener">@feeMasterBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">T</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>TGCN-CAPTCHA加群验证</h4>
+                  <p>中文入群验证码核验，自动拦截批量脚本账号</p>
+                  <div class="bot-card-footer"><a href="https://t.me/tgcnjoincaptchabot" target="_blank" rel="noopener">@tgcnjoincaptchabot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">天</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>天童AL-1S</h4>
+                  <p>多题型强化入群验证，拦截机器号批量加群</p>
+                  <div class="bot-card-footer"><a href="https://t.me/toorucaptchabot" target="_blank" rel="noopener">@toorucaptchabot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">L</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>LittleGuardian</h4>
+                  <p>轻量入群验证与新成员准入控制</p>
+                  <div class="bot-card-footer"><a href="https://t.me/littleGuardianBot" target="_blank" rel="noopener">@littleGuardianBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+              </div>
+            </div>
+            <div class="bot-group">
+              <h3 class="subsection-title">广告拦截</h3>
+              <div class="bot-grid">
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">P</span><span class="monthly">约 <strong>9.7 万</strong>/月</span></div>
+                  <h4>Protectron</h4>
+                  <p>外链过滤、反刷屏与违规广告自动拦截</p>
+                  <div class="bot-card-footer"><a href="https://t.me/ProtectronBot" target="_blank" rel="noopener">@ProtectronBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">T</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>TGCN-币&黄广告专杀</h4>
+                  <p>识别并踢除挂有长用户名广告的水军账号</p>
+                  <div class="bot-card-footer"><a href="https://t.me/adnamekillerbot" target="_blank" rel="noopener">@adnamekillerbot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">广</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>广告终结者_Bot</h4>
+                  <p>按自定义关键词规则自动拦截群内广告</p>
+                  <div class="bot-card-footer"><a href="https://t.me/adzhongjiezhe_bot" target="_blank" rel="noopener">@adzhongjiezhe_bot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">A</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>AntiHyperlinkBot</h4>
+                  <p>自动删除群聊中包含外部链接与超链接的消息</p>
+                  <div class="bot-card-footer"><a href="https://t.me/AntiHyperlinkBot" target="_blank" rel="noopener">@AntiHyperlinkBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">A</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>Auto Restrict Bot [beta]</h4>
+                  <p>自动限制新入群成员的初期发言与发图权限</p>
+                  <div class="bot-card-footer"><a href="https://t.me/AutoRestrictBot" target="_blank" rel="noopener">@AutoRestrictBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">F</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>FreqRobot</h4>
+                  <p>限制单用户高频连发消息，防止恶意刷屏</p>
+                  <div class="bot-card-footer"><a href="https://t.me/freqrobot" target="_blank" rel="noopener">@freqrobot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+              </div>
+            </div>
+            <div class="bot-group">
+              <h3 class="subsection-title">活跃统计</h3>
+              <div class="bot-grid">
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">C</span><span class="monthly">约 <strong>84.0 万</strong>/月</span></div>
+                  <h4>Combot</h4>
+                  <p>集成员审核、活跃度分析、反垃圾与自动回复于一体的群管套件</p>
+                  <div class="bot-card-footer"><a href="https://t.me/combot" target="_blank" rel="noopener">@combot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">S</span><span class="monthly">约 <strong>14.5 万</strong>/月</span></div>
+                  <h4>SangMata</h4>
+                  <p>追踪并查询群成员的历史昵称与用户名变更记录</p>
+                  <div class="bot-card-footer"><a href="https://t.me/SangMata_BOT" target="_blank" rel="noopener">@SangMata_BOT</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">J</span><span class="monthly">约 <strong>1.1 万</strong>/月</span></div>
+                  <h4>joinhider_bot</h4>
+                  <p>自动删除成员进群与退群的系统提示消息</p>
+                  <div class="bot-card-footer"><a href="https://t.me/joinhider_bot" target="_blank" rel="noopener">@joinhider_bot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">统</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>统计秘书</h4>
+                  <p>统计群内发言频次与成员活跃度排行</p>
+                  <div class="bot-card-footer"><a href="https://t.me/FengStatsBot" target="_blank" rel="noopener">@FengStatsBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+              </div>
+            </div>
+            <div class="bot-group">
+              <h3 class="subsection-title">秩序维护</h3>
+              <div class="bot-grid">
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">W</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>Watch Door [beta]</h4>
+                  <p>按消息类型（贴纸、转发、外链等）自定义封禁规则</p>
+                  <div class="bot-card-footer"><a href="https://t.me/WatchDoorBot" target="_blank" rel="noopener">@WatchDoorBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">A</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>AntiServiceMessageBot</h4>
+                  <p>自动清理置顶、进退群等系统服务通知，保持版面整洁</p>
+                  <div class="bot-card-footer"><a href="https://t.me/AntiServiceMessageBot" target="_blank" rel="noopener">@AntiServiceMessageBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+              </div>
+            </div>
+          </section>
+          <section class="category-section" id="cat-download" data-category="download">
+            <div class="category-heading">
+              <div><h2>解析下载</h2><p>提取主流社媒与视频平台无水印内容，支持私聊发送链接或挂载至群内解析</p></div>
+              <span>4 个</span>
+            </div>
+            <div class="bot-group">
+              <div class="bot-grid">
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">I</span><span class="monthly">约 <strong>6.4 万</strong>/月</span></div>
+                  <h4>InstaSave: Instagram & TikTok Downloader</h4>
+                  <p>解析下载 Instagram、TikTok、X、Facebook 与 Pinterest 图文视频</p>
+                  <div class="bot-card-footer"><a href="https://t.me/instasave_bot" target="_blank" rel="noopener">@instasave_bot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">Y</span><span class="monthly">约 <strong>4.6 万</strong>/月</span></div>
+                  <h4>YoutubeDL - YouTube Download Bot</h4>
+                  <p>按分辨率提取并下载 YouTube 视频与音频</p>
+                  <div class="bot-card-footer"><a href="https://t.me/YtbDownBot" target="_blank" rel="noopener">@YtbDownBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">多</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>多平台解析下载机器人</h4>
+                  <p>解析下载 X、YouTube、B站、抖音、小红书与 Instagram 视频</p>
+                  <div class="bot-card-footer"><a href="https://t.me/freedlvideo_bot" target="_blank" rel="noopener">@freedlvideo_bot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">A</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>AI在线解析视频 (DC5)</h4>
+                  <p>解析下载 B站及主流视频平台无水印内容</p>
+                  <div class="bot-card-footer"><a href="https://t.me/bilibiliparse_bot" target="_blank" rel="noopener">@bilibiliparse_bot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+              </div>
+            </div>
+          </section>
+          <section class="category-section" id="cat-translate" data-category="translate">
+            <div class="category-heading">
+              <div><h2>多语翻译</h2><p>私聊双向互译与群聊消息实时自动转译，适合多语种社群与跨国协作</p></div>
+              <span>4 个</span>
+            </div>
+            <div class="bot-group">
+              <div class="bot-grid">
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">Y</span><span class="monthly">约 <strong>4.2 万</strong>/月</span></div>
+                  <h4>Yandex Translate</h4>
+                  <p>调用 Yandex 翻译引擎，俄语及欧洲语种互译准确度高</p>
+                  <div class="bot-card-footer"><a href="https://t.me/YTranslateBot" target="_blank" rel="noopener">@YTranslateBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">T</span><span class="monthly">约 <strong>2.7 万</strong>/月</span></div>
+                  <h4>Translator</h4>
+                  <p>群聊实时翻译，支持 100+ 语种消息自动转译</p>
+                  <div class="bot-card-footer"><a href="https://t.me/TgTranslatorBot" target="_blank" rel="noopener">@TgTranslatorBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">G</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>Google Translate</h4>
+                  <p>调用 Google 翻译引擎，支持私聊与群内多语种双向互译</p>
+                  <div class="bot-card-footer"><a href="https://t.me/TranslateBot" target="_blank" rel="noopener">@TranslateBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">T</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>TransChat - AI Translate</h4>
+                  <p>结合群聊上下文自动互译多语种对话</p>
+                  <div class="bot-card-footer"><a href="https://t.me/TransChat_bot" target="_blank" rel="noopener">@TransChat_bot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+              </div>
+            </div>
+          </section>
+          <section class="category-section" id="cat-checkin" data-category="checkin">
+            <div class="category-heading">
+              <div><h2>签到打卡</h2><p>群内每日打卡、连续天数统计与考勤汇总，量化社群活跃度与团队出勤</p></div>
+              <span>4 个</span>
+            </div>
+            <div class="bot-group">
+              <div class="bot-grid">
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">打</span><span class="monthly">约 <strong>2.2 万</strong>/月</span></div>
+                  <h4>打卡机器人 免费版</h4>
+                  <p>群内日常考勤、签到报到与出勤次数统计</p>
+                  <div class="bot-card-footer"><a href="https://t.me/ttjfree_bot" target="_blank" rel="noopener">@ttjfree_bot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">签</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>签到机器人</h4>
+                  <p>群内每日打卡、连续签到天数与积分榜统计</p>
+                  <div class="bot-card-footer"><a href="https://t.me/qiandaobot" target="_blank" rel="noopener">@qiandaobot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">G</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>Group Attendance Bot</h4>
+                  <p>记录群成员每日出勤状态并生成考勤报表</p>
+                  <div class="bot-card-footer"><a href="https://t.me/groupattendancebot" target="_blank" rel="noopener">@groupattendancebot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">K</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>King打卡</h4>
+                  <p>上下班打卡记录与工时自动汇总，适合团队考勤</p>
+                  <div class="bot-card-footer"><a href="https://t.me/kingdk_bot" target="_blank" rel="noopener">@kingdk_bot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+              </div>
+            </div>
+          </section>
+          <section class="category-section" id="cat-channel" data-category="channel">
+            <div class="category-heading">
+              <div><h2>频道推送</h2><p>富媒体排版、定时发布队列与跨频道规则转发，适合频道主日常运营</p></div>
+              <span>4 个</span>
+            </div>
+            <div class="bot-group">
+              <div class="bot-grid">
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">C</span><span class="monthly">约 <strong>256.4 万</strong>/月</span></div>
+                  <h4>Channel Help</h4>
+                  <p>频道定时排版、互动数据统计与抽奖管理</p>
+                  <div class="bot-card-footer"><a href="https://t.me/chelpbot" target="_blank" rel="noopener">@chelpbot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">P</span><span class="monthly">约 <strong>249.1 万</strong>/月</span></div>
+                  <h4>Post Bot</h4>
+                  <p>编辑含内联按钮的富媒体图文并发布至频道</p>
+                  <div class="bot-card-footer"><a href="https://t.me/postbot" target="_blank" rel="noopener">@postbot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">T</span><span class="monthly">约 <strong>53.4 万</strong>/月</span></div>
+                  <h4>TelepostBot</h4>
+                  <p>频道图文排版、定时发布队列与浏览数据统计</p>
+                  <div class="bot-card-footer"><a href="https://t.me/telepostbot" target="_blank" rel="noopener">@telepostbot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">A</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>Auto Forward Bot</h4>
+                  <p>按过滤规则与时间表自动跨频道转发推送内容</p>
+                  <div class="bot-card-footer"><a href="https://t.me/autoforwardroxybot" target="_blank" rel="noopener">@autoforwardroxybot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+              </div>
+            </div>
+          </section>
+          <section class="category-section" id="cat-game" data-category="game">
+            <div class="category-heading">
+              <div><h2>游戏娱乐</h2><p>群内实时抢答、HTML5 对战小游戏与文字冒险，无需跳出聊天窗口即可发起互动</p></div>
+              <span>6 个</span>
+            </div>
+            <div class="bot-group">
+              <div class="bot-grid">
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">Q</span><span class="monthly">约 <strong>162.0 万</strong>/月</span></div>
+                  <h4>Quiz Bot <span class="verified">✓</span></h4>
+                  <p>创建多媒体选择题竞赛，支持群内实时抢答与排行榜统计</p>
+                  <div class="bot-card-footer"><a href="https://t.me/quizbot" target="_blank" rel="noopener">@quizbot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">G</span><span class="monthly">约 <strong>28.2 万</strong>/月</span></div>
+                  <h4>Gamee <span class="verified">✓</span></h4>
+                  <p>内置数十款 HTML5 街机与益智小游戏，支持群内实时对战比拼</p>
+                  <div class="bot-card-footer"><a href="https://t.me/gamee" target="_blank" rel="noopener">@gamee</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">G</span><span class="monthly">约 <strong>16.8 万</strong>/月</span></div>
+                  <h4>GameBot <span class="verified">✓</span></h4>
+                  <p>Telegram 官方 HTML5 轻游戏合集，支持单人或群聊发起对战</p>
+                  <div class="bot-card-footer"><a href="https://t.me/gamebot" target="_blank" rel="noopener">@gamebot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">I</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>Inline Games</h4>
+                  <p>通过内联模式在任意聊天框直接发起双人棋牌对战</p>
+                  <div class="bot-card-footer"><a href="https://t.me/inlinegamesbot" target="_blank" rel="noopener">@inlinegamesbot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">T</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>TeleTarot</h4>
+                  <p>按问题抽取塔罗牌面并生成牌义解读</p>
+                  <div class="bot-card-footer"><a href="https://t.me/teletarotbot" target="_blank" rel="noopener">@teletarotbot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">B</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>Brightwood Stories</h4>
+                  <p>按钮交互式文字冒险游戏，按分支选择推进剧情</p>
+                  <div class="bot-card-footer"><a href="https://t.me/BrightwoodBot" target="_blank" rel="noopener">@BrightwoodBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+              </div>
+            </div>
+          </section>
+          <section class="category-section" id="cat-tools" data-category="tools">
+            <div class="category-heading">
+              <div><h2>实用工具</h2><p>一次性临时邮箱、词典、天气、安装包提取与群内抽奖工具</p></div>
+              <span>5 个</span>
+            </div>
+            <div class="bot-group">
+              <div class="bot-grid">
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">D</span><span class="monthly">约 <strong>3.2 万</strong>/月</span></div>
+                  <h4>DropMail.me</h4>
+                  <p>生成一次性临时邮箱，在对话内直接接收注册验证码</p>
+                  <div class="bot-card-footer"><a href="https://t.me/DropmailBot" target="_blank" rel="noopener">@DropmailBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">D</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>dicbot</h4>
+                  <p>查询英文单词音标、中英释义与例句</p>
+                  <div class="bot-card-footer"><a href="https://t.me/dicbot" target="_blank" rel="noopener">@dicbot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">W</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>Weather bot</h4>
+                  <p>按城市名称查询实时天气与未来数日气象预报</p>
+                  <div class="bot-card-footer"><a href="https://t.me/WeatherBot" target="_blank" rel="noopener">@WeatherBot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">A</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>APK Downloader</h4>
+                  <p>输入应用包名或链接，直接从 Google Play 提取 APK 安装包</p>
+                  <div class="bot-card-footer"><a href="https://t.me/apkdl_bot" target="_blank" rel="noopener">@apkdl_bot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">T</span><span class="monthly"><span class="muted">—</span></span></div>
+                  <h4>Telegram 抽奖助手</h4>
+                  <p>在群内发起按关键词或口令参与的自动开奖活动</p>
+                  <div class="bot-card-footer"><a href="https://t.me/cnLottery_bot" target="_blank" rel="noopener">@cnLottery_bot</a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div id="empty-state" class="empty-state" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m16 16 4 4M8.5 11h5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <h3>没有找到匹配的机器人</h3>
+          <p>试试更短的关键词，或切换到其他分类。</p>
+          <button id="empty-reset" class="btn" type="button">查看全部机器人</button>
+        </div>
+      </section>
     </div>
-  </section>
-  <section class="category-section" id="cat-search" data-category="search">
-    <h2 class="section-heading">搜索发现</h2>
-    <p class="category-desc">按关键词检索中文群组、频道、影视、网盘与音视频资源</p>
-    <div class="table-wrap">
-      <table class="bot-table">
-        <thead>
-          <tr>
-            <th>名称</th>
-            <th>链接</th>
-            <th>核心功能</th>
-            <th>月活</th>
-          </tr>
-        </thead>
-        <tbody>
-      <tr>
-        <td class="col-name">SOSO搜搜</td>
-        <td class="col-link"><a href="https://t.me/soso?start=a_6480909132" target="_blank" rel="noopener">@soso</a></td>
-        <td class="col-notes">按关键词检索中文群组、频道与音视频资源</td>
-        <td class="col-monthly">约 <strong>116.6 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">超级索引</td>
-        <td class="col-link"><a href="https://t.me/CJSY?start=6480909132" target="_blank" rel="noopener">@CJSY</a></td>
-        <td class="col-notes">多维度检索中文群组、频道与媒体文件</td>
-        <td class="col-monthly">约 <strong>89.7 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">神马搜索</td>
-        <td class="col-link"><a href="https://t.me/smss?start=spread_6480909132" target="_blank" rel="noopener">@smss</a></td>
-        <td class="col-notes">按关键词检索关联群组、频道与细分兴趣社区</td>
-        <td class="col-monthly">约 <strong>81.2 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">极搜中文搜索</td>
-        <td class="col-link"><a href="https://t.me/jiso?start=a_6480909132" target="_blank" rel="noopener">@jiso</a></td>
-        <td class="col-notes">跨群组、频道、影视、音乐与新闻的综合中文检索</td>
-        <td class="col-monthly">约 <strong>40.0 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">Video Search for YouTube</td>
-        <td class="col-link"><a href="https://t.me/youtube" target="_blank" rel="noopener">@youtube</a></td>
-        <td class="col-notes">在聊天框内直接检索并分享 YouTube 视频</td>
-        <td class="col-monthly">约 <strong>22.7 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">一起搜电影</td>
-        <td class="col-link"><a href="https://t.me/sotv" target="_blank" rel="noopener">@sotv</a></td>
-        <td class="col-notes">检索电影与剧集资源，支持挂载至群聊内直接调用</td>
-        <td class="col-monthly">约 <strong>6.3 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">搜啦资源搜索机器人</td>
-        <td class="col-link"><a href="https://t.me/soula" target="_blank" rel="noopener">@soula</a></td>
-        <td class="col-notes">按关键词检索中文群组与频道公开内容</td>
-        <td class="col-monthly">约 <strong>2.3 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">aiso中文搜索</td>
-        <td class="col-link"><a href="https://t.me/aiso?start=telegram_6480909132" target="_blank" rel="noopener">@aiso</a></td>
-        <td class="col-notes">发送关键词直接匹配公开群组与频道内容</td>
-        <td class="col-monthly">约 <strong>1.8 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">阿里云盘搜索机器人</td>
-        <td class="col-link"><a href="https://t.me/aliyunshare_bot" target="_blank" rel="noopener">@aliyunshare_bot</a></td>
-        <td class="col-notes">按关键词检索阿里云盘共享资源与群内投稿</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">阿里云盘资源 Bot</td>
-        <td class="col-link"><a href="https://t.me/AliYunPanBot" target="_blank" rel="noopener">@AliYunPanBot</a></td>
-        <td class="col-notes">阿里云盘资源检索、收藏、订阅与导出</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-  <section class="category-section" id="cat-crypto" data-category="crypto">
-    <h2 class="section-heading">加密交易</h2>
-    <p class="category-desc">在 Telegram 内直接看行情、跟单与买卖链上代币，适合 Solana 等公链的高频交易</p>
-    <div class="table-wrap">
-      <table class="bot-table">
-        <thead>
-          <tr>
-            <th>名称</th>
-            <th>链接</th>
-            <th>核心功能</th>
-            <th>月活</th>
-          </tr>
-        </thead>
-        <tbody>
-      <tr>
-        <td class="col-name">Trojan on Solana <span class="verified">✓</span></td>
-        <td class="col-link"><a href="https://t.me/solana_trojanbot?start=r-flashbonk" target="_blank" rel="noopener">@solana_trojanbot</a></td>
-        <td class="col-notes">Solana 链上跟单与极速交易，支持限价单、止盈止损与多钱包管理</td>
-        <td class="col-monthly">约 <strong>4.1 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">GMGN.AI</td>
-        <td class="col-link"><a href="https://t.me/gmgnaibot?start=i_JyY0HbjE" target="_blank" rel="noopener">@gmgnaibot</a></td>
-        <td class="col-notes">Solana 链上代币行情与一键买卖，支持跟单、限价与止盈止损</td>
-        <td class="col-monthly">约 <strong>3.3 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">Maestro</td>
-        <td class="col-link"><a href="https://t.me/maestro?start=r-flashbonk" target="_blank" rel="noopener">@maestro</a></td>
-        <td class="col-notes">以太坊与 Solana 等多链代币狙击买入，支持跟单、限价与自动止盈止损</td>
-        <td class="col-monthly">约 <strong>2.7 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">BONKbot</td>
-        <td class="col-link"><a href="https://t.me/bonkbot_bot?start=ref_xpnm5" target="_blank" rel="noopener">@bonkbot_bot</a></td>
-        <td class="col-notes">Bonk 生态代币极速买卖，支持限价单、止损与防夹子模式</td>
-        <td class="col-monthly">约 <strong>1.6 万</strong>/月</td>
-      </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-  <section class="category-section" id="cat-group" data-category="group">
-    <h2 class="section-heading">群组管理</h2>
-    <p class="category-desc">拦截水军、外链广告与高频刷屏；中大型群组建议搭配「1 个进群验证 + 1 个广告拦截」组合使用</p>
-    <h3 class="subsection-title">进群验证</h3>
-    <div class="table-wrap">
-      <table class="bot-table">
-        <thead>
-          <tr>
-            <th>名称</th>
-            <th>链接</th>
-            <th>核心功能</th>
-            <th>月活</th>
-          </tr>
-        </thead>
-        <tbody>
-      <tr>
-        <td class="col-name">Shieldy</td>
-        <td class="col-link"><a href="https://t.me/shieldy_bot" target="_blank" rel="noopener">@shieldy_bot</a></td>
-        <td class="col-notes">老牌轻量入群验证，超时未验证自动移出</td>
-        <td class="col-monthly">约 <strong>20.1 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">OrgRobot</td>
-        <td class="col-link"><a href="https://t.me/orgrobot" target="_blank" rel="noopener">@orgrobot</a></td>
-        <td class="col-notes">新成员入群身份核验与准入考核</td>
-        <td class="col-monthly">约 <strong>3.4 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">入群验证机器人</td>
-        <td class="col-link"><a href="https://t.me/P4CaptchaBot" target="_blank" rel="noopener">@P4CaptchaBot</a></td>
-        <td class="col-notes">简洁中文图形验证码，开源且支持自建部署</td>
-        <td class="col-monthly">约 <strong>1.2 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">Policr</td>
-        <td class="col-link"><a href="https://t.me/policr_bot" target="_blank" rel="noopener">@policr_bot</a></td>
-        <td class="col-notes">支持自定义问答考核与付费入群验证</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">大掌门</td>
-        <td class="col-link"><a href="https://t.me/FengDoorBot" target="_blank" rel="noopener">@FengDoorBot</a></td>
-        <td class="col-notes">入群验证、进群欢迎语与消息定时自毁（开源）</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">Pay Bot</td>
-        <td class="col-link"><a href="https://t.me/feeMasterBot" target="_blank" rel="noopener">@feeMasterBot</a></td>
-        <td class="col-notes">付费入群核验，按门槛筛选付费社群成员</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">TGCN-CAPTCHA加群验证</td>
-        <td class="col-link"><a href="https://t.me/tgcnjoincaptchabot" target="_blank" rel="noopener">@tgcnjoincaptchabot</a></td>
-        <td class="col-notes">中文入群验证码核验，自动拦截批量脚本账号</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">天童AL-1S</td>
-        <td class="col-link"><a href="https://t.me/toorucaptchabot" target="_blank" rel="noopener">@toorucaptchabot</a></td>
-        <td class="col-notes">多题型强化入群验证，拦截机器号批量加群</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">LittleGuardian</td>
-        <td class="col-link"><a href="https://t.me/littleGuardianBot" target="_blank" rel="noopener">@littleGuardianBot</a></td>
-        <td class="col-notes">轻量入群验证与新成员准入控制</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-        </tbody>
-      </table>
-    </div>
-    <h3 class="subsection-title">广告拦截</h3>
-    <div class="table-wrap">
-      <table class="bot-table">
-        <thead>
-          <tr>
-            <th>名称</th>
-            <th>链接</th>
-            <th>核心功能</th>
-            <th>月活</th>
-          </tr>
-        </thead>
-        <tbody>
-      <tr>
-        <td class="col-name">Protectron</td>
-        <td class="col-link"><a href="https://t.me/ProtectronBot" target="_blank" rel="noopener">@ProtectronBot</a></td>
-        <td class="col-notes">外链过滤、反刷屏与违规广告自动拦截</td>
-        <td class="col-monthly">约 <strong>9.7 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">TGCN-币&黄广告专杀</td>
-        <td class="col-link"><a href="https://t.me/adnamekillerbot" target="_blank" rel="noopener">@adnamekillerbot</a></td>
-        <td class="col-notes">识别并踢除挂有长用户名广告的水军账号</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">广告终结者_Bot</td>
-        <td class="col-link"><a href="https://t.me/adzhongjiezhe_bot" target="_blank" rel="noopener">@adzhongjiezhe_bot</a></td>
-        <td class="col-notes">按自定义关键词规则自动拦截群内广告</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">AntiHyperlinkBot</td>
-        <td class="col-link"><a href="https://t.me/AntiHyperlinkBot" target="_blank" rel="noopener">@AntiHyperlinkBot</a></td>
-        <td class="col-notes">自动删除群聊中包含外部链接与超链接的消息</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">Auto Restrict Bot [beta]</td>
-        <td class="col-link"><a href="https://t.me/AutoRestrictBot" target="_blank" rel="noopener">@AutoRestrictBot</a></td>
-        <td class="col-notes">自动限制新入群成员的初期发言与发图权限</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">FreqRobot</td>
-        <td class="col-link"><a href="https://t.me/freqrobot" target="_blank" rel="noopener">@freqrobot</a></td>
-        <td class="col-notes">限制单用户高频连发消息，防止恶意刷屏</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-        </tbody>
-      </table>
-    </div>
-    <h3 class="subsection-title">活跃统计</h3>
-    <div class="table-wrap">
-      <table class="bot-table">
-        <thead>
-          <tr>
-            <th>名称</th>
-            <th>链接</th>
-            <th>核心功能</th>
-            <th>月活</th>
-          </tr>
-        </thead>
-        <tbody>
-      <tr>
-        <td class="col-name">Combot</td>
-        <td class="col-link"><a href="https://t.me/combot" target="_blank" rel="noopener">@combot</a></td>
-        <td class="col-notes">集成员审核、活跃度分析、反垃圾与自动回复于一体的群管套件</td>
-        <td class="col-monthly">约 <strong>84.0 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">SangMata</td>
-        <td class="col-link"><a href="https://t.me/SangMata_BOT" target="_blank" rel="noopener">@SangMata_BOT</a></td>
-        <td class="col-notes">追踪并查询群成员的历史昵称与用户名变更记录</td>
-        <td class="col-monthly">约 <strong>14.5 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">joinhider_bot</td>
-        <td class="col-link"><a href="https://t.me/joinhider_bot" target="_blank" rel="noopener">@joinhider_bot</a></td>
-        <td class="col-notes">自动删除成员进群与退群的系统提示消息</td>
-        <td class="col-monthly">约 <strong>1.1 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">统计秘书</td>
-        <td class="col-link"><a href="https://t.me/FengStatsBot" target="_blank" rel="noopener">@FengStatsBot</a></td>
-        <td class="col-notes">统计群内发言频次与成员活跃度排行</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-        </tbody>
-      </table>
-    </div>
-    <h3 class="subsection-title">秩序维护</h3>
-    <div class="table-wrap">
-      <table class="bot-table">
-        <thead>
-          <tr>
-            <th>名称</th>
-            <th>链接</th>
-            <th>核心功能</th>
-            <th>月活</th>
-          </tr>
-        </thead>
-        <tbody>
-      <tr>
-        <td class="col-name">Watch Door [beta]</td>
-        <td class="col-link"><a href="https://t.me/WatchDoorBot" target="_blank" rel="noopener">@WatchDoorBot</a></td>
-        <td class="col-notes">按消息类型（贴纸、转发、外链等）自定义封禁规则</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">AntiServiceMessageBot</td>
-        <td class="col-link"><a href="https://t.me/AntiServiceMessageBot" target="_blank" rel="noopener">@AntiServiceMessageBot</a></td>
-        <td class="col-notes">自动清理置顶、进退群等系统服务通知，保持版面整洁</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-  <section class="category-section" id="cat-download" data-category="download">
-    <h2 class="section-heading">解析下载</h2>
-    <p class="category-desc">提取主流社媒与视频平台无水印内容，支持私聊发送链接或挂载至群内解析</p>
-    <div class="table-wrap">
-      <table class="bot-table">
-        <thead>
-          <tr>
-            <th>名称</th>
-            <th>链接</th>
-            <th>核心功能</th>
-            <th>月活</th>
-          </tr>
-        </thead>
-        <tbody>
-      <tr>
-        <td class="col-name">InstaSave: Instagram & TikTok Downloader</td>
-        <td class="col-link"><a href="https://t.me/instasave_bot" target="_blank" rel="noopener">@instasave_bot</a></td>
-        <td class="col-notes">解析下载 Instagram、TikTok、X、Facebook 与 Pinterest 图文视频</td>
-        <td class="col-monthly">约 <strong>6.4 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">YoutubeDL - YouTube Download Bot</td>
-        <td class="col-link"><a href="https://t.me/YtbDownBot" target="_blank" rel="noopener">@YtbDownBot</a></td>
-        <td class="col-notes">按分辨率提取并下载 YouTube 视频与音频</td>
-        <td class="col-monthly">约 <strong>4.6 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">多平台解析下载机器人</td>
-        <td class="col-link"><a href="https://t.me/freedlvideo_bot" target="_blank" rel="noopener">@freedlvideo_bot</a></td>
-        <td class="col-notes">解析下载 X、YouTube、B站、抖音、小红书与 Instagram 视频</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">AI在线解析视频 (DC5)</td>
-        <td class="col-link"><a href="https://t.me/bilibiliparse_bot" target="_blank" rel="noopener">@bilibiliparse_bot</a></td>
-        <td class="col-notes">解析下载 B站及主流视频平台无水印内容</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-  <section class="category-section" id="cat-translate" data-category="translate">
-    <h2 class="section-heading">多语翻译</h2>
-    <p class="category-desc">私聊双向互译与群聊消息实时自动转译，适合多语种社群与跨国协作</p>
-    <div class="table-wrap">
-      <table class="bot-table">
-        <thead>
-          <tr>
-            <th>名称</th>
-            <th>链接</th>
-            <th>核心功能</th>
-            <th>月活</th>
-          </tr>
-        </thead>
-        <tbody>
-      <tr>
-        <td class="col-name">Yandex Translate</td>
-        <td class="col-link"><a href="https://t.me/YTranslateBot" target="_blank" rel="noopener">@YTranslateBot</a></td>
-        <td class="col-notes">调用 Yandex 翻译引擎，俄语及欧洲语种互译准确度高</td>
-        <td class="col-monthly">约 <strong>4.2 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">Translator</td>
-        <td class="col-link"><a href="https://t.me/TgTranslatorBot" target="_blank" rel="noopener">@TgTranslatorBot</a></td>
-        <td class="col-notes">群聊实时翻译，支持 100+ 语种消息自动转译</td>
-        <td class="col-monthly">约 <strong>2.7 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">Google Translate</td>
-        <td class="col-link"><a href="https://t.me/TranslateBot" target="_blank" rel="noopener">@TranslateBot</a></td>
-        <td class="col-notes">调用 Google 翻译引擎，支持私聊与群内多语种双向互译</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">TransChat - AI Translate</td>
-        <td class="col-link"><a href="https://t.me/TransChat_bot" target="_blank" rel="noopener">@TransChat_bot</a></td>
-        <td class="col-notes">结合群聊上下文自动互译多语种对话</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-  <section class="category-section" id="cat-checkin" data-category="checkin">
-    <h2 class="section-heading">签到打卡</h2>
-    <p class="category-desc">群内每日打卡、连续天数统计与考勤汇总，量化社群活跃度与团队出勤</p>
-    <div class="table-wrap">
-      <table class="bot-table">
-        <thead>
-          <tr>
-            <th>名称</th>
-            <th>链接</th>
-            <th>核心功能</th>
-            <th>月活</th>
-          </tr>
-        </thead>
-        <tbody>
-      <tr>
-        <td class="col-name">打卡机器人 免费版</td>
-        <td class="col-link"><a href="https://t.me/ttjfree_bot" target="_blank" rel="noopener">@ttjfree_bot</a></td>
-        <td class="col-notes">群内日常考勤、签到报到与出勤次数统计</td>
-        <td class="col-monthly">约 <strong>2.2 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">签到机器人</td>
-        <td class="col-link"><a href="https://t.me/qiandaobot" target="_blank" rel="noopener">@qiandaobot</a></td>
-        <td class="col-notes">群内每日打卡、连续签到天数与积分榜统计</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">Group Attendance Bot</td>
-        <td class="col-link"><a href="https://t.me/groupattendancebot" target="_blank" rel="noopener">@groupattendancebot</a></td>
-        <td class="col-notes">记录群成员每日出勤状态并生成考勤报表</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">King打卡</td>
-        <td class="col-link"><a href="https://t.me/kingdk_bot" target="_blank" rel="noopener">@kingdk_bot</a></td>
-        <td class="col-notes">上下班打卡记录与工时自动汇总，适合团队考勤</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-  <section class="category-section" id="cat-channel" data-category="channel">
-    <h2 class="section-heading">频道推送</h2>
-    <p class="category-desc">富媒体排版、定时发布队列与跨频道规则转发，适合频道主日常运营</p>
-    <div class="table-wrap">
-      <table class="bot-table">
-        <thead>
-          <tr>
-            <th>名称</th>
-            <th>链接</th>
-            <th>核心功能</th>
-            <th>月活</th>
-          </tr>
-        </thead>
-        <tbody>
-      <tr>
-        <td class="col-name">Channel Help</td>
-        <td class="col-link"><a href="https://t.me/chelpbot" target="_blank" rel="noopener">@chelpbot</a></td>
-        <td class="col-notes">频道定时排版、互动数据统计与抽奖管理</td>
-        <td class="col-monthly">约 <strong>256.4 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">Post Bot</td>
-        <td class="col-link"><a href="https://t.me/postbot" target="_blank" rel="noopener">@postbot</a></td>
-        <td class="col-notes">编辑含内联按钮的富媒体图文并发布至频道</td>
-        <td class="col-monthly">约 <strong>249.1 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">TelepostBot</td>
-        <td class="col-link"><a href="https://t.me/telepostbot" target="_blank" rel="noopener">@telepostbot</a></td>
-        <td class="col-notes">频道图文排版、定时发布队列与浏览数据统计</td>
-        <td class="col-monthly">约 <strong>53.4 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">Auto Forward Bot</td>
-        <td class="col-link"><a href="https://t.me/autoforwardroxybot" target="_blank" rel="noopener">@autoforwardroxybot</a></td>
-        <td class="col-notes">按过滤规则与时间表自动跨频道转发推送内容</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-  <section class="category-section" id="cat-game" data-category="game">
-    <h2 class="section-heading">游戏娱乐</h2>
-    <p class="category-desc">群内实时抢答、HTML5 对战小游戏与文字冒险，无需跳出聊天窗口即可发起互动</p>
-    <div class="table-wrap">
-      <table class="bot-table">
-        <thead>
-          <tr>
-            <th>名称</th>
-            <th>链接</th>
-            <th>核心功能</th>
-            <th>月活</th>
-          </tr>
-        </thead>
-        <tbody>
-      <tr>
-        <td class="col-name">Quiz Bot <span class="verified">✓</span></td>
-        <td class="col-link"><a href="https://t.me/quizbot" target="_blank" rel="noopener">@quizbot</a></td>
-        <td class="col-notes">创建多媒体选择题竞赛，支持群内实时抢答与排行榜统计</td>
-        <td class="col-monthly">约 <strong>162.0 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">Gamee <span class="verified">✓</span></td>
-        <td class="col-link"><a href="https://t.me/gamee" target="_blank" rel="noopener">@gamee</a></td>
-        <td class="col-notes">内置数十款 HTML5 街机与益智小游戏，支持群内实时对战比拼</td>
-        <td class="col-monthly">约 <strong>28.2 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">GameBot <span class="verified">✓</span></td>
-        <td class="col-link"><a href="https://t.me/gamebot" target="_blank" rel="noopener">@gamebot</a></td>
-        <td class="col-notes">Telegram 官方 HTML5 轻游戏合集，支持单人或群聊发起对战</td>
-        <td class="col-monthly">约 <strong>16.8 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">Inline Games</td>
-        <td class="col-link"><a href="https://t.me/inlinegamesbot" target="_blank" rel="noopener">@inlinegamesbot</a></td>
-        <td class="col-notes">通过内联模式在任意聊天框直接发起双人棋牌对战</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">TeleTarot</td>
-        <td class="col-link"><a href="https://t.me/teletarotbot" target="_blank" rel="noopener">@teletarotbot</a></td>
-        <td class="col-notes">按问题抽取塔罗牌面并生成牌义解读</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">Brightwood Stories</td>
-        <td class="col-link"><a href="https://t.me/BrightwoodBot" target="_blank" rel="noopener">@BrightwoodBot</a></td>
-        <td class="col-notes">按钮交互式文字冒险游戏，按分支选择推进剧情</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-  <section class="category-section" id="cat-tools" data-category="tools">
-    <h2 class="section-heading">实用工具</h2>
-    <p class="category-desc">一次性临时邮箱、词典、天气、安装包提取与群内抽奖工具</p>
-    <div class="table-wrap">
-      <table class="bot-table">
-        <thead>
-          <tr>
-            <th>名称</th>
-            <th>链接</th>
-            <th>核心功能</th>
-            <th>月活</th>
-          </tr>
-        </thead>
-        <tbody>
-      <tr>
-        <td class="col-name">DropMail.me</td>
-        <td class="col-link"><a href="https://t.me/DropmailBot" target="_blank" rel="noopener">@DropmailBot</a></td>
-        <td class="col-notes">生成一次性临时邮箱，在对话内直接接收注册验证码</td>
-        <td class="col-monthly">约 <strong>3.2 万</strong>/月</td>
-      </tr>
-      <tr>
-        <td class="col-name">dicbot</td>
-        <td class="col-link"><a href="https://t.me/dicbot" target="_blank" rel="noopener">@dicbot</a></td>
-        <td class="col-notes">查询英文单词音标、中英释义与例句</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">Weather bot</td>
-        <td class="col-link"><a href="https://t.me/WeatherBot" target="_blank" rel="noopener">@WeatherBot</a></td>
-        <td class="col-notes">按城市名称查询实时天气与未来数日气象预报</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">APK Downloader</td>
-        <td class="col-link"><a href="https://t.me/apkdl_bot" target="_blank" rel="noopener">@apkdl_bot</a></td>
-        <td class="col-notes">输入应用包名或链接，直接从 Google Play 提取 APK 安装包</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-      <tr>
-        <td class="col-name">Telegram 抽奖助手</td>
-        <td class="col-link"><a href="https://t.me/cnLottery_bot" target="_blank" rel="noopener">@cnLottery_bot</a></td>
-        <td class="col-notes">在群内发起按关键词或口令参与的自动开奖活动</td>
-        <td class="col-monthly"><span class="muted">—</span></td>
-      </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <p>电报机器人大全 · 数据来自 Telegram 公开预览页 · 每周自动核验<br>数据核验于 2026-11-02</p>
-        <div class="footer-links">
-          <a href="https://github.com/codertesla/telegram-bots" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://github.com/codertesla/telegram-bots/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">贡献指南</a>
-          <a href="https://github.com/codertesla/telegram-bots/issues/new/choose" target="_blank" rel="noopener">推荐 Bot</a>
-        </div>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div><a href="/" class="footer-brand">电报机器人大全</a><p>数据来自 Telegram 公开预览页 · 核验于 2026-11-02</p></div>
+      <div class="footer-links">
+        <a href="https://github.com/codertesla/telegram-bots" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/codertesla/telegram-bots/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">贡献指南</a>
+        <a href="https://github.com/codertesla/telegram-bots/issues/new/choose" target="_blank" rel="noopener">推荐 Bot</a>
       </div>
     </div>
   </footer>
 
-  <script>
-    // 客户端搜索：实时过滤表格行 + 隐藏空分类区
-    const search = document.getElementById('search');
-    const sections = document.querySelectorAll('.category-section');
-    const topItems = document.querySelectorAll('.top-item');
-
-    search.addEventListener('input', (e) => {
-      const q = e.target.value.trim().toLowerCase();
-      if (!q) {
-        document.querySelectorAll('.is-hidden').forEach(el => el.classList.remove('is-hidden'));
-        return;
-      }
-      sections.forEach(sec => {
-        let visibleRows = 0;
-        sec.querySelectorAll('tbody tr').forEach(row => {
-          const text = row.textContent.toLowerCase();
-          if (text.includes(q)) {
-            row.classList.remove('is-hidden');
-            visibleRows++;
-          } else {
-            row.classList.add('is-hidden');
-          }
-        });
-        // Hide section if no matching rows
-        if (visibleRows === 0) {
-          sec.classList.add('is-hidden');
-        } else {
-          sec.classList.remove('is-hidden');
-        }
-      });
-      // Filter top 10 list too
-      topItems.forEach(item => {
-        const text = item.textContent.toLowerCase();
-        item.classList.toggle('is-hidden', !text.includes(q));
-      });
-      // Featured cards
-      document.querySelectorAll('.featured-card').forEach(card => {
-        const text = card.textContent.toLowerCase();
-        card.classList.toggle('is-hidden', !text.includes(q));
-      });
-    });
-  </script>
+  <script src="assets/search.js"></script>
 </body>
 </html>

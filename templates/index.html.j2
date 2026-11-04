@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>电报机器人大全 | 精选实用 Telegram Bot 推荐（{{ last_label }}）</title>
+  <meta name="description" content="中文 Telegram 机器人导航列表：{{ total }} 条精选 bot，带真实月活数据，每周自动核验失效。覆盖官方、搜索、群管、下载、AI、翻译、签到、频道推送、游戏、工具 11 大分类。">
+  <meta name="keywords" content="电报机器人,Telegram 机器人,TG 机器人,Telegram Bot 推荐,群管理机器人,中文 TG Bot">
+  <meta property="og:title" content="电报机器人大全 | 精选实用 Telegram Bot 推荐">
+  <meta property="og:description" content="{{ total }} 条精选中文 Telegram Bot，带真实月活数据，每周自动核验失效。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://codertesla.github.io/telegram-bots/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://codertesla.github.io/telegram-bots/">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand" aria-label="电报机器人大全首页">
+        <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.4 3.3 2.8 10.5c-1 .4-.9 1.7.1 2l4.8 1.5 1.8 5.7c.3.9 1.4 1.1 2 .4l2.6-3.1 4.9 3.6c.7.5 1.7.2 1.9-.7l2.2-15.2c.2-1-.7-1.8-1.7-1.4ZM8 13.3l10.6-6.5-8.2 8.1-.3 3-1.3-4.2c-.2-.5-.3-.6-.8-.4Z" fill="currentColor"/></svg>
+        <span>电报机器人大全</span>
+      </a>
+      <nav class="main-nav" aria-label="主导航">
+        <a href="#featured">精选</a>
+        <a href="#top10">热门榜单</a>
+        <a href="#directory">全部分类</a>
+      </nav>
+      <a class="github-link" href="https://github.com/codertesla/telegram-bots" target="_blank" rel="noopener" aria-label="在 GitHub 查看项目">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.9c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.5 9.5 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z" fill="currentColor"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="live-dot"></span>每周自动核验 · {{ last_label }} 更新</p>
+          <h1>找到真正好用的<br><span>Telegram 机器人</span></h1>
+          <p class="hero-intro">不做漫无目的的收录。从真实月活、使用场景到存活状态，帮你更快找到值得信赖的工具。</p>
+          <div class="hero-actions">
+            <a href="#directory" class="btn">开始探索<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="#featured" class="text-link">看看编辑精选<span aria-hidden="true">↘</span></a>
+          </div>
+          <dl class="hero-stats">
+            <div><dt>精选收录</dt><dd>{{ total }}<span>个</span></dd></div>
+            <div><dt>实用场景</dt><dd>{{ cat_count }}<span>类</span></dd></div>
+            <div><dt>确认活跃</dt><dd>{{ ok_count }}<span>个</span></dd></div>
+          </dl>
+        </div>
+{% if top10 %}
+        <aside class="hero-panel" aria-label="热门机器人速览">
+          <div class="panel-heading"><span>正在被大家使用</span><span class="panel-label">MAU</span></div>
+{% for bot in top10[:3] %}
+          <div class="pulse-item">
+            <span class="pulse-rank">0{{ loop.index }}</span>
+            <span class="avatar avatar-small">{{ bot.initial }}</span>
+            <span class="pulse-name">{{ bot.name }}<small>{{ bot.username }}</small></span>
+            <strong>{{ bot.users }}</strong>
+          </div>
+{% endfor %}
+          <a href="#top10" class="panel-link">查看完整热门榜单<span aria-hidden="true">→</span></a>
+        </aside>
+{% endif %}
+      </div>
+      <div class="container search-container">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m16 16 4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="search" id="search" placeholder="搜索名称、用户名或功能，例如「下载」" aria-label="搜索机器人" autocomplete="off">
+          <kbd>/</kbd>
+        </div>
+        <p>输入关键词，立即从 {{ total }} 个机器人中筛选</p>
+      </div>
+    </section>
+
+    <div class="container content-shell">
+{% if featured %}
+      <section class="featured-section discovery-section" id="featured">
+        <div class="section-header">
+          <div><p class="section-kicker">EDITOR'S PICKS</p><h2>从这些开始</h2></div>
+          <p>每个高频场景，只保留一个值得信赖的选择。</p>
+        </div>
+        <div class="featured-grid">
+{% for bot in featured %}
+          <article class="featured-card">
+            <div class="card-topline"><span class="avatar">{{ bot.initial }}</span><span class="category-tag">{{ bot.category_label }}</span></div>
+            <h3>{{ bot.name }}</h3>
+            <p>{{ bot.notes }}</p>
+            <div class="card-footer"><span class="monthly">{{ bot.monthly }}</span>{{ bot.url }}</div>
+          </article>
+{% endfor %}
+        </div>
+      </section>
+{% endif %}
+
+{% if top10 %}
+      <section class="top10-section discovery-section" id="top10">
+        <div class="section-header">
+          <div><p class="section-kicker">MOST USED</p><h2>热门机器人</h2></div>
+          <p>按 Telegram 公开月活排序，官方账号不计入榜单。</p>
+        </div>
+        <ol class="top-list">
+{% for bot in top10 %}
+          <li class="top-item">
+            <span class="rank">{{ "%02d"|format(loop.index) }}</span>
+            <span class="avatar avatar-small">{{ bot.initial }}</span>
+            <span class="top-name">{{ bot.name }}<small>{{ bot.username }}</small></span>
+            <span class="top-monthly"><strong>{{ bot.users }}</strong>{{ bot.unit }}</span>
+            {{ bot.url }}
+          </li>
+{% endfor %}
+        </ol>
+      </section>
+{% endif %}
+
+      <section class="directory" id="directory">
+        <div class="section-header directory-heading">
+          <div><p class="section-kicker">EXPLORE BY NEED</p><h2>按场景探索</h2></div>
+          <p>不用读完一张长表，直接前往你的使用场景。</p>
+        </div>
+        <div class="filter-bar" role="group" aria-label="按分类筛选">
+          <button class="filter-chip" type="button" data-filter="all" aria-pressed="true">全部<span>{{ total }}</span></button>
+{% for section in sections %}
+          <button class="filter-chip" type="button" data-filter="{{ section.key }}" aria-pressed="false">{{ section.title }}<span>{{ section.count }}</span></button>
+{% endfor %}
+        </div>
+        <div class="results-bar">
+          <p id="results-status" role="status" aria-live="polite">{{ total }} 个机器人 · {{ cat_count }} 个分类</p>
+          <button id="reset-filters" class="reset-button" type="button" hidden>清除筛选</button>
+        </div>
+
+        <div class="category-list">
+{% for section in sections %}
+          <section class="category-section" id="cat-{{ section.key }}" data-category="{{ section.key }}">
+            <div class="category-heading">
+              <div><h2>{{ section.title }}</h2><p>{{ section.desc }}</p></div>
+              <span>{{ section.count }} 个</span>
+            </div>
+{% for group in section.groups %}
+            <div class="bot-group">
+{% if group.title %}
+              <h3 class="subsection-title">{{ group.title }}</h3>
+{% endif %}
+              <div class="bot-grid">
+{% for bot in group.bots %}
+                <article class="bot-card">
+                  <div class="bot-card-header"><span class="avatar">{{ bot.initial }}</span><span class="monthly">{{ bot.monthly }}</span></div>
+                  <h4>{{ bot.name }}</h4>
+                  <p>{{ bot.notes }}</p>
+                  <div class="bot-card-footer">{{ bot.url }}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                </article>
+{% endfor %}
+              </div>
+            </div>
+{% endfor %}
+          </section>
+{% endfor %}
+        </div>
+        <div id="empty-state" class="empty-state" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m16 16 4 4M8.5 11h5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <h3>没有找到匹配的机器人</h3>
+          <p>试试更短的关键词，或切换到其他分类。</p>
+          <button id="empty-reset" class="btn" type="button">查看全部机器人</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div><a href="/" class="footer-brand">电报机器人大全</a><p>数据来自 Telegram 公开预览页 · 核验于 {{ verified_time }}</p></div>
+      <div class="footer-links">
+        <a href="https://github.com/codertesla/telegram-bots" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/codertesla/telegram-bots/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">贡献指南</a>
+        <a href="https://github.com/codertesla/telegram-bots/issues/new/choose" target="_blank" rel="noopener">推荐 Bot</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/search.js"></script>
+</body>
+</html>

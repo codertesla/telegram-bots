@@ -101,7 +101,7 @@ README 用 marker 包裹自动区块，其余散文由人工维护、**逐字符
 ```bash
 pip install -r scripts/requirements.txt
 ```
-仅依赖 `requests` + `beautifulsoup4`。
+依赖 `requests` + `beautifulsoup4` + `jinja2`。
 
 ### 工作流
 ```bash
@@ -110,8 +110,9 @@ pip install -r scripts/requirements.txt
 # 2. 抓取最新元数据（礼貌限流 ≥2s，默认全量重新核验）
 python scripts/fetch_bots.py
 
-# 3. 重新渲染 README
+# 3. 重新渲染 README 与静态站点
 python scripts/render_readme.py
+python scripts/build_site.py
 
 # 4. 全量自检（退出码 0 才可提交）
 python scripts/validate.py
