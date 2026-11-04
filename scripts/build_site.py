@@ -24,8 +24,8 @@ CATEGORY_TITLES = {
     "search": ("搜索发现", "按关键词检索中文群组、频道、影视、网盘与音视频资源"),
     "group": ("群组管理", "拦截水军、外链广告与高频刷屏；中大型群组建议搭配「1 个进群验证 + 1 个广告拦截」组合使用"),
     "download": ("解析下载", "提取主流社媒与视频平台无水印内容，支持私聊发送链接或挂载至群内解析"),
-    "ai": ("AI 助手", "多模型聚合对话与群内 AI 客服；警惕两三句后的频道墙与瞎报日期，详见本节说明"),
-    "tools": ("实用工具", "一次性临时邮箱、文件与直链处理、语音转写、词典天气与群内抽奖工具"),
+    "ai": ("AI 助手", "多模型聚合对话与代码问答；优先选择支持长上下文与多模态输入的活跃账号"),
+    "tools": ("实用工具", "拍卖提醒、跨格式文件转换、一次性临时邮箱、直链转存、PDF 处理与 RSS 订阅工具"),
     "translate": ("多语翻译", "私聊双向互译与群聊消息实时自动转译，适合多语种社群与跨国协作"),
     "checkin": ("签到打卡", "群内每日打卡、连续天数统计与考勤汇总，量化社群活跃度与团队出勤"),
     "channel": ("频道推送", "富媒体排版、定时发布队列、跨频道转发与评论/回应按钮，适合频道主日常运营"),
@@ -174,7 +174,7 @@ def photo_url(bot):
 def bot_view(bot):
     """把一条数据整理为模板所需的展示字段。"""
     fetch = bot.get("fetch", {}) or {}
-    raw_title = str(fetch.get("title") or bot.get("username", "B").lstrip("@"))
+    raw_title = str((bot.get("display_name") or "").strip() or fetch.get("title") or bot.get("username", "B").lstrip("@"))
     title = clean_display_title(raw_title) or raw_title.strip()
     category = bot.get("category", "")
     return {
