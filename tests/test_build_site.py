@@ -22,6 +22,17 @@ class BuildSiteTests(unittest.TestCase):
         self.assertTrue((ROOT / "docs" / "assets" / "style.css").is_file())
         self.assertTrue((ROOT / "docs" / "assets" / "search.js").is_file())
 
+    def test_full_cards_are_links_and_home_paths_are_absolute(self):
+        self.assertIn('<a class="featured-card" href="https://t.me/', self.html)
+        self.assertIn('<a class="top-item" href="https://t.me/', self.html)
+        self.assertIn('<a class="bot-card" href="https://t.me/', self.html)
+        self.assertNotIn('<article class="bot-card"', self.html)
+        self.assertEqual(self.html.count('href="/telegram-bots/"'), 2)
+
+    def test_not_bot_status_is_plain_text_not_error_badge(self):
+        self.assertIn('class="account-kind"', self.html)
+        self.assertNotIn('badge badge-dead">⚠️已变为频道', self.html)
+
     def test_committed_page_is_up_to_date(self):
         self.assertEqual(OUT_FILE.read_text(encoding="utf-8"), self.html)
 

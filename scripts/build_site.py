@@ -38,9 +38,9 @@ CATEGORY_ORDER = ["official", "search", "crypto", "group", "download", "ai", "tr
 HIDE_AFTER = 3  # keep in sync with scripts/fetch_bots.py
 
 NOT_BOT_LABELS = {
-    "channel": "⚠️已变为频道（非 Bot）",
-    "group": "⚠️已变为群组（非 Bot）",
-    "user": "⚠️个人账号（非 Bot）",
+    "channel": "已变更为频道 · 非 Bot",
+    "group": "已变更为群组 · 非 Bot",
+    "user": "个人账号 · 非 Bot",
 }
 
 SUBSECTION_TITLES = {
@@ -114,12 +114,12 @@ def monthly_label(bot):
         return Markup(f'<span class="badge badge-dead">❗已失效（{ym}）</span>')
     users = fetch.get("monthly_users")
     if is_not_bot(bot):
-        label = NOT_BOT_LABELS.get(fetch.get("page_kind"), "⚠️非 Bot")
-        badge = f'<span class="badge badge-dead">{label}</span>'
+        label = NOT_BOT_LABELS.get(fetch.get("page_kind"), "非 Bot 账号")
+        kind = f'<span class="account-kind">{label}</span>'
         if not users:
-            return Markup(badge)
+            return Markup(kind)
         unit = UNITS.get(fetch.get("type") or "bot", "/月")
-        return Markup(f'{badge}<br><strong>{format_num(users)}</strong>{unit.lstrip()}')
+        return Markup(f'{kind}<span class="account-metric">{format_num(users)}{unit}</span>')
     if not users:
         return Markup('<span class="muted">—</span>')
     unit = UNITS.get(fetch.get("type") or "bot", "/月")
@@ -176,6 +176,7 @@ def bot_view(bot):
         "initial": title[:1].upper() or "B",
         "username": bot.get("username", ""),
         "category_label": CATEGORY_TITLES.get(category, (category, ""))[0],
+        "link_url": bot.get("url") or "",
         "url": url_field(bot),
         "notes": bot.get("notes", ""),
         "monthly": monthly_label(bot),
