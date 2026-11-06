@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.1 4.686 25.41 24.027" fill="none" role="img" aria-hidden="true">
+  <defs>
+    <clipPath id="lovable-heart" clipPathUnits="userSpaceOnUse">
+      <path clip-rule="evenodd" d="M6.89785 0C10.7074 0 13.7957 3.17898 13.7957 7.10046V9.79908H16.0913C19.9009 9.79908 22.9892 12.9781 22.9892 16.8995C22.9892 20.821 19.9009 24 16.0913 24H0V7.10046C0 3.17898 3.08827 0 6.89785 0Z"/>
+    </clipPath>
+    <radialGradient id="lovable-g0" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(10.084 12.811) scale(27.376 27.791)">
+      <stop offset="0" stop-color="#4B73FF" stop-opacity="1"/>
+      <stop offset=".1625" stop-color="#4B73FF" stop-opacity=".9984"/>
+      <stop offset=".3333" stop-color="#4B73FF" stop-opacity=".9543"/>
+      <stop offset=".5042" stop-color="#4B73FF" stop-opacity=".6547"/>
+      <stop offset=".6" stop-color="#4B73FF" stop-opacity=".3687"/>
+      <stop offset=".6667" stop-color="#4B73FF" stop-opacity=".1993"/>
+      <stop offset=".7333" stop-color="#4B73FF" stop-opacity=".0892"/>
+      <stop offset=".8208" stop-color="#4B73FF" stop-opacity=".0219"/>
+      <stop offset=".8917" stop-color="#4B73FF" stop-opacity=".0053"/>
+      <stop offset="1" stop-color="#4B73FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lovable-g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(11.794 4.043) scale(31.745 27.791)">
+      <stop offset="0" stop-color="#FF66F4" stop-opacity="1"/>
+      <stop offset=".1958" stop-color="#FF66F4" stop-opacity=".999"/>
+      <stop offset=".3333" stop-color="#FF66F4" stop-opacity=".9809"/>
+      <stop offset=".5042" stop-color="#FF66F4" stop-opacity=".7105"/>
+      <stop offset=".6125" stop-color="#FF66F4" stop-opacity=".3744"/>
+      <stop offset=".6875" stop-color="#FF66F4" stop-opacity=".1798"/>
+      <stop offset=".7667" stop-color="#FF66F4" stop-opacity=".0631"/>
+      <stop offset=".8542" stop-color="#FF66F4" stop-opacity=".0137"/>
+      <stop offset="1" stop-color="#FF66F4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lovable-g2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(15.045 1.037) scale(27.376 25.845)">
+      <stop offset="0" stop-color="#FF0105" stop-opacity=".9998"/>
+      <stop offset=".2125" stop-color="#FF0105" stop-opacity=".9908"/>
+      <stop offset=".3625" stop-color="#FF0105" stop-opacity=".8983"/>
+      <stop offset=".4958" stop-color="#FF0105" stop-opacity=".6192"/>
+      <stop offset=".6125" stop-color="#FF0105" stop-opacity=".2858"/>
+      <stop offset=".6833" stop-color="#FF0105" stop-opacity=".1375"/>
+      <stop offset=".7625" stop-color="#FF0105" stop-opacity=".0478"/>
+      <stop offset=".8208" stop-color="#FF0105" stop-opacity=".0184"/>
+      <stop offset="1" stop-color="#FF0105" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lovable-g3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12.071 4.039) scale(21.173 21.423)">
+      <stop offset="0" stop-color="#FE7B02" stop-opacity=".9705"/>
+      <stop offset=".1833" stop-color="#FE7B02" stop-opacity=".8954"/>
+      <stop offset=".3417" stop-color="#FE7B02" stop-opacity=".6529"/>
+      <stop offset=".5208" stop-color="#FE7B02" stop-opacity=".2634"/>
+      <stop offset=".6167" stop-color="#FE7B02" stop-opacity=".1184"/>
+      <stop offset=".7083" stop-color="#FE7B02" stop-opacity=".0433"/>
+      <stop offset=".775" stop-color="#FE7B02" stop-opacity=".0177"/>
+      <stop offset="1" stop-color="#FE7B02" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g transform="rotate(-45 11.4946 12)">
+    <g clip-path="url(#lovable-heart)">
+      <rect width="23" height="24" fill="url(#lovable-g0)"/>
+      <rect width="23" height="24" fill="url(#lovable-g1)"/>
+      <rect width="23" height="24" fill="url(#lovable-g2)"/>
+      <rect width="23" height="24" fill="url(#lovable-g3)"/>
+    </g>
+  </g>
+</svg>
