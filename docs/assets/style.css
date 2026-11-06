@@ -197,7 +197,7 @@ body.is-filtering .discovery-section { display: none; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 24px; }
 .footer-links a { min-height: 44px; display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 12px; transition: color 180ms ease-out; }
 .footer-links a:hover { color: var(--accent); }
-.footer-logo { width: 16px; height: 15px; flex-shrink: 0; transition: transform 180ms ease-out; }
+.footer-logo { width: 13px; height: 13px; flex-shrink: 0; transition: transform 180ms ease-out; }
 .footer-links a:hover .footer-logo { transform: scale(1.12); }
 @media (prefers-reduced-motion: reduce) {
   .footer-logo { transition: none; }

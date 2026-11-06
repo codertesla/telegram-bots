@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.1 4.686 25.41 24.027" fill="none" role="img" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.1 -0.1 23.1892 24.2" fill="none" role="img" aria-hidden="true">
   <defs>
     <clipPath id="lovable-heart" clipPathUnits="userSpaceOnUse">
       <path clip-rule="evenodd" d="M6.89785 0C10.7074 0 13.7957 3.17898 13.7957 7.10046V9.79908H16.0913C19.9009 9.79908 22.9892 12.9781 22.9892 16.8995C22.9892 20.821 19.9009 24 16.0913 24H0V7.10046C0 3.17898 3.08827 0 6.89785 0Z"/>
@@ -48,12 +48,10 @@
       <stop offset="1" stop-color="#FE7B02" stop-opacity="0"/>
     </radialGradient>
   </defs>
-  <g transform="rotate(-45 11.4946 12)">
-    <g clip-path="url(#lovable-heart)">
-      <rect width="23" height="24" fill="url(#lovable-g0)"/>
-      <rect width="23" height="24" fill="url(#lovable-g1)"/>
-      <rect width="23" height="24" fill="url(#lovable-g2)"/>
-      <rect width="23" height="24" fill="url(#lovable-g3)"/>
-    </g>
+  <g clip-path="url(#lovable-heart)">
+    <rect width="23" height="24" fill="url(#lovable-g0)"/>
+    <rect width="23" height="24" fill="url(#lovable-g1)"/>
+    <rect width="23" height="24" fill="url(#lovable-g2)"/>
+    <rect width="23" height="24" fill="url(#lovable-g3)"/>
   </g>
 </svg>
