@@ -71,7 +71,12 @@ class AvatarTests(unittest.TestCase):
         self.assertIn('loading="lazy"', self.html)
         self.assertIn('decoding="async"', self.html)
         self.assertIn('referrerpolicy="no-referrer"', self.html)
-        self.assertEqual(self.html.count('alt=""'), self.html.count('<img class="avatar-img"'))
+        # 页面内 <img> 一律使用装饰性空 alt：头像由文字头像回退，页脚品牌图标由 <a> 的
+        # aria-label 命名。逐标签校验，避免用「全站 alt="" 总数」反推图片数量
+        imgs = re.findall(r"<img\b[^>]*>", self.html)
+        self.assertTrue(imgs)
+        for tag in imgs:
+            self.assertIn('alt=""', tag, f"<img> 应为装饰性空 alt: {tag[:96]}")
 
     def test_local_avatars_referenced(self):
         # 有本地快照的 bot 必须引用本地路径，不得再用会过期的 telesco.pe 链接
